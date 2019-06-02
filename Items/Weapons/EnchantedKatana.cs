@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items
+namespace ChampionMod.Items.Weapons
 {
     public class EnchantedKatana : ModItem
     {

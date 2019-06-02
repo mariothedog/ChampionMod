@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items
+namespace ChampionMod.Items.Potions
 {
     public class PotionOfMemory : ModItem
     {
