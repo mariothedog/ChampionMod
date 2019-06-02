@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace SingleSwordMod.Items
 {
-    public class IchorBlaster : ModItem
+    public class ChampionMod : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -28,13 +28,7 @@ namespace SingleSwordMod.Items
             item.shoot = 279;
             item.shootSpeed = 13f;
             item.useAmmo = AmmoID.Bullet;
-            // Use styles:
-            // 1 - General swinging/throwing (Swords, Acorns)
-            // 2 - Eating/Using (Potions)
-            // 3 - Stabbing (Shortswords)
-            // 4 - Holding up (Life Crystals, Summoning items)
-            // 5 - Holding out (Guns, Spellbooks, Drills)
-            item.useStyle = 5;
+            item.useStyle = 5; // Holding out
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

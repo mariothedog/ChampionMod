@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Buffs
+namespace ChampionMod.Buffs
 {
     public class BunnyBuff : ModBuff
     {

@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Items
+namespace ChampionMod.Items
 {
     public class PotionOfMemory : ModItem
     {
@@ -24,8 +24,6 @@ namespace SingleSwordMod.Items
             item.useStyle = 2;
             item.UseSound = SoundID.Item3;
             item.consumable = true;
-            //item.buffType = mod.BuffType("DeathTeleportation");
-            //item.buffTime = 1;
             item.value = Item.sellPrice(0, 0, 1, 20);
         }
 
@@ -33,21 +31,15 @@ namespace SingleSwordMod.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddIngredient(ItemID.Waterleaf);
+            recipe.AddIngredient(mod.ItemType("MemoryFish"));
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
-            //recipe.AddTile(13);
             recipe.AddRecipe();
         }
 
-        /*public override bool ConsumeItem(Player player)
-        {
-            return true;
-        }*/
-
         public override bool UseItem(Player player)
         {
-            //Main.NewText("Potion used");
-            //Main.NewText(player.GetModPlayer<MyPlayer>().LastDeathX);
-            //Main.NewText(player.GetModPlayer<MyPlayer>().LastDeathY);
             if (player.GetModPlayer<MyPlayer>().LastDeathX == 0 || player.GetModPlayer<MyPlayer>().LastDeathY == 0)
             {
                 Main.NewText("You have not died recently!");

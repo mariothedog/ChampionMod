@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Items
+namespace ChampionMod.Items
 {
     public class BunnyStaff : ModItem
     {
@@ -15,13 +15,11 @@ namespace SingleSwordMod.Items
 
         public override void SetDefaults()
         {
-            //item.name = "Bunny Summon Staff";
             item.damage = 2;
             item.summon = true;
             item.mana = 10;
             item.width = 26;
             item.height = 28;
-            //item.toolTip = "Summons a minion to fight for you.";
             item.useTime = 26;
             item.useAnimation = 26;
             item.useStyle = 1;
@@ -38,7 +36,7 @@ namespace SingleSwordMod.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);// mod.ItemType("EpicGun"));
+            recipe.AddIngredient(ItemID.DirtBlock, 1);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

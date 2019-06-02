@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Items
+namespace ChampionMod.Items
 {
     public class EnchantedKatana : ModItem
     {
@@ -41,25 +41,6 @@ namespace SingleSwordMod.Items
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
-        /*public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            // REDf, GREENf, BLUEf
-            // 1f, 0f, 0f for Red
-            // 0f, 1f, 0f for Green
-            // 0f, 0f, 1f for Blue
-
-            //Lighting.AddLight(hitbox.Center.ToVector2(), 1f, 0.4f, 0f);
-
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                Vector2 position = Main.LocalPlayer.Center;
-                dust = Main.dust[Terraria.Dust.NewDust(hitbox.Center.ToVector2(), 147, 163, 173, 0f, 0f, 0, new Color(255, 255, 255), 1f)];
-            }
-
-        }*/
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
