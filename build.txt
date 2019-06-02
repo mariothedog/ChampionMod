@@ -1,3 +1,3 @@
-author = Mariothedog
+author = Cornetto
 version = 0.1
 displayName = Champion Mod
