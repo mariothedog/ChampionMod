@@ -31,11 +31,6 @@ namespace ChampionMod
             {
                 return;
             }
-            
-            if (player.FindBuffIndex(BuffID.BabySlime) > -1 && liquidType == 0) // If using a slime summon and fishing in water
-            {
-                caughtType = mod.ItemType("OrangeFish");
-            }
 
             if (player.ZoneJungle && NPC.downedGolemBoss && worldLayer != 1 && liquidType == 0) // If in jungle, Golem dead, not on surface and fishing in water
             {
