@@ -6,7 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Projectiles
+namespace ChampionMod.Projectiles
 {
     public class BayonetProjectile : ModProjectile
     {

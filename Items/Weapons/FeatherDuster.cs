@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Items.Weapons
+namespace ChampionMod.Items.Weapons
 {
     public class FeatherDuster : ModItem
     {

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Weapons
 {
-    public class ChampionMod : ModItem
+    public class IchorBlaster : ModItem
     {
         public override void SetStaticDefaults()
         {

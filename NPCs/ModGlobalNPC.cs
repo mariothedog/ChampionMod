@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.NPCs
+namespace ChampionMod.NPCs
 {
-    public class SingleSwordMod : GlobalNPC
+    public class ChampionMod : GlobalNPC
     {
         public override void NPCLoot(NPC npc)
         {

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Items.Weapons
+namespace ChampionMod.Items.Weapons
 {
     public class Bayonet : ModItem
     {
@@ -17,26 +17,20 @@ namespace SingleSwordMod.Items.Weapons
         }
         public override void SetDefaults()
         {
-            item.damage = 32;
-            item.melee = true;
+            item.damage = 34;
+            item.ranged = true;
             item.noMelee = true; // So the weapon itself doesn't do damage (and only bullet/spear does)
             item.width = 80;
             item.height = 18;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 33;
+            item.useAnimation = 33;
             item.useStyle = 5;
-            item.knockBack = 4;
-            item.value = 10;
+            item.knockBack = 7;
+            item.value = 90000;
             item.rare = 2;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item11;
             item.autoReuse = false;
-            item.shootSpeed = 3.7f;
-            // Add item crit
-            // Change damage
-            // Change use time and use animation
-            // Change knockback
-            // Change value
-            // Change rarity
+            item.shootSpeed = 3.7f; // TEST CHANGE THIS
             // Change sound
             // Change shoot speed
         }
@@ -44,8 +38,8 @@ namespace SingleSwordMod.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("SingleSwordMod:WorldEvilGuns");
-            recipe.AddRecipeGroup("SingleSwordMod:Tier2Broadswords");
+            recipe.AddRecipeGroup("ChampionMod:WorldEvilGuns");
+            recipe.AddRecipeGroup("ChampionMod:Tier2Broadswords");
             recipe.AddRecipeGroup("IronBar", 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
@@ -61,15 +55,27 @@ namespace SingleSwordMod.Items.Weapons
         {
             if (player.altFunctionUse == 0) // On left Click
             {
+                item.melee = false;
+                item.ranged = true;
                 item.noUseGraphic = false;
-                item.useAnimation = 20;
+                item.damage = 34;
+                item.crit = 0; // + 4 = 4
+                item.useTime = 33;
+                item.useAnimation = 33;
+                item.knockBack = 6;
                 item.shoot = ProjectileID.Bullet;
                 item.useAmmo = AmmoID.Bullet;
             }
             else // On right click
             {
+                item.melee = true;
+                item.ranged = false;
                 item.noUseGraphic = true; // Stops the melee animation
-                item.useAnimation = 20;
+                item.damage = 32;
+                item.knockBack = 7;
+                item.crit = 1; // + 4 = 5
+                item.useTime = 28;
+                item.useAnimation = 28;
                 item.shoot = 0; // So it doesn't shoot anything
 
                 if (Main.mouseRightRelease) // Player lets go off mouse right click

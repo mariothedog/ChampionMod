@@ -2,7 +2,7 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Projectiles.Minions
+namespace ChampionMod.Projectiles.Minions
 {
     public abstract class BunnyMinion : ModProjectile
     {

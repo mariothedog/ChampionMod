@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Projectiles.Minions
+namespace ChampionMod.Projectiles.Minions
 {
     public class Bunny : BunnyINFO
     {
