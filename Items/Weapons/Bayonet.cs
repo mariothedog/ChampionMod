@@ -44,7 +44,7 @@ namespace ChampionMod.Items.Weapons
             recipe.AddRecipe();
         }
 
-        public override Vector2? HoldoutOffset()
+        public override Vector2? HoldoutOffset() // So when holding the gun it goes slightly under the player's arm
 		{
 			return new Vector2(-10, 0);
 		}
@@ -93,12 +93,12 @@ namespace ChampionMod.Items.Weapons
                 if (timer == 0)
                 {
                     item.shoot = mod.ProjectileType("BayonetProjectile");
-                    item.useAmmo = 0;
+                    item.useAmmo = 0; // doesn't use any ammo
                     timer = 1; // Puts spear back on cooldown
                 }
                 else
                 {
-                    item.UseSound = null;
+                    item.UseSound = null; // so there is no sound
                     item.useAnimation = 0; // So it no longer shows the spear
                 }
                 return player.ownedProjectileCounts[item.shoot] < 1;
