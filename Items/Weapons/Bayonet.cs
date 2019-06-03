@@ -26,13 +26,11 @@ namespace ChampionMod.Items.Weapons
             item.useAnimation = 33;
             item.useStyle = 5;
             item.knockBack = 7;
-            item.value = 90000;
+            item.value = 142500;
             item.rare = 2;
             item.UseSound = SoundID.Item11;
             item.autoReuse = false;
-            item.shootSpeed = 3.7f; // TEST CHANGE THIS
-            // Change sound
-            // Change shoot speed
+            item.shootSpeed = 9f;
         }
 
         public override void AddRecipes()
@@ -45,6 +43,11 @@ namespace ChampionMod.Items.Weapons
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+
+        public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-10, 0);
+		}
 
         public override bool AltFunctionUse(Player player) // So item can be right clicked (When holding; not in inventory)
         {
@@ -60,6 +63,8 @@ namespace ChampionMod.Items.Weapons
                 item.noUseGraphic = false;
                 item.damage = 34;
                 item.crit = 0; // + 4 = 4
+                item.shootSpeed = 9f;
+                item.UseSound = SoundID.Item11;
                 item.useTime = 33;
                 item.useAnimation = 33;
                 item.knockBack = 6;
@@ -74,6 +79,8 @@ namespace ChampionMod.Items.Weapons
                 item.damage = 32;
                 item.knockBack = 7;
                 item.crit = 1; // + 4 = 5
+                item.shootSpeed = 3.7f;
+                item.UseSound = SoundID.Item1;
                 item.useTime = 28;
                 item.useAnimation = 28;
                 item.shoot = 0; // So it doesn't shoot anything
@@ -91,6 +98,7 @@ namespace ChampionMod.Items.Weapons
                 }
                 else
                 {
+                    item.UseSound = null;
                     item.useAnimation = 0; // So it no longer shows the spear
                 }
                 return player.ownedProjectileCounts[item.shoot] < 1;
