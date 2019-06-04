@@ -20,12 +20,12 @@ namespace ChampionMod
             });
             RecipeGroup.RegisterGroup("ChampionMod:Tier2Broadswords", group);
 
-            RecipeGroup group2 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " World Evil Guns", new int[]
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " World Evil Guns", new int[]
             {
                     ItemID.Musket,
                     ItemID.TheUndertaker
             });
-            RecipeGroup.RegisterGroup("ChampionMod:WorldEvilGuns", group2);
+            RecipeGroup.RegisterGroup("ChampionMod:WorldEvilGuns", group);
         }
 	}
 }
