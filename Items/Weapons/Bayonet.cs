@@ -79,7 +79,7 @@ namespace ChampionMod.Items.Weapons
                 item.damage = 32;
                 item.knockBack = 7;
                 item.crit = 1; // + 4 = 5
-                item.shootSpeed = 3.7f;
+                item.shootSpeed = 3.5f;
                 item.UseSound = SoundID.Item1;
                 item.useTime = 28;
                 item.useAnimation = 28;
