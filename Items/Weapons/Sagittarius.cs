@@ -59,5 +59,10 @@ namespace ChampionMod.Items.Weapons
         
             return false; // False so it doesn't create another projectile like normal
         }
+
+        public override Vector2? HoldoutOffset() // So player holds the handle
+        {
+            return new Vector2(0, 0);
+        }
     }
 }
