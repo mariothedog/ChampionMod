@@ -43,6 +43,16 @@ namespace ChampionMod
             LastDeathX = player.position.X;
             LastDeathY = player.position.Y;
         }
+
+        public override void ModifyZoom(ref float zoom)
+		{
+            // If player holding Snowball Rifle and using right click
+            //Main.NewText(player.GetModPlayer<MyPlayer>().rightClick);//player.altFunctionUse);
+            if (player.inventory[player.selectedItem].type == mod.ItemType("SnowballRifle"))
+            {
+			    zoom = 0.2f;
+            }
+		}
     }
 
 }
