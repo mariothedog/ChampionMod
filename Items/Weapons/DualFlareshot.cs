@@ -63,12 +63,20 @@ namespace ChampionMod.Items.Weapons
 			return new Vector2(-3, 0);
 		}
 
+		int test = 1;
 		public override void HoldItem(Player player) {
-            /*if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0) {
-				Dust.NewDust(new Vector2(player.itemLocation.X + 16f * player.direction, player.itemLocation.Y - 14f * player.gravDir), 4, 4, mod.DustType("Sparkle"));
-			}
+            //if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0) {
+			// Position(Vector2), Width(int), Height(int), Type(int)
+			Dust.NewDust(new Vector2(player.itemLocation.X + 16f * player.direction, player.itemLocation.Y - 14f * player.gravDir), 4, 4, test);
+			//}
 			Vector2 position = player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true);
-			Lighting.AddLight(position, 1f, 1f, 1f);*/
+			Lighting.AddLight(position, 1f, 1f, 1f);
+
+			if (Main.rand.Next(150)==0)
+			{
+				Main.NewText(test);
+				test++;
+			}
 
             if (player.itemAnimation <= 0) // If not shooting
             {
