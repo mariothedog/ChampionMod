@@ -43,24 +43,6 @@ namespace ChampionMod
             LastDeathX = player.position.X;
             LastDeathY = player.position.Y;
         }
-
-        /*public override void PostItemCheck()
-        {
-            if(player.inventory[player.selectedItem].type == mod.ItemType("DualFlareshot"))
-            {
-                if (player.direction == 1)
-                {
-                    player.itemLocation.X -= 70;
-                    player.itemLocation.Y -= 20;
-                }
-                else
-                {
-                    player.itemLocation.X += 20;
-                    player.itemLocation.Y -= 20;
-                }
-            }
-        }*/
-
     }
 
 }

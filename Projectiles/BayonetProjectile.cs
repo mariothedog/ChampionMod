@@ -23,7 +23,10 @@ namespace ChampionMod.Projectiles
             projectile.friendly = true;
         }
 
-        public float movementFactor { get; set; }
+		public float movementFactor {
+			get { return projectile.ai[0]; }
+			set { projectile.ai[0] = value; }
+		}
 
         // It appears that for this AI, only the ai0 field is used!
 		public override void AI() {
