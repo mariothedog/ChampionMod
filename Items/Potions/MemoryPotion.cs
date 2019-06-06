@@ -19,10 +19,10 @@ namespace ChampionMod.Items.Potions
             item.height = 30;
             item.maxStack = 30;
             item.rare = 7;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 17;
+            item.useAnimation = 17;
             item.useStyle = 2;
-            item.UseSound = SoundID.Item3;
+            item.UseSound = SoundID.Item6;
             item.consumable = true;
             item.value = 205000; // 4 gold + 10 silver
         }
@@ -40,15 +40,18 @@ namespace ChampionMod.Items.Potions
 
         public override bool UseItem(Player player)
         {
+            // If the player has not died
             if (player.GetModPlayer<MyPlayer>().LastDeathX == 0 || player.GetModPlayer<MyPlayer>().LastDeathY == 0)
             {
                 Main.NewText("You have not died recently!");
             }
             else
             {
-                player.position.X = player.GetModPlayer<MyPlayer>().LastDeathX;
-                player.position.Y = player.GetModPlayer<MyPlayer>().LastDeathY;
+                player.GetModPlayer<MyPlayer>().timer = 5;
+
+                // See MyPlayer.cs for the teleportation and dust effect
             }
+
             return true;
         }
     }

@@ -39,5 +39,10 @@ namespace ChampionMod.Items.Weapons
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
+
+		public override Vector2? HoldoutOffset() // So player holds the handle
+        {
+            return new Vector2(-8, 0);
+        }
 	}
 }
