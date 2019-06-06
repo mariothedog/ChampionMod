@@ -41,17 +41,24 @@ namespace ChampionMod.Items.Weapons
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
+            // Goes through each npc when you swing the feather duster
             foreach (NPC npc in Main.npc)
             {
                 if (Vector2.Distance(npc.Center, player.Center) <= 80)
                 {
-                    // First getsthe distance between the enemy and the player
+                    // First gets the distance between the enemy and the player
                     // Then subtracts 50 so if the enemy is closer it will be smaller in the negatives (-30 compared to 10)
                     // Then it changes the negative number into a positive number (absolute value using Math.abs)
                     // Then it divides that value by 20 so the knockback isn't too big
                     // Then it gets multiplied by the player direction (player direction is 1 if facing right, -1 is facing left)
                     npc.velocity.X+= Math.Abs(Vector2.Distance(npc.Center, player.Center)-50)/20 * player.direction;
                 }
+            }
+
+            // Create dust
+            if (Main.rand.NextFloat() < 0.3f)
+            {
+                Terraria.Dust.NewDust(hitbox.Center.ToVector2(), 30, 30, 0, 0f, 0f, 0, new Color(255,255,255), 0.9f);
             }
         }
     }
