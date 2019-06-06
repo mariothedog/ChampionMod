@@ -16,7 +16,7 @@ namespace ChampionMod.Items.Materials
             item.maxStack = 999;
             item.width = 26;
             item.height = 26;
-            item.rare = 3;
+            item.rare = 7;
         }
     }
 }

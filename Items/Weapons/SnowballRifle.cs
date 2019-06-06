@@ -11,7 +11,8 @@ namespace ChampionMod.Items.Weapons
 		   Tooltip.SetDefault("Great for snowball murder!");
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults()
+		{
 			item.damage = 14;
 			item.ranged = true;
 			item.width = 40;
@@ -30,33 +31,13 @@ namespace ChampionMod.Items.Weapons
 			item.crit = 10; // 14 chance of crit
 		}
 
-		public override void AddRecipes() {
+		public override void AddRecipes()
+		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.SilverBar, 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-
-		/*public override bool AltFunctionUse(Player player)
-		{
-			return true;
-		}
-
-		public override bool CanUseItem(Player player)
-		{
-			if (player.altFunctionUse == 0) // Left Click
-			{
-				item.shoot = 10;
-				item.useAnimation = 33;
-				player.GetModPlayer<MyPlayer>().rightClick = false;
-			}
-			else // Right click
-			{
-				item.shoot = 0;
-				item.useAnimation = 0;
-			}
-			return base.CanUseItem(player);
-		}*/
 	}
 }

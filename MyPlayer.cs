@@ -32,7 +32,7 @@ namespace ChampionMod
                 return;
             }
 
-            if (player.ZoneJungle && NPC.downedGolemBoss && worldLayer != 1 && liquidType == 0) // If in jungle, Golem dead, not on surface and fishing in water
+            if (Main.rand.Next(70)==0 && player.ZoneJungle && NPC.downedGolemBoss && worldLayer != 1 && liquidType == 0) // If in jungle, Golem dead, not on surface and fishing in water
             {
                 caughtType = mod.ItemType("MemoryFish");
             }
@@ -46,8 +46,7 @@ namespace ChampionMod
 
         public override void ModifyZoom(ref float zoom)
 		{
-            // If player holding Snowball Rifle and using right click
-            //Main.NewText(player.GetModPlayer<MyPlayer>().rightClick);//player.altFunctionUse);
+            // If player holding Snowball Rifle
             if (player.inventory[player.selectedItem].type == mod.ItemType("SnowballRifle"))
             {
 			    zoom = 0.2f;

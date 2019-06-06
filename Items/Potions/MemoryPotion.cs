@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Potions
 {
-    public class PotionOfMemory : ModItem
+    public class MemoryPotion : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Potion of Memory");
+            DisplayName.SetDefault("Memory Potion");
             Tooltip.SetDefault("Teleports you to your last death point");
         }
 
@@ -18,13 +18,13 @@ namespace ChampionMod.Items.Potions
             item.width = 20;
             item.height = 30;
             item.maxStack = 30;
-            item.rare = 1;
-            item.useAnimation = 15;
+            item.rare = 7;
             item.useTime = 15;
+            item.useAnimation = 15;
             item.useStyle = 2;
             item.UseSound = SoundID.Item3;
             item.consumable = true;
-            item.value = Item.sellPrice(0, 0, 1, 20);
+            item.value = 205000; // 4 gold + 10 silver
         }
 
         public override void AddRecipes()
