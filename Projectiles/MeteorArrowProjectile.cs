@@ -6,47 +6,40 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SingleSwordMod.Projectiles
+namespace ChampionMod.Projectiles
 {
     public class MeteorArrowProjectile : ModProjectile
     {
         public override void SetDefaults()
         {
             projectile.ranged = true;
-            projectile.friendly = true; // So it doesn't damage you
-            projectile.tileCollide = true;
-            projectile.penetrate = 2; // how many npcs it will go through
+            projectile.friendly = true; // So it damages hostile npcs
+            projectile.penetrate = 2; // How many npcs it will go through
             projectile.width = 8;
             projectile.height = 8;
-            //projectile.light = 0f;
-            //projectile.extraUpdates = 1;
             projectile.ignoreWater = true;
-            projectile.aiStyle = 1;
-            //aiType = ProjectileID.WoodenArrowFriendly;
-            //drawOffsetX = 30;
-            //drawOriginOffsetX = 30;
+            projectile.aiStyle = 1; // arrow ai
         }
 
         public override void AI()
         {
-            // So the projectile faces the correct way
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) - 1.56f;
+            // The projectile rotation (so it faces the correct way) is automatically done as the arrow ai is used
+
+            Terraria.Dust.NewDust(projectile.position, 30, 30, 55, 0f, 0f, 0, new Color(255,255,255), 1f);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.Kill();
-            Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(SoundID.Item10, projectile.position);
-            if (projectile.velocity.X != oldVelocity.X)
+            // Explosive sound
+            Main.PlaySound(SoundID.Item14, projectile.position);
+
+            // Dust
+            for (int d = 0; d < 50; d++)
             {
-                projectile.velocity.X = -oldVelocity.X;
+                Terraria.Dust.NewDust(projectile.position, 30, 30, 148, 0f, 0f, 0, new Color(255,255,255), 1f);
             }
-            if (projectile.velocity.Y != oldVelocity.Y)
-            {
-                projectile.velocity.Y = -oldVelocity.Y;
-            }
-            return false;
+
+            return true; // To kill the projectile as normal
         }
     }
 }
