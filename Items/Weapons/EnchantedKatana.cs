@@ -27,7 +27,7 @@ namespace ChampionMod.Items.Weapons
             item.rare = 3;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
-            item.shoot = 173;
+            item.shoot = mod.ProjectileType("EnchantedKatanaBeam");
             item.shootSpeed = 10f;
             item.crit = 15; // Terraria adds 4% crit to everything so 15 is actually 19
         }
@@ -44,7 +44,24 @@ namespace ChampionMod.Items.Weapons
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            Lighting.AddLight(hitbox.Center.ToVector2(), 0.2f, 0.6f, 1f);
+            if (Main.rand.Next(5) == 0) // Lowers amount of dust
+            {
+                int dustChoice;
+                switch (Main.rand.Next(3))
+                {
+                case 0:
+                    dustChoice = 15;
+                    break;
+                case 1:
+                    dustChoice = 57;
+                    break;
+                default:
+                    dustChoice = 58;
+                    break;
+                }
+                Dust enchantedDust = Main.dust[Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, dustChoice, (float)(player.direction * 2), 0f, 150, default(Color), 1.3f)];
+                enchantedDust.velocity *= 0.2f;
+            }
         }
     }
 }

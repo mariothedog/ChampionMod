@@ -62,7 +62,6 @@ namespace ChampionMod.Projectiles
 			if (projOwner.itemAnimation == 0) {
 				projectile.Kill();
 			}
-			// Apply proper rotation, with an offset of 135 degrees due to the sprite's rotation, notice the usage of MathHelper, use this class!
 			// MathHelper.ToRadians(xx degrees here)
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
 
