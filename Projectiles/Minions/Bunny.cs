@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Projectiles.Minions
 {
-    public class Bunny : BunnyINFO
+    public class Bunny : BunnyAI
     {
         public override void SetStaticDefaults()
         {
@@ -21,24 +21,16 @@ namespace ChampionMod.Projectiles.Minions
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            //projectile.name = "Cool Minion";
             projectile.width = 31;
             projectile.height = 28;
-            //Main.projFrames[projectile.type] = 3;
             projectile.friendly = true;
-            //Main.projPet[projectile.type] = true;
             projectile.minion = true;
-            //projectile.netImportant = true;
             projectile.minionSlots = 1;
             projectile.penetrate = -1; // -1 so it doesn't disappear when it hits an enemy
             projectile.timeLeft = 18000;
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
-            //ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            //ProjectileID.Sets.Homing[projectile.type] = true;
             inertia = 30f;
-            //shoot = mod.ProjectileType("MinionP");
-            //shootSpeed = 10f;
             ProjectileID.Sets.LightPet[projectile.type] = false;
             //Main.projPet[projectile.type] = true;
             //projectile.aiStyle = 11; // -5
