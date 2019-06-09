@@ -30,7 +30,8 @@ namespace ChampionMod.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 10);
+            recipe.AddIngredient(ItemID.WoodenArrow, 70);
+            recipe.AddIngredient(ItemID.MeteoriteBar);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
