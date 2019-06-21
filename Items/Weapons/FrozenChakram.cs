@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
  
-namespace Champion.Items.Weapons
+namespace ChampionMod.Items.Weapons
 {
     public class FrozenChakram : ModItem
     {
@@ -16,9 +16,10 @@ namespace Champion.Items.Weapons
             item.melee = true;
             item.width = 40;
             item.height = 40;
+            item.scale = 0.8f;
             item.useTime = 15;
-            item.useAnimation = 25;
-            item.noUseGraphic = true;
+            item.useAnimation = 15;
+            item.noUseGraphic = true; // So you don't see the item swing (and you just see the projectile)
             item.useStyle = 1;
             item.knockBack = 8;
             item.value = Item.sellPrice(silver : 2);
