@@ -18,12 +18,8 @@ namespace ChampionMod.Projectiles
             projectile.height = 40;
             projectile.scale = 0.8f;
 
-            //drawOffsetX = -17;
-            //drawOriginOffsetY = -15;
-            //drawOriginOffsetX = -16;
-            drawOffsetX = -4;
-            drawOriginOffsetY = -30;
-            drawOriginOffsetX = -9;
+            drawOffsetX = -10;
+            drawOriginOffsetY = -10;
 		}
     }
 }
