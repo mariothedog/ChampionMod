@@ -7,16 +7,12 @@ namespace ChampionMod.Items.Weapons
 {
     public class FrozenChakram : ModItem
     {
-        public override void SetStaticDefaults() {
-			 DisplayName.SetDefault("Frozen Chakram");
-		}
-		
 		public override void SetDefaults() {
             item.damage = 19;            
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.scale = 0.8f;
+            item.scale = 0.8f; // Changes sprite size
             item.useTime = 15;
             item.useAnimation = 15;
             item.noUseGraphic = true; // So you don't see the item swing (and you just see the projectile)
