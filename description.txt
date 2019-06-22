@@ -31,6 +31,11 @@ Jr Developers - Olivermcwoliver and imreedthedrunktavernkeepr
 
 
 -=-Changelog-=-
+Beta 0.101
+
+- Added a mod icon
+
+
 Beta 0.1 [Released on Mod Browser]
 
 New Items:
