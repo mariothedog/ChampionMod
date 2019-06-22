@@ -36,12 +36,14 @@ namespace ChampionMod.Items.Weapons
             }
             return true;
         }
-        public override void AddRecipes(){
+        public override void AddRecipes()
+        {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.BorealWood, 20);
 				recipe.AddIngredient(ItemID.Silk, 5);
 				recipe.AddIngredient(ItemID.SilverBar, 6);
 				recipe.AddIngredient(ItemID.IceTorch, 1);
+                recipe.AddIngredient(ItemID.LastPrism, 999);
 				recipe.AddTile(TileID.Anvils); 
                 recipe.SetResult(this);
                 recipe.AddRecipe();

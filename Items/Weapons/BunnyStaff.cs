@@ -35,8 +35,10 @@ namespace ChampionMod.Items.Weapons
         }
         public override void AddRecipes()
         {
+            // To do
+
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
+            recipe.AddIngredient(ItemID.LastPrism, 999);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
