@@ -1,1 +1,32 @@
-Champion Mod is a pretty cool mod, it adds a lot of cool items. Please add more to this description :)
+Discord server link: https://discord.gg/x28RTWk
+
+-=-Main Mod Information-=-
+
+Champion Mod is a small community made project meant to make Terraria more interesting. Currently it has a slow production but is seen as a labor of love from the small team involved in it's development. It would be The Team's dream to expand our horizons and recruit any new people willing to help out. This has potential to become a passion project, rather than a pastime.
+
+
+-=-Content-=-
+
+Weapons to flesh out each biome more.
+Custom Potions, Tools, and Accessories to come.
+Paladin Mini-class coming soon.
+Farming expansion coming soon.
+
+
+-=-Changelog-=-
+Beta 0.1 [Released on Mod Browser]
+
+New Items:
+- Sagittarius
+- Dual Flareshot
+- Pea Shooter
+- Orange Phaseblade
+- Orange Phasesaber
+- Snowball Rife
+- Memory Potion
+- Ichor Blaster
+- Acorn Staff
+- Feather Duster
+- Meteor Arrows
+- Enchanted Katana
+- Bayonet
