@@ -12,6 +12,23 @@ Custom Potions, Tools, and Accessories to come.
 Paladin Mini-class coming soon.
 Farming expansion coming soon.
 
+-=-Credits-=-
+Chief Developer, Director, and Creator of the Mod - Cornetto
+
+Vice Director, Community Manager, Musician, and Quality Control - iFlicky
+
+Main Coder, Quality Control and GitHub Control - Mariothedog
+
+The Beast of a Spriter - RandomTerrarian
+
+Master of Suggestions and a great Helper - JoJo
+
+The Jack of Most All Trades - Aurakhalis
+
+Small Time Coder - Unpleasant 
+
+Jr Developers - Olivermcwoliver and imreedthedrunktavernkeepr
+
 
 -=-Changelog-=-
 Beta 0.1 [Released on Mod Browser]
