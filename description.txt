@@ -31,6 +31,12 @@ Jr Developers - Olivermcwoliver and imreedthedrunktavernkeepr
 
 
 -=-Changelog-=-
+Beta 0.11
+
+New Items:
+- Snowball Sledgeshot
+
+
 Beta 0.101
 
 - Added a mod icon

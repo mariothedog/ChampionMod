@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Weapons
+namespace ChampionMod.Items.Ammo
 {
     public class MeteorArrow : ModItem
     {
@@ -32,8 +32,8 @@ namespace ChampionMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.WoodenArrow, 70);
             recipe.AddIngredient(ItemID.MeteoriteBar);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 70);
             recipe.AddRecipe();
         }
 

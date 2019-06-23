@@ -80,7 +80,7 @@ namespace ChampionMod.Items.Weapons
 					loc.X -= 2;
                 }
 
-				int flareDustType = 127; // so if you are using some sort of modded ammo it will default to the normal flare effect
+				int flareDustType = 0; // So if you don't have a flare equipped it won't show the dust
 				
 				for (int i = 0; i < 4; i++) // Checks which flare comes first (to see which dust to use)
 				{
@@ -97,17 +97,20 @@ namespace ChampionMod.Items.Weapons
 					}
 				}
 
-				Dust dust;
-				// Top hole dust
-				dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
-				dust.noGravity = true;
-				dust.velocity.Y -= 4f * player.gravDir;
+                if (flareDustType != 0)
+                {
+                    Dust dust;
+                    // Top hole dust
+                    dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
+                    dust.noGravity = true;
+                    dust.velocity.Y -= 4f * player.gravDir;
 
-				// Bottom hole dust
-				loc.Y += 6; // So it comes out of the bottom hole
-				dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
-				dust.noGravity = true;
-				dust.velocity.Y -= 4f * player.gravDir;
+                    // Bottom hole dust
+                    loc.Y += 6; // So it comes out of the bottom hole
+                    dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
+                    dust.noGravity = true;
+                    dust.velocity.Y -= 4f * player.gravDir;
+                }
 
 				// Orange lighting
 				Vector2 position = player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true);
