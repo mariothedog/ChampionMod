@@ -34,7 +34,7 @@ namespace ChampionMod.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("ChampionMod:Tier2Bars", 8);
+            recipe.AddRecipeGroup("IronBar", 8);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

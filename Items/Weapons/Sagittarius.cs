@@ -35,7 +35,7 @@ namespace ChampionMod.Items.Weapons
             recipe.AddIngredient(ItemID.PixieDust, 5);
             recipe.AddIngredient(ItemID.SoulofFlight, 10);
             recipe.AddIngredient(ItemID.HallowedBar, 8);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MyhrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
