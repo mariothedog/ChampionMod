@@ -18,7 +18,7 @@ namespace ChampionMod.Items.Weapons
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 4;
-            item.value = 10000;
+            item.value = 250000;
             item.rare = 5;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
@@ -30,7 +30,7 @@ namespace ChampionMod.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PlatinumBow, 1);
+            recipe.AddRecipeGroup("ChampionMod:Tier4BarBows");
             recipe.AddIngredient(ItemID.FallenStar, 5);
             recipe.AddIngredient(ItemID.PixieDust, 5);
             recipe.AddIngredient(ItemID.SoulofFlight, 10);

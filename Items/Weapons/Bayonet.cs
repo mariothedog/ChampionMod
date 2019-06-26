@@ -13,7 +13,7 @@ namespace ChampionMod.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bayonet");
-            Tooltip.SetDefault("Tooltip is wip. Left click to shoot a bullet. Right click to hit with spear");
+            Tooltip.SetDefault("Left click to shoot a bullet. Right click to hit with spear");
         }
         public override void SetDefaults()
         {

@@ -31,7 +31,7 @@ namespace ChampionMod.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.SnowballCannon);
-      recipe.AddRecipeGroup("ChampionMod:Tier1Bars", 8);
+            recipe.AddRecipeGroup("ChampionMod:Tier1Bars", 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

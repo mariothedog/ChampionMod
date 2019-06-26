@@ -20,7 +20,7 @@ namespace ChampionMod.Items.Weapons
             item.width = 40;
             item.height = 40;
             item.useTime = 21;
-            item.useAnimation = 20;
+            item.useAnimation = 21;
             item.useStyle = 1;
             item.knockBack = 4;
             item.value = 250000;

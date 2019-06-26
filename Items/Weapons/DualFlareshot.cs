@@ -19,7 +19,7 @@ namespace ChampionMod.Items.Weapons
 			item.width = 40;
 			item.height = 20;
 			item.useTime = 21;
-			item.useAnimation = 20;
+			item.useAnimation = 21;
 			item.useStyle = 5;
 			item.noMelee = true; 
 			item.knockBack = 6;
@@ -38,7 +38,7 @@ namespace ChampionMod.Items.Weapons
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.FlareGun, 2);
 			recipe.AddRecipeGroup("Wood", 10);
-			recipe.AddIngredient(ItemID.IronBar, 5);
+            recipe.AddRecipeGroup("ChampionMod:Tier2Bars", 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

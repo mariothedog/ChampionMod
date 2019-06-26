@@ -10,7 +10,7 @@ namespace ChampionMod.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Orange Phasesaber");
-			Tooltip.SetDefault("Phasesabers, now in orange.");
+			Tooltip.SetDefault("Phasesabers, now in orange");
 		}
 		public override void SetDefaults()
 		{

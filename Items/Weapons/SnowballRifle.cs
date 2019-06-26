@@ -21,7 +21,7 @@ namespace ChampionMod.Items.Weapons
 			item.useAnimation = 33;
 			item.useStyle = 5;
 			item.knockBack = 7;
-			item.value = 5;
+			item.value = 4500;
 			item.rare = 0;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = false;
@@ -34,8 +34,8 @@ namespace ChampionMod.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SilverBar, 8);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddRecipeGroup("ChampionMod:Tier2Bars", 8);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
