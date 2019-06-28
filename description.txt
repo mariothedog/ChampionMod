@@ -1,63 +1,53 @@
 Discord server link: https://discord.gg/x28RTWk
 
 -=-Main Mod Information-=-
-
 Champion Mod is a small community made project meant to make Terraria more interesting. Currently it has a slow production but is seen as a labor of love from the small team involved in it's development. It would be The Team's dream to expand our horizons and recruit any new people willing to help out. This has potential to become a passion project, rather than a pastime.
 
-
 -=-Content-=-
-
 Weapons to flesh out each biome more.
 Custom Potions, Tools, and Accessories to come.
-Paladin Mini-class coming soon.
 Farming expansion coming soon.
 Netherworm boss coming soon.
+Paladin Mini-class coming soon.
 
 -=-Credits-=-
-Chief Developer, Director, and Creator of the Mod - Cornetto
-
-Vice Director, Community Manager, Musician, and Quality Control - iFlicky
-
-Main Coder, Quality Control and GitHub Control - Mariothedog
-
-The Beast of a Spriter - RandomTerrarian
-
-Master of Suggestions and a great Helper - JoJo
-
-The Jack of Most All Trades - Aurakhalis
-
-Small Time Coder - Unpleasant 
-
-Jr Developers - Olivermcwoliver and imreedthedrunktavernkeepr
-
+Cornetto
+iFlicky
+Mariothedog
+RandomTerrarian
+JoJo
+Aurakhalis
+Unpleasant 
+Olivermcwoliver
+Kendolah
 
 -=-Changelog-=-
-Beta 0.11
-
+Beta 0.11:
 New Items:
 - Snowball Sledgeshot
 - Spore Bullet
-
-Changes
+Changes:
 - Memory Fish sprite changed
 - Icon Changed
-
-Bugs fixed
+- Buffed the Sagittarius to 29 damage
+Bugs fixed:
 - Meteor arrows now give you 70 arrows when crafting instead of 1
 - Meteor arrows are now crafted at an anvil instead of a workbench
 - Dual Flareshot will no longer have dust when there is no flare equipped (Like normal flare gun)
+- Snowball Rifle recipe now also works with tungsten bars
+- Dual Flareshot recipe now also works with lead bars
+- Sagittarius recipe now also works with a gold bow
+- Sagittarius is now crafted at a hardmode anvil
+- Memory Fish now sells for 3 gold
 
 ===
 
-Beta 0.101
-
+Beta 0.101:
 - Added a mod icon
 
-
 ===
 
-Beta 0.1 [Released on Mod Browser]
-
+Beta 0.1 [Released on Mod Browser]:
 New Items:
 - Sagittarius
 - Dual Flareshot
