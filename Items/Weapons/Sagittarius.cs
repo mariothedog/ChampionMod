@@ -9,7 +9,7 @@ namespace ChampionMod.Items.Weapons
     {
         public override void SetDefaults()
         {
-            item.damage = 24;
+            item.damage = 29;
             item.ranged = true;
             item.width = 40;
             item.height = 20;
@@ -35,7 +35,7 @@ namespace ChampionMod.Items.Weapons
             recipe.AddIngredient(ItemID.PixieDust, 5);
             recipe.AddIngredient(ItemID.SoulofFlight, 10);
             recipe.AddIngredient(ItemID.HallowedBar, 8);
-            recipe.AddTile(TileID.MyhrilAnvil);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

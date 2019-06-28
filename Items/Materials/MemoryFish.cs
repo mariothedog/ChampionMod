@@ -17,6 +17,7 @@ namespace ChampionMod.Items.Materials
             item.width = 26;
             item.height = 26;
             item.rare = 7;
+            item.value = 150000;
         }
     }
 }

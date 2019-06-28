@@ -38,7 +38,7 @@ namespace ChampionMod.Items.Weapons
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.FlareGun, 2);
 			recipe.AddRecipeGroup("Wood", 10);
-            recipe.AddRecipeGroup("ChampionMod:Tier2Bars", 5);
+            recipe.AddRecipeGroup("IronBar", 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
