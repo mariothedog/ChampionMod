@@ -29,7 +29,7 @@ New Items:
 Changes:
 - Memory Fish sprite changed
 - Icon Changed
-- Buffed the Sagittarius to 29 damage
+- Buffed the Sagittarius from 24 to 29 damage
 Bugs fixed:
 - Meteor arrows now give you 70 arrows when crafting instead of 1
 - Meteor arrows are now crafted at an anvil instead of a workbench
@@ -56,6 +56,7 @@ New Items:
 - Orange Phasesaber
 - Snowball Rife
 - Memory Potion
+- Memory Fish
 - Ichor Blaster
 - Acorn Staff
 - Feather Duster
