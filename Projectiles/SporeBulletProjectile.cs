@@ -31,21 +31,25 @@ namespace ChampionMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Poisoned, 420); // Poison enemy hit
-
-            // Fume effect
-            for (int d = 0; d < 50; d++)
+            // Fume Effect (Projectile applies the poison)
+            for (int d = 0; d < 15; d++)
             {
-                Terraria.Dust.NewDust(target.position, 30, 30, 31, 0f, 0f, 0, new Color(159,255,0), 2.5f);
+                Projectile.NewProjectile(projectile.position.X + Main.rand.Next(-20, 20), projectile.position.Y + Main.rand.Next(-20, 20), 0, 0, mod.ProjectileType("PoisonSporeCloud"), 1, 0, projectile.owner);
             }
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
+            // Fume Effect (Projectile applies the poison)
+            for (int d = 0; d < 15; d++)
+            {
+                Projectile.NewProjectile(projectile.position.X + Main.rand.Next(-20, 20), projectile.position.Y + Main.rand.Next(-20, 20), 0, 0, mod.ProjectileType("PoisonSporeCloud"), 1, 0, projectile.owner);
+            }
+
             // Effect and sound
 			Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 			Main.PlaySound(SoundID.Item10, projectile.position);
-
+            
 			return true; // Kills bullet like normal
 		}
     }

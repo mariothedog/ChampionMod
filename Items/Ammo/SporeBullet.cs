@@ -9,7 +9,7 @@ namespace ChampionMod.Items.Ammo
     {
         public override void SetDefaults()
         {
-            item.damage = 10;
+            item.damage = 9;
             item.ranged = true;
             item.width = 14;
             item.height = 34;
