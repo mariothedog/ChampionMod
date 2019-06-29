@@ -22,6 +22,16 @@ Olivermcwoliver
 Kendolah
 
 -=-Changelog-=-
+Beta 0.12:
+New Items:
+- Brumous Beater
+- Frosthrower
+Changes:
+- Spore Bullet spore fume effect changed and buffed
+- Ichor Blaster sprite changed
+
+===
+
 Beta 0.11:
 New Items:
 - Snowball Sledgeshot

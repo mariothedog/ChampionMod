@@ -10,25 +10,42 @@ namespace ChampionMod.Items.Weapons
 {
     public class Frosthrower : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Uses gel for ammo");
+        }
+
         public override void SetDefaults()
         {
-            item.damage = 33;
-            item.ranged = true;    //This defines if it does Ranged damage and if its effected by Ranged increasing Armor/Accessories.
-            item.width = 42;  //The size of the width of the hitbox in pixels.
-            item.height = 16;    //The size of the height of the hitbox in pixels.
+            item.damage = 29;
+            item.ranged = true;
+            item.noMelee = true;
+            item.width = 42;
+            item.height = 16;
             item.scale = 0.5f;
-            item.useTime = 6;   //How fast the Weapon is used.
-            item.useAnimation = 20;     //How long the Weapon is used for.
-            item.useStyle = 5;   //The way your Weapon will be used, 1 is the regular sword swing for example
-            item.noMelee = true; //so the item's animation doesn't do damage
-            item.knockBack = 3.25f;  //The knockback stat of your Weapon.
-            item.UseSound = SoundID.Item34; //The sound played when using your Weapon
-            item.value = Item.buyPrice(0, 10, 0, 0); // How much the item is worth, in copper coins, when you sell it to a merchant. It costs 1/5th of this to buy it back from them. An easy way to remember the value is platinum, gold, silver, copper or PPGGSSCC (so this item price is 10gold)
-            item.rare = 6;   //The color the title of your Weapon when hovering over it ingame  
-            item.autoReuse = true;   //Weather your Weapon will be used again after use while holding down, if false you will need to click again after use to use it again.
-            item.shoot = mod.ProjectileType("FrosthrowerProjectile");   //This defines what type of projectile this weapon will shot
-            item.shootSpeed = 4.5f; //This defines the projectile speed when shoot , for flamethrower this make how far the flames can go
-            item.useAmmo = AmmoID.Gel; //This defines what ammo this weapon should use.
+            item.useTime = 6;
+            item.useAnimation = 30;
+            item.useStyle = 5;
+            item.knockBack = 0.3f;
+            item.UseSound = SoundID.Item34;
+            item.value = 500000;
+            item.rare = 5;
+            item.autoReuse = true;
+            item.shoot = mod.ProjectileType("FrosthrowerProjectile");
+            item.shootSpeed = 3.3f; // For flamethrower this decides how far the flames can go
+            item.useAmmo = AmmoID.Gel;
         }
+
+        public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddRecipeGroup("IronBar", 20);
+            recipe.AddIngredient(ItemID.IllegalGunParts);
+            recipe.AddIngredient(ItemID.SoulofMight, 20);
+            recipe.AddIngredient(ItemID.FrostCore);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
     }
 }
