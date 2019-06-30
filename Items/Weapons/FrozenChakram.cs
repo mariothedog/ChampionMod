@@ -25,6 +25,7 @@ namespace ChampionMod.Items.Weapons
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
+
         public override bool CanUseItem(Player player)     
         {
             for (int i = 0; i < 1000; ++i)
@@ -36,7 +37,8 @@ namespace ChampionMod.Items.Weapons
             }
             return true;
         }
-        public override void AddRecipes()
+
+        /*/public override void AddRecipes()
         {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.BorealWood, 20);
@@ -47,6 +49,6 @@ namespace ChampionMod.Items.Weapons
 				recipe.AddTile(TileID.Anvils); 
                 recipe.SetResult(this);
                 recipe.AddRecipe();
-        }
+        }*/
     }
 }

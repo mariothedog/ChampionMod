@@ -33,7 +33,8 @@ namespace ChampionMod.Items.Weapons
             item.buffType = mod.BuffType("BunnyBuff"); // summon buff
             item.buffTime = 3600; // duration of buff (3600 is 1 minute)
         }
-        public override void AddRecipes()
+        
+        /*public override void AddRecipes()
         {
             // To do
 
@@ -41,6 +42,6 @@ namespace ChampionMod.Items.Weapons
             recipe.AddIngredient(ItemID.LastPrism, 999);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+        }*/
     }
 }

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
  
 namespace ChampionMod.Projectiles
 {
-    public class FrosthrowerProjectile : ModProjectile
+    public class CursedthrowerProjectile : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -23,7 +23,7 @@ namespace ChampionMod.Projectiles
  
         public override void AI()
         {
-            Lighting.AddLight(projectile.Center, 0f, 0.6f, 1f);
+            Lighting.AddLight(projectile.Center, 0.2f, 0.8f, 0.1f);
 
             if (projectile.timeLeft > 125)
             {
@@ -34,12 +34,12 @@ namespace ChampionMod.Projectiles
             {
                 if (Main.rand.Next(3) == 0)
                 {
-                    Dust dust = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 197, projectile.velocity.X, projectile.velocity.Y, 130, default(Color), 3f)];
+                    Dust dust = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 167, projectile.velocity.X, projectile.velocity.Y, 130, new Color(179,255,0), 3.1f)];
                     dust.noGravity = true;
                     
                     if (Main.rand.Next(7) == 0)
                     {
-                        Dust dust2 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 197, projectile.velocity.X, projectile.velocity.Y, 130, default(Color))];
+                        Dust dust2 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 167, projectile.velocity.X, projectile.velocity.Y, 130, new Color(179,255,0), 1.2f)];
                         dust2.velocity *= 0.3f;
                     }
                 }
@@ -52,7 +52,7 @@ namespace ChampionMod.Projectiles
  
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Frostburn, 1200);
+            target.AddBuff(BuffID.CursedInferno, 1200);
         }
  
         public override bool OnTileCollide(Vector2 oldVelocity)

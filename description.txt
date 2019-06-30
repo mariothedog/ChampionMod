@@ -23,6 +23,17 @@ Olivermcwoliver
 Kendolah
 
 -=-Changelog-=-
+Beta 0.13 [Not released yet]
+New Items:
+- Cursedthrower
+Changes:
+- Frosthrower flame changed
+- Frosthrower frostburn duration increased to 20 seconds
+Bugs fixed:
+- Frosthrower no longer consumes an insane amount of gel
+
+===
+
 Beta 0.12:
 New Items:
 - Brumous Beater

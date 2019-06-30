@@ -8,7 +8,7 @@ using Terraria.ModLoader;
  
 namespace ChampionMod.Items.Weapons
 {
-    public class Frosthrower : ModItem
+    public class Cursedthrower : ModItem
     {
         int ammoTimer = 4;
 
@@ -19,7 +19,7 @@ namespace ChampionMod.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 29;
+            item.damage = 30;
             item.ranged = true;
             item.noMelee = true;
             item.width = 42;
@@ -32,7 +32,7 @@ namespace ChampionMod.Items.Weapons
             item.value = 500000;
             item.rare = 5;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("FrosthrowerProjectile");
+            item.shoot = mod.ProjectileType("CursedthrowerProjectile");
             item.shootSpeed = 3.3f; // For flamethrower this decides how far the flames can go
             item.useAmmo = AmmoID.Gel;
         }
@@ -42,8 +42,8 @@ namespace ChampionMod.Items.Weapons
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("IronBar", 20);
             recipe.AddIngredient(ItemID.IllegalGunParts);
-            recipe.AddIngredient(ItemID.SoulofMight, 20);
-            recipe.AddIngredient(ItemID.FrostCore);
+            recipe.AddIngredient(ItemID.SoulofSight, 20);
+            recipe.AddIngredient(ItemID.CursedFlame, 20);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -52,7 +52,7 @@ namespace ChampionMod.Items.Weapons
         public override bool ConsumeAmmo(Player player)
         {
             // So it doesn't use an insane amount of gel
-            
+
             ammoTimer -= 1;
             if (ammoTimer == 0)
             {

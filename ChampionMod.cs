@@ -41,6 +41,13 @@ namespace ChampionMod
         });
         RecipeGroup.RegisterGroup("ChampionMod:Tier3Bars", group);
 
+         group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 4 Bars", new int[]
+        {
+            ItemID.GoldBar,
+            ItemID.PlatinumBar
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:Tier4Bars", group);
+
         group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 4 Bar Bows", new int[]
         {
             ItemID.GoldBow,

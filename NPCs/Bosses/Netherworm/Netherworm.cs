@@ -17,7 +17,7 @@ namespace ChampionMod.NPCs.Bosses.Netherworm
 			//npc.aiStyle = -1;
             npc.width = 40; // 110
             npc.height = 40; // 74
-            npc.scale = 5f;
+            //npc.scale = 5f;
 			//npc.color = Color.Aqua;
 		}
 
@@ -64,7 +64,7 @@ namespace ChampionMod.NPCs.Bosses.Netherworm
 			//npc.aiStyle = -1;
             npc.width = 40; // 86
             npc.height = 40; // 48
-            npc.scale = 5f;
+            //npc.scale = 5f;
 			//npc.color = Color.Aqua;
 		}
 	}
@@ -78,7 +78,7 @@ namespace ChampionMod.NPCs.Bosses.Netherworm
 			//npc.aiStyle = -1;
             npc.width = 40; // 66
             npc.height = 40; // 70 // 48
-            npc.scale = 5f;
+            //npc.scale = 5f;
 			//npc.color = Color.Aqua;
 		}
 
