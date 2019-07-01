@@ -10,7 +10,7 @@ namespace ChampionMod.Items.Weapons
 {
     public class Frosthrower : ModItem
     {
-        int ammoTimer = 4;
+        int ammoTimer = 5;
 
         public override void SetStaticDefaults()
         {
@@ -51,18 +51,18 @@ namespace ChampionMod.Items.Weapons
 
         public override bool ConsumeAmmo(Player player)
         {
-            // So it doesn't use an insane amount of gel
-            
-            ammoTimer -= 1;
-            if (ammoTimer == 0)
+            // So it uses about the same amount of gel as the flamethrower
+            if (ammoTimer == 5)
             {
-                ammoTimer = 4;
+                ammoTimer -= 1;
                 return true;
             }
-            else
+            ammoTimer -= 1;
+            if (ammoTimer <= 0)
             {
-                return false;
+                ammoTimer = 5;
             }
+            return false;
         }
     }
 }

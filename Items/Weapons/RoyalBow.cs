@@ -7,6 +7,11 @@ namespace ChampionMod.Items.Weapons
 {
     public class RoyalBow : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Wielded by the Royal Archers");
+        }
+
         public override void SetDefaults()
         {
             item.damage = 15;
@@ -31,7 +36,7 @@ namespace ChampionMod.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            //recipe.AddIngredient(mod.ItemType("KingsGel"));
+            recipe.AddIngredient(mod.ItemType("KingsGel"), 5);
             recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 10);
             recipe.AddTile(TileID.Solidifier);

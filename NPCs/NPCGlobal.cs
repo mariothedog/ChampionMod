@@ -9,6 +9,15 @@ namespace ChampionMod.NPCs
     {
         public override void NPCLoot(NPC npc)
         {
+            if (npc.type == NPCID.KingSlime)
+            {
+                if (!Main.expertMode) // If it is expert it will drop from the bag anyway
+                {
+                    // Only if not expert (5-15 inclusive)
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
+                }
+            }
+
             if (npc.type == NPCID.IchorSticker)
             {
                 if (Main.rand.Next(50) == 0) // 2% item rarity
