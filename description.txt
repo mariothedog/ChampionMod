@@ -26,6 +26,8 @@ Kendolah
 Beta 0.13 [Not released yet]
 New Items:
 - Cursedthrower
+- Royal Bow
+- King's Gel
 Changes:
 - Frosthrower flame changed
 - Frosthrower frostburn duration increased to 20 seconds
