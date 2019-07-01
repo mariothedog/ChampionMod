@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExampleMod.Items.Weapons
+namespace Champion.Items.Weapons
 {
 	 public class ShadowflameSkullStaff : ModItem
 	{
