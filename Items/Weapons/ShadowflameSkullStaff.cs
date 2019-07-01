@@ -1,4 +1,4 @@
-using Microsoft.XNA.Framework
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +8,7 @@ namespace Champion.Items.Weapons
 	 public class ShadowflameSkullStaff : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault(Shadowflame Skull Staff);
+			DisplayName.SetDefault("Shadowflame Skull Staff");
 			Item.staff[item.type] = true; 
 		}
 
@@ -27,8 +27,8 @@ namespace Champion.Items.Weapons
 			item.rare = 5;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-			item.shoot = ProjectileID.585;
-			item.shootSpeed = 5f;
+			item.shoot = ProjectileID.ClothiersCurse;
+			item.shootSpeed = 8f;
 		}
 	}
 }
