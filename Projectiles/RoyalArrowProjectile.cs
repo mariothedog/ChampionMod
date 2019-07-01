@@ -21,12 +21,16 @@ namespace ChampionMod.Projectiles
             projectile.aiStyle = 1; // arrow ai
         }
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
+        public override void Kill(int timeLeft) // Since it is "Kill" it has the dust when it hits an enemy or a tile
         {
-            Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
-			Main.PlaySound(0, projectile.position);
+            // Gold dust
+            for (int i = 0; i < 15; i++)
+            {
+                Terraria.Dust.NewDust(projectile.position, 30, 30, 10, 0f, 0f, 0, new Color(255,255,255));
+            }
 
-            return true; // To kill the projectile as normal
+            // Hit Sound
+            Main.PlaySound(0, projectile.position);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
