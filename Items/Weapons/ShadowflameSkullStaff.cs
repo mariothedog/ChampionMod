@@ -7,12 +7,13 @@ namespace ChampionMod.Items.Weapons
 {
 	 public class ShadowflameSkullStaff : ModItem
 	{
-		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Shadowflame Skull Staff");
+		public override void SetStaticDefaults()
+        {
 			Item.staff[item.type] = true; 
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults()
+        {
 			item.damage = 45;
 			item.magic = true;
 			item.mana = 20;

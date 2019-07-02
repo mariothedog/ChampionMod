@@ -23,7 +23,6 @@ namespace ChampionMod.Items.Weapons
             item.shootSpeed = 11f;
             item.shoot = mod.ProjectileType ("FrozenChakramProjectile");
             item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
         }
 
         public override bool CanUseItem(Player player)     
@@ -38,17 +37,27 @@ namespace ChampionMod.Items.Weapons
             return true;
         }
 
-        /*/public override void AddRecipes()
+        public override void AddRecipes()
         {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.BorealWood, 20);
 				recipe.AddIngredient(ItemID.Silk, 5);
 				recipe.AddIngredient(ItemID.SilverBar, 6);
 				recipe.AddIngredient(ItemID.IceTorch, 1);
-                recipe.AddIngredient(ItemID.LastPrism, 999);
 				recipe.AddTile(TileID.Anvils); 
                 recipe.SetResult(this);
                 recipe.AddRecipe();
-        }*/
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		{
+			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
+			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+			{
+				position += muzzleOffset;
+			}
+			return true;
+		}
+
     }
 }
