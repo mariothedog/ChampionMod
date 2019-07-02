@@ -34,12 +34,12 @@ namespace ChampionMod.Projectiles
             {
                 if (Main.rand.Next(3) == 0)
                 {
-                    Dust dust = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 167, projectile.velocity.X, projectile.velocity.Y, 130, new Color(179,255,0), 3.1f)];
+                    Dust dust = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, projectile.velocity.X, projectile.velocity.Y, 130, new Color(179,255,0), 4.5f)];
                     dust.noGravity = true;
                     
                     if (Main.rand.Next(7) == 0)
                     {
-                        Dust dust2 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 167, projectile.velocity.X, projectile.velocity.Y, 130, new Color(179,255,0), 1.2f)];
+                        Dust dust2 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, projectile.velocity.X, projectile.velocity.Y, 130, new Color(179,255,0), 1.2f)];
                         dust2.velocity *= 0.3f;
                     }
                 }

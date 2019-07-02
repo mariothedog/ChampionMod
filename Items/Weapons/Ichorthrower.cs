@@ -24,6 +24,7 @@ namespace ChampionMod.Items.Weapons
             item.noMelee = true;
             item.width = 42;
             item.height = 16;
+            item.scale = 0.7f;
             item.useTime = 6;
             item.useAnimation = 30;
             item.useStyle = 5;
