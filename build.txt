@@ -1,4 +1,4 @@
 author = Cornetto
-version = 0.1.4.0
+version = 0.140
 displayName = Champion Mod
 homepage = https://discord.gg/x28RTWk
