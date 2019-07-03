@@ -16,6 +16,12 @@ namespace ChampionMod.NPCs.TownNPCs            //We need this to basically indic
             name = "Farmer";
             return mod.Properties.Autoload;
         }
+
+        public override void SetStaticDefaults()
+        {
+            
+        }
+
         public override void SetDefaults()
         {
             //the name displayed when hovering over the npc ingame.
