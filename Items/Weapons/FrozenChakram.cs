@@ -42,13 +42,14 @@ namespace ChampionMod.Items.Weapons
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.BorealWood, 20);
 				recipe.AddIngredient(ItemID.Silk, 5);
-				recipe.AddIngredient(ItemID.SilverBar, 6);
+				recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 6);
 				recipe.AddIngredient(ItemID.IceTorch, 1);
 				recipe.AddTile(TileID.Anvils); 
                 recipe.SetResult(this);
                 recipe.AddRecipe();
         }
 
+        // So the chakram starts
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;

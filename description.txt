@@ -9,7 +9,6 @@ Weapons to flesh out each biome more.
 Custom Potions, Tools, and Accessories to come.
 Farming expansion coming soon.
 Netherworm boss coming soon.
-Paladin Mini-class coming soon.
 
 -=-Credits-=-
 Cornetto
@@ -18,12 +17,20 @@ Mariothedog
 RandomTerrarian
 JoJo
 Aurakhalis
-Unpleasant 
-Olivermcwoliver
-Kendolah
+Unpleasant
 
 -=-Changelog-=-
-Beta 0.13 [Not released yet]
+Beta 0.14:
+New Items:
+- Shadowflame Skull Staff
+- Ichorthrower
+- Frozen Chakram
+- Ultrathrower
+Changes:
+- King's Gel sprite changed
+- Cursedthrower flame changed
+
+Beta 0.13:
 New Items:
 - Cursedthrower
 - Royal Bow
@@ -33,33 +40,3 @@ Changes:
 - Frosthrower frostburn duration increased to 20 seconds
 Bugs fixed:
 - Frosthrower no longer consumes an insane amount of gel
-
-===
-
-Beta 0.12:
-New Items:
-- Brumous Beater
-- Frosthrower
-Changes:
-- Spore Bullet spore fume effect changed and buffed
-- Ichor Blaster sprite changed
-
-===
-
-Beta 0.11:
-New Items:
-- Snowball Sledgeshot
-- Spore Bullet
-Changes:
-- Memory Fish sprite changed
-- Icon Changed
-- Buffed the Sagittarius from 24 to 29 damage
-Bugs fixed:
-- Meteor arrows now give you 70 arrows when crafting instead of 1
-- Meteor arrows are now crafted at an anvil instead of a workbench
-- Dual Flareshot will no longer have dust when there is no flare equipped (Like normal flare gun)
-- Snowball Rifle recipe now also works with tungsten bars
-- Dual Flareshot recipe now also works with lead bars
-- Sagittarius recipe now also works with a gold bow
-- Sagittarius is now crafted at a hardmode anvil
-- Memory Fish now sells for 3 gold

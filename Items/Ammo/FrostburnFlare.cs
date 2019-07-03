@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Champion.Items.Weapons
+namespace ChampionMod.Items.Ammo
 {
 	public class FrostburnFlare : ModItem
 	{
@@ -26,13 +26,15 @@ namespace Champion.Items.Weapons
 			item.ammo = AmmoID.Flare;              
 		}
 		
-		public override void AddRecipes() {
+        // To do
+
+		/*public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Flare, 10);
 			recipe.AddIngredient(ItemID.IceTorch, 1);
-			recipe.AddTile(ItemID.Anvils);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this, 10);
 			recipe.AddRecipe();
-		}
+        }*/
 	}
 }

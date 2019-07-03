@@ -18,13 +18,13 @@ namespace ChampionMod.Projectiles
             projectile.height = 34;
             projectile.scale = 0.8f;
 
-            drawOffsetX = -10;
+            drawOffsetX = -15;
             drawOriginOffsetY = -10;
 		}
 
         public override void AI()
         {
-            if (Main.rand.NextFloat() < 0.5f)
+            if (Main.rand.NextFloat() < 0.8f)
             {
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.

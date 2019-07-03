@@ -6,9 +6,9 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
  
-namespace ChampionMod.Items.Weapons
+namespace ChampionMod.Items.Weapons.Flamethrowers
 {
-    public class Ichorthrower : ModItem
+    public class Frosthrower : ModItem
     {
         int ammoTimer = 5;
 
@@ -19,12 +19,11 @@ namespace ChampionMod.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 30;
+            item.damage = 29;
             item.ranged = true;
             item.noMelee = true;
             item.width = 42;
             item.height = 16;
-            item.scale = 0.7f;
             item.useTime = 6;
             item.useAnimation = 30;
             item.useStyle = 5;
@@ -33,7 +32,7 @@ namespace ChampionMod.Items.Weapons
             item.value = 500000;
             item.rare = 5;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("IchorthrowerProjectile");
+            item.shoot = mod.ProjectileType("FrosthrowerProjectile");
             item.shootSpeed = 3.3f; // For flamethrower this decides how far the flames can go
             item.useAmmo = AmmoID.Gel;
         }
@@ -43,8 +42,8 @@ namespace ChampionMod.Items.Weapons
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("IronBar", 20);
             recipe.AddIngredient(ItemID.IllegalGunParts);
-            recipe.AddIngredient(ItemID.SoulofSight, 20);
-            recipe.AddIngredient(ItemID.Ichor, 20);
+            recipe.AddIngredient(ItemID.SoulofMight, 20);
+            recipe.AddIngredient(ItemID.FrostCore);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

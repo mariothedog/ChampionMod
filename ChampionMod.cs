@@ -54,6 +54,13 @@ namespace ChampionMod
             ItemID.PlatinumBow
         });
         RecipeGroup.RegisterGroup("ChampionMod:Tier4BarBows", group);
+
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Flamethrowers", new int[]
+        {
+            ItemType("Ichorthrower"),
+            ItemType("Cursedthrower")
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:EvilFlamethrowers", group);
         }
     }
 }

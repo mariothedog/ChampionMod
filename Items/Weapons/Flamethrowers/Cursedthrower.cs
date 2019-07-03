@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
  
-namespace ChampionMod.Items.Weapons
+namespace ChampionMod.Items.Weapons.Flamethrowers
 {
     public class Cursedthrower : ModItem
     {
