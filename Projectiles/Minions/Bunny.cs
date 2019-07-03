@@ -30,7 +30,7 @@ namespace ChampionMod.Projectiles.Minions
             projectile.timeLeft = 18000;
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
-            inertia = 30f;
+            //inertia = 30f;
             ProjectileID.Sets.LightPet[projectile.type] = false;
             //Main.projPet[projectile.type] = true;
             //projectile.aiStyle = 11; // -5

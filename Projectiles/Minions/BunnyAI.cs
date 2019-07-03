@@ -8,7 +8,7 @@ namespace ChampionMod.Projectiles.Minions
 {
     public abstract class BunnyAI : BunnyMinion
     {
-        protected float idleAccel = 0.05f;
+        /*protected float idleAccel = 0.05f;
         protected float spacingMult = 1f;
         protected float viewDist = 300f;       //minion view Distance
         protected float chaseDist = 200f;       //how far the minion can go
@@ -16,7 +16,7 @@ namespace ChampionMod.Projectiles.Minions
         protected float inertia = 40f;
         protected float shootCool = 50f;       //how fast the minion can shoot
         protected float shootSpeed;
-        protected int shoot;
+        protected int shoot;*/
         protected int attackingTimer = 0;
         protected bool hitTile = false;
 
@@ -31,30 +31,35 @@ namespace ChampionMod.Projectiles.Minions
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
+        }
+
+        /*public override void Behavior()
+        {
+            Player player = Main.player[projectile.owner];
             float spacing = (float)projectile.width * spacingMult;
-            /*for (int k = 0; k < 1000; k++)
-            {
-                Projectile otherProj = Main.projectile[k];
-                if (k != projectile.whoAmI && otherProj.active && otherProj.owner == projectile.owner && otherProj.type == projectile.type && Math.Abs(projectile.position.X - otherProj.position.X) + Math.Abs(projectile.position.Y - otherProj.position.Y) < spacing)
-                {
-                    if (projectile.position.X < Main.projectile[k].position.X)
-                    {
-                        projectile.velocity.X -= idleAccel;
-                    }
-                    else
-                    {
-                        projectile.velocity.X += idleAccel;
-                    }
-                    if (projectile.position.Y < Main.projectile[k].position.Y)
-                    {
-                        projectile.velocity.Y -= idleAccel;
-                    }
-                    else
-                    {
-                        projectile.velocity.Y += idleAccel;
-                    }
-                }
-            }*/
+            //for (int k = 0; k < 1000; k++)
+            //{
+            //    Projectile otherProj = Main.projectile[k];
+            //    if (k != projectile.whoAmI && otherProj.active && otherProj.owner == projectile.owner && otherProj.type == projectile.type && Math.Abs(projectile.position.X - otherProj.position.X) + Math.Abs(projectile.position.Y - otherProj.position.Y) < spacing)
+            //    {
+            //        if (projectile.position.X < Main.projectile[k].position.X)
+            //        {
+            //            projectile.velocity.X -= idleAccel;
+            //        }
+            //        else
+            //        {
+            //            projectile.velocity.X += idleAccel;
+            //        }
+            //        if (projectile.position.Y < Main.projectile[k].position.Y)
+            //        {
+            //            projectile.velocity.Y -= idleAccel;
+            //        }
+            //        else
+            //        {
+            //            projectile.velocity.Y += idleAccel;
+            //        }
+            //    }
+            //}
             Vector2 targetPos = projectile.position;
             float targetDist = viewDist;
             bool target = false;
@@ -233,7 +238,7 @@ namespace ChampionMod.Projectiles.Minions
                     }
                 }
             }
-        }
+        }*/
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
