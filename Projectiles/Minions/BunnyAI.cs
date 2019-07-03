@@ -36,7 +36,7 @@ namespace ChampionMod.Projectiles.Minions
             projectile.velocity = projectile.DirectionTo(player.Center) * 5;
             Main.NewText(projectile.velocity);
 
-            projectie.rotation = projectile.velocity.X/Math.Abs(projectile.velocity.X);
+            projectile.rotation = projectile.velocity.X/Math.Abs(projectile.velocity.X);
         }
 
         /*public override void Behavior()
