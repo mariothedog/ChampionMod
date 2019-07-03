@@ -31,6 +31,12 @@ namespace ChampionMod.Projectiles.Minions
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
+
+            float dist = Vector2.Distance(projectile.Center, player.Center);
+            projectile.velocity = projectile.DirectionTo(player.Center) * 5;
+            Main.NewText(projectile.velocity);
+
+            projectie.rotation = projectile.velocity.X/Math.Abs(projectile.velocity.X);
         }
 
         /*public override void Behavior()
