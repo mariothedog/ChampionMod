@@ -40,7 +40,7 @@ namespace ChampionMod.Projectiles.Minions
         public override void CheckActive()
         {
             Player player = Main.player[projectile.owner];
-            MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();//(mod, "MyPlayer");
+            MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
             if (player.dead)
             {
                 modPlayer.Bunny = false;
