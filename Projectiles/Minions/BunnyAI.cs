@@ -28,15 +28,35 @@ namespace ChampionMod.Projectiles.Minions
         {
         }
 
+        Vector2 targetPos; // Target position
+
+        public int vMax = 6; // Maximum velocity of the minion
+        public float vAccel = 0.2f; // Maximum acceleration of the minion
+
+        // There are 2 separate variables for this because it makes the moving transition smoother
+        public float tVel = 0; // Target velocity
+        public float vMag = 0; // Velocity magnitude (speed)
+
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
 
-            float dist = Vector2.Distance(projectile.Center, player.Center);
-            projectile.velocity = projectile.DirectionTo(player.Center) * 5;
-            Main.NewText(projectile.velocity);
+            targetPos = player.Center;
 
-            projectile.rotation = projectile.velocity.X * 0.05f;//projectile.velocity.X/Math.Abs(projectile.velocity.X);
+            float dist = Vector2.Distance(projectile.Center, targetPos);
+
+            tVel = dist / 20; // Changes based on how far away the minion is from the player
+
+            if (vMag < vMax && vMag < tVel) // Whether to accelerate or to decelerate
+            {
+                vMag += vAccel; // Speed up
+            }
+            if (vMag > tVel)
+            {
+                vMag -= vAccel; // Slow down
+            }
+
+            projectile.velocity = projectile.DirectionTo(targetPos) * vMag;
         }
 
         /*public override void Behavior()
