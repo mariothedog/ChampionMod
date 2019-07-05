@@ -19,12 +19,13 @@ namespace ChampionMod.Projectiles.Minions
         protected int shoot;*/
         protected int attackingTimer = 0;
         protected bool hitTile = false;
+        protected bool aboveGround = false;
 
         public virtual void CreateDust()
         {
         }
 
-        public virtual void SelectFrame(float vel)
+        public virtual void SelectFrame(Vector2 vel)
         {
         }
 
@@ -45,6 +46,11 @@ namespace ChampionMod.Projectiles.Minions
 
             float dist = Vector2.Distance(projectile.Center, targetPos);
 
+            if (dist > 700)
+            {
+                projectile.position = targetPos;
+            }
+
             tVel = dist / 20; // Changes based on how far away the minion is from the player
 
             if (vMag < vMax && vMag < tVel) // Whether to accelerate or to decelerate
@@ -57,6 +63,18 @@ namespace ChampionMod.Projectiles.Minions
             }
 
             projectile.velocity = projectile.DirectionTo(targetPos) * vMag;
+
+            // Reverses sprite based on if it is moving right or left
+            if (projectile.velocity.X > 0.03) // Decimal so if it is moving very slowly it won't change the direction
+            {
+                projectile.spriteDirection = -1;
+            }
+            else if (projectile.velocity.X < -0.03)
+            {
+                projectile.spriteDirection = 1;
+            }
+
+            SelectFrame(projectile.velocity); // Walking animation
         }
 
         /*public override void Behavior()

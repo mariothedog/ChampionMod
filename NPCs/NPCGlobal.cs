@@ -26,11 +26,21 @@ namespace ChampionMod.NPCs
                 }
             }
 
-                if (npc.type == NPCID.GoblinSummoner)
+            if (npc.type == NPCID.GoblinSummoner)
             {
-                if (Main.rand.Next(6) == 0)
+                if (Main.expertMode)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShadowflameSkullStaff"));
+                    if (Main.rand.Next(3) == 0) // 33.3% drop chance
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShadowflameSkullStaff"));
+                    }
+                }
+                else
+                {
+                    if (Main.rand.Next(6) == 0) // 16.7% drop chance
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShadowflameSkullStaff"));
+                    }
                 }
             }
         }

@@ -24,7 +24,7 @@ namespace ChampionMod.Items.Weapons
 			item.useStyle = 5;
 			item.noMelee = true; 
 			item.knockBack = 4;
-			item.value = 2;
+			item.value = 100000;
 			item.rare = 5;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
