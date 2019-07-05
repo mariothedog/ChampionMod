@@ -21,8 +21,9 @@ namespace ChampionMod.Projectiles.Minions
         public override void SetDefaults()
         {
             projectile.netImportant = true;
+            // Individual sprite size is 31x28 (width x height)
             projectile.width = 31;
-            projectile.height = 28;
+            projectile.height = 26;
             projectile.friendly = true;
             projectile.minion = true;
             projectile.minionSlots = 1;

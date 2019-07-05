@@ -46,9 +46,11 @@ namespace ChampionMod.Projectiles.Minions
             aboveGround = !hitTile; // If hitTile is true then aboveGround is false and vice versa
 
             float dist = Vector2.Distance(projectile.Center, targetPos);
+            float verticalDist = targetPos.Y - projectile.Center.Y;
 
             if (dist > 700)
             {
+                // Teleport if the player is minion is far away enough
                 projectile.position = targetPos;
             }
 
@@ -62,12 +64,13 @@ namespace ChampionMod.Projectiles.Minions
             {
                 vMag -= vAccel; // Slow down
             }
-
+            
+            // Changes velocity based on the direction to the player
             projectile.velocity = projectile.DirectionTo(targetPos) * vMag;
 
-            if (dist < 100) // So it stays on the ground unless the player is flying
+            if (verticalDist < 100) // So it stays on the ground unless the player is flying
             {
-                projectile.velocity.Y = 50;
+                projectile.velocity.Y += 5; // It's like gravity
             }
 
             // Reverses sprite based on if it is moving right or left
