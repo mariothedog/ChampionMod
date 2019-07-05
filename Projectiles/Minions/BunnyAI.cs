@@ -41,8 +41,9 @@ namespace ChampionMod.Projectiles.Minions
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
-
             targetPos = player.Center;
+
+            aboveGround = !hitTile; // If hitTile is true then aboveGround is false and vice versa
 
             float dist = Vector2.Distance(projectile.Center, targetPos);
 
@@ -63,6 +64,11 @@ namespace ChampionMod.Projectiles.Minions
             }
 
             projectile.velocity = projectile.DirectionTo(targetPos) * vMag;
+
+            if (dist < 100) // So it stays on the ground unless the player is flying
+            {
+                projectile.velocity.Y = 50;
+            }
 
             // Reverses sprite based on if it is moving right or left
             if (projectile.velocity.X > 0.03) // Decimal so if it is moving very slowly it won't change the direction

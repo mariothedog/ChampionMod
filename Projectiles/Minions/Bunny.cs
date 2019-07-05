@@ -66,7 +66,7 @@ namespace ChampionMod.Projectiles.Minions
                 projectile.frameCounter = 0; // Reset timer
 
                 // Animation for if the bunny is flying
-                if (vel.Y > 3) // If flying
+                if (aboveGround) // If above ground (flying)
                 {
                     projectile.frame = (projectile.frame + 1) % 7;
 
@@ -82,7 +82,7 @@ namespace ChampionMod.Projectiles.Minions
                         projectile.frame -= 7;
                     }
 
-                    if ((vel.X > 0.03 || vel.Y > 0.03) && !hitTile) // If moving and not hitting a tile
+                    if (vel.X > 0.03 || vel.Y > 0.03) // If moving and not hitting a tile
                     {
                         projectile.frame = (projectile.frame + 1) % 7; // Increase frame if it hits 7 then go back to 0
                     }
