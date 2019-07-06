@@ -22,6 +22,15 @@ Aurakhalis
 Unpleasant
 
 -=-Changelog-=-
+Beta 0.15
+New Items:
+- Memory Lens
+Changes:
+- Frozen Chakram sprite changed
+Bugs Fixed:
+- Shadowflame Skull Staff now sells for 2 gold
+- Shadowflame Skull Staff now has a 33.3% drop chance in Expert Mode
+
 Beta 0.14:
 New Items:
 - Shadowflame Skull Staff
@@ -31,14 +40,3 @@ New Items:
 Changes:
 - King's Gel sprite changed
 - Cursedthrower flame changed
-
-Beta 0.13:
-New Items:
-- Cursedthrower
-- Royal Bow
-- King's Gel
-Changes:
-- Frosthrower flame changed
-- Frosthrower frostburn duration increased to 20 seconds
-Bugs fixed:
-- Frosthrower no longer consumes an insane amount of gel
