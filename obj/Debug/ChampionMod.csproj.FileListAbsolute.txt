@@ -1,0 +1,2 @@
+C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\obj\Debug\ChampionMod.csprojAssemblyReference.cache
+C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\obj\Debug\ChampionMod.csproj.CoreCompileInputs.cache

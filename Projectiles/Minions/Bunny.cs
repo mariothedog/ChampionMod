@@ -83,7 +83,7 @@ namespace ChampionMod.Projectiles.Minions
                         projectile.frame -= 7;
                     }
 
-                    if (vel.X > 0.03 || vel.Y > 0.03) // If moving and not hitting a tile
+                    if (noBlockLeft && noBlockRight) // If moving
                     {
                         projectile.frame = (projectile.frame + 1) % 7; // Increase frame if it hits 7 then go back to 0
                     }

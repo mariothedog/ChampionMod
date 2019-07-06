@@ -20,6 +20,10 @@ namespace ChampionMod.Projectiles.Minions
         protected int attackingTimer = 0;
         protected bool hitTile = false;
         protected bool aboveGround = false;
+        protected bool noBlockRight = true;
+        protected bool noBlockLeft = true;
+        //protected int jumpDelayTimer = 200; // Timer till the next time the bunny can jump
+        protected int jumpTimer = 0; // Timer for when the bunny is jumping and when to stop
 
         public virtual void CreateDust()
         {
@@ -54,8 +58,11 @@ namespace ChampionMod.Projectiles.Minions
                 projectile.position = targetPos;
             }
 
-            Vector2 infrontPosition = projectile.position + new Vector2(10, 0);
-            Main.NewText(Collision.CanHitLine(projectile.position, 5, 5, infrontPosition, 5, 5));
+            // Checks if there is a block to the right of the minion
+            noBlockRight = Collision.CanHitLine(projectile.position, 5, 5, projectile.position + new Vector2(20, 0), 5, 5);
+            // Checks if there is a block to the left of the minion
+            noBlockLeft = Collision.CanHitLine(projectile.position, 5, 5, projectile.position - new Vector2(20, 0), 5, 5);
+            
 
             tVel = dist / 20; // Changes based on how far away the minion is from the player
 
@@ -71,9 +78,21 @@ namespace ChampionMod.Projectiles.Minions
             // Changes velocity based on the direction to the player
             projectile.velocity = projectile.DirectionTo(targetPos) * vMag;
 
-            if (verticalDist < 100) // So it stays on the ground unless the player is flying
+            if (verticalDist < 100 && noBlockLeft && noBlockRight && jumpTimer <= 0) // So it stays on the ground unless the player is flying
             {
-                projectile.velocity.Y += 5; // It's like gravity
+                projectile.velocity.Y += 8; // It's like gravity
+            }
+
+            //jumpDelayTimer -= 1;
+            //Main.NewText(jumpDelayTimer);
+            jumpTimer -= 1;
+            if ((!noBlockLeft || !noBlockRight) && hitTile && jumpTimer <= 0)
+            {
+                // Jump
+                //jumpDelayTimer = 200;
+                jumpTimer = 200;
+                Main.NewText("Jump!");
+                projectile.velocity.Y -= 50;
             }
 
             // Reverses sprite based on if it is moving right or left
