@@ -16,11 +16,13 @@ namespace ChampionMod.Projectiles
 
             projectile.width = 34;
             projectile.height = 34;
-            projectile.scale = 0.8f;
+            projectile.scale = 0.5f;
 
-            drawOffsetX = -15;
-            drawOriginOffsetY = -10;
-		}
+            //drawOffsetX = -10;//-15;
+            //drawOriginOffsetY = -10;
+            drawOffsetX = -25;
+            drawOriginOffsetY = -26;
+        }
 
         public override void AI()
         {

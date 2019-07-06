@@ -49,7 +49,7 @@ namespace ChampionMod.Items.Weapons.Boomerangs
                 recipe.AddRecipe();
         }
 
-        // So the chakram starts
+        // So the chakram starts at the player's hand
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
