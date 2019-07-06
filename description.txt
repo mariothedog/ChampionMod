@@ -3,26 +3,26 @@ Wiki link: https://terrariamods.gamepedia.com/Champion_Mod
 
 Please report bugs to Mariothedog#4707 on Discord.
 
--=-Main Mod Information-=-
+[c/009933:-=-Main Mod Information-=-]
 Champion Mod is a small community made project meant to make Terraria more interesting. Currently it has a slow production but is seen as a labor of love from the small team involved in it's development. It would be The Team's dream to expand our horizons and recruit any new people willing to help out. This has potential to become a passion project, rather than a pastime.
 
--=-Content-=-
+[c/009933:-=-Content-=-]
 Weapons to flesh out each biome more.
 Custom Potions, Tools, and Accessories to come.
 Farming expansion coming soon.
 Netherworm boss coming soon.
 
--=-Credits-=-
-Cornetto
-iFlicky
-Mariothedog
-RandomTerrarian
-JoJo
-Aurakhalis
-Unpleasant
+[c/009933:-=-Credits-=-]
+[c/FF9900:Cornetto]
+[c/6600FF:iFlicky]
+[c/00CC00:Mariothedog]
+[c/0033CC:RandomTerrarian]
+[c/0066FF:JoJo]
+[c/99FF33:Aurakhalis]
+[c/CC0000:Unpleasant]
 
--=-Changelog-=-
-Beta 0.15
+[c/009933:-=-Changelog-=-]
+[c/996633:Beta 0.15:]
 New Items:
 - Memory Lens
 Changes:
@@ -31,7 +31,7 @@ Bugs Fixed:
 - Shadowflame Skull Staff now sells for 2 gold
 - Shadowflame Skull Staff now has a 33.3% drop chance in Expert Mode
 
-Beta 0.14:
+[c/996633:Beta 0.14:]
 New Items:
 - Shadowflame Skull Staff
 - Ichorthrower
