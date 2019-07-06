@@ -54,6 +54,9 @@ namespace ChampionMod.Projectiles.Minions
                 projectile.position = targetPos;
             }
 
+            Vector2 infrontPosition = projectile.position + new Vector2(10, 0);
+            Main.NewText(Collision.CanHitLine(projectile.position, 5, 5, infrontPosition, 5, 5));
+
             tVel = dist / 20; // Changes based on how far away the minion is from the player
 
             if (vMag < vMax && vMag < tVel) // Whether to accelerate or to decelerate
