@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Ammo
+namespace ChampionMod.Items.Ammo.Arrows
 {
     public class MeteorArrow : ModItem
     {

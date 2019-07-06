@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Weapons
+namespace ChampionMod.Items.Weapons.Guns
 {
 	public class SnowballRifle : ModItem
 	{

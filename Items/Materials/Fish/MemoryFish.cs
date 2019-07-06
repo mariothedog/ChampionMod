@@ -2,14 +2,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Materials
+namespace ChampionMod.Items.Materials.Fish
 {
-    public class KingsGel : ModItem
+    public class MemoryFish : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("King's Gel");
-            Tooltip.SetDefault("Not for consumption");
+            DisplayName.SetDefault("Memory Fish");
         }
 
         public override void SetDefaults()
@@ -17,7 +16,8 @@ namespace ChampionMod.Items.Materials
             item.maxStack = 999;
             item.width = 26;
             item.height = 26;
-            item.value = 5000;
+            item.rare = 7;
+            item.value = 150000;
         }
     }
 }
