@@ -61,6 +61,20 @@ namespace ChampionMod
             ItemType("Cursedthrower")
         });
         RecipeGroup.RegisterGroup("ChampionMod:EvilFlamethrowers", group);
+
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Bars", new int[]
+        {
+            ItemID.MythrilBar,
+            ItemID.OrichalcumBar
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:MythrilBars", group);
+
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirrors", new int[]
+        {
+            ItemID.MagicMirror,
+            ItemID.IceMirror
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:MagicMirrors", group);
         }
     }
 }

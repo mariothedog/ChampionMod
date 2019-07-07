@@ -18,7 +18,7 @@ namespace ChampionMod
         public bool BunnyMinion;
         public float LastDeathX;
         public float LastDeathY;
-        public int timer = -1;
+        public int memoryTimer = -1;
 
         public override void ResetEffects()
         {
@@ -56,15 +56,22 @@ namespace ChampionMod
 
         public override void PreUpdate()
         {
-            if (timer > 0)
+            // For Memory Potion and Memory Lens
+            if (memoryTimer > 0) // To delay the teleportation
             {
-                timer -= 1;
+                // Dust
+                if (Main.rand.NextFloat() < 0.5f)
+                {
+                    Dust.NewDust(new Vector2(player.position.X, player.position.Y + 10f), 40, 40, 27, 0f, 0f, 100, default(Color));
+                }
+
+                memoryTimer -= 1;
             }
             // Brackets are very important because without them only the "LastDeathY != 0" needs to be true
-            else if (timer == 0 && (LastDeathX != 0 || LastDeathY != 0))
+            else if (memoryTimer == 0 && (LastDeathX != 0 || LastDeathY != 0))
             {
                 // So timer doesn't decrease or teleports player/spawns dust
-                timer = -1;
+                memoryTimer = -1;
 
                 // Teleport player
                 player.position.X = player.GetModPlayer<MyPlayer>().LastDeathX;
@@ -72,7 +79,7 @@ namespace ChampionMod
 
                 for (int i = 0; i < 70; i++) // Spawn lots of dust
                 {
-                    Dust.NewDust(new Vector2(player.position.X, player.position.Y+10f), 4, 4, 27, 0f, 0f, 100, default(Color), 1.6f);
+                    Dust.NewDust(new Vector2(player.position.X-40, player.position.Y), 110, 110, 27, 0f, 0f, 100, default(Color), 1.6f);
                 }
             }
         }

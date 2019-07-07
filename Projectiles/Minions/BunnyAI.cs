@@ -19,24 +19,93 @@ namespace ChampionMod.Projectiles.Minions
         protected int shoot;*/
         protected int attackingTimer = 0;
         protected bool hitTile = false;
+        protected bool aboveGround = false;
+        protected bool noBlockRight = true;
+        protected bool noBlockLeft = true;
+        //protected int jumpDelayTimer = 200; // Timer till the next time the bunny can jump
+        protected int jumpTimer = 0; // Timer for when the bunny is jumping and when to stop
 
         public virtual void CreateDust()
         {
         }
 
-        public virtual void SelectFrame(float vel)
+        public virtual void SelectFrame(Vector2 vel)
         {
         }
+
+        Vector2 targetPos; // Target position
+
+        public int vMax = 6; // Maximum velocity of the minion
+        public float vAccel = 0.2f; // Maximum acceleration of the minion
+
+        // There are 2 separate variables for this because it makes the moving transition smoother
+        public float tVel = 0; // Target velocity
+        public float vMag = 0; // Velocity magnitude (speed)
 
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
+            targetPos = player.Center;
 
-            float dist = Vector2.Distance(projectile.Center, player.Center);
-            projectile.velocity = projectile.DirectionTo(player.Center) * 5;
-            Main.NewText(projectile.velocity);
+            aboveGround = !hitTile; // If hitTile is true then aboveGround is false and vice versa
 
-            projectile.rotation = projectile.velocity.X/Math.Abs(projectile.velocity.X);
+            float dist = Vector2.Distance(projectile.Center, targetPos);
+            float verticalDist = targetPos.Y - projectile.Center.Y;
+
+            if (dist > 700)
+            {
+                // Teleport if the player is minion is far away enough
+                projectile.position = targetPos;
+            }
+
+            // Checks if there is a block to the right of the minion
+            noBlockRight = Collision.CanHitLine(projectile.position, 5, 5, projectile.position + new Vector2(20, 0), 5, 5);
+            // Checks if there is a block to the left of the minion
+            noBlockLeft = Collision.CanHitLine(projectile.position, 5, 5, projectile.position - new Vector2(20, 0), 5, 5);
+            
+
+            tVel = dist / 20; // Changes based on how far away the minion is from the player
+
+            if (vMag < vMax && vMag < tVel) // Whether to accelerate or to decelerate
+            {
+                vMag += vAccel; // Speed up
+            }
+            if (vMag > tVel)
+            {
+                vMag -= vAccel; // Slow down
+            }
+            
+            // Changes velocity based on the direction to the player
+            projectile.velocity = projectile.DirectionTo(targetPos) * vMag;
+
+            if (verticalDist < 100 && noBlockLeft && noBlockRight && jumpTimer <= 0) // So it stays on the ground unless the player is flying
+            {
+                projectile.velocity.Y += 8; // It's like gravity
+            }
+
+            //jumpDelayTimer -= 1;
+            //Main.NewText(jumpDelayTimer);
+            jumpTimer -= 1;
+            if ((!noBlockLeft || !noBlockRight) && hitTile && jumpTimer <= 0)
+            {
+                // Jump
+                //jumpDelayTimer = 200;
+                jumpTimer = 200;
+                Main.NewText("Jump!");
+                projectile.velocity.Y -= 50;
+            }
+
+            // Reverses sprite based on if it is moving right or left
+            if (projectile.velocity.X > 0.03) // Decimal so if it is moving very slowly it won't change the direction
+            {
+                projectile.spriteDirection = -1;
+            }
+            else if (projectile.velocity.X < -0.03)
+            {
+                projectile.spriteDirection = 1;
+            }
+
+            SelectFrame(projectile.velocity); // Walking animation
         }
 
         /*public override void Behavior()

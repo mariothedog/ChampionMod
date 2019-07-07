@@ -16,6 +16,12 @@ namespace ChampionMod.NPCs.TownNPCs            //We need this to basically indic
             name = "Farmer";
             return mod.Properties.Autoload;
         }
+
+        public override void SetStaticDefaults()
+        {
+            
+        }
+
         public override void SetDefaults()
         {
             //the name displayed when hovering over the npc ingame.
@@ -39,7 +45,8 @@ namespace ChampionMod.NPCs.TownNPCs            //We need this to basically indic
             NPCID.Sets.HatOffsetY[npc.type] = 4; //this defines the party hat position
             animationType = NPCID.Guide;  //this copy the guide animation
         }
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money) //Whether or not the conditions have been met for this town NPC to be able to move into town.
+        // To do
+        /*public override bool CanTownNPCSpawn(int numTownNPCs, int money) //Whether or not the conditions have been met for this town NPC to be able to move into town.
         {
             if (NPC.downedBoss1)  //so after the EoC is killed
             {
@@ -50,7 +57,7 @@ namespace ChampionMod.NPCs.TownNPCs            //We need this to basically indic
         public override bool CheckConditions(int left, int right, int top, int bottom)    //Allows you to define special conditions required for this town NPC's house
         {
             return true;  //so when a house is available the npc will  spawn
-        }
+        }*/
         public override string TownNPCName()     //Allows you to give this town NPC any name when it spawns
         {
             switch (WorldGen.genRand.Next(8))
