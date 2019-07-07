@@ -59,6 +59,7 @@ namespace ChampionMod
             // For Memory Potion and Memory Lens
             if (memoryTimer > 0) // To delay the teleportation
             {
+                Main.NewText(player.position);
                 // Dust
                 if (Main.rand.NextFloat() < 0.5f)
                 {
