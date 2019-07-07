@@ -37,25 +37,25 @@ namespace ChampionMod.Items.Weapons.Guns
             if (player.statLifeMax2 != 0) // Used to prevent a divide by 0 error if another mod set the max hp to 0 somehow
             {
                 float healthRemaining = (float)player.statLife / player.statLifeMax2; // Fraction of health left
-                if (healthRemaining == 1)
+                if (healthRemaining > 0.9)
                 {
-                    damage = 5;
+
                 }
                 else if (healthRemaining >= 0.8)
                 {
-                    damage = 10;
+                    damage *= 2;
                 }
                 else if (healthRemaining >= 0.6)
                 {
-                    damage = 20;
+                    damage *= 4;
                 }
                 else if (healthRemaining >= 0.4)
                 {
-                    damage = 30;
+                    damage *= 6;
                 }
-                else if (healthRemaining >= 0.2)
+                else if (healthRemaining >= 0)
                 {
-                    damage = 40;
+                    damage *= 8;
                 }
             }
         }
@@ -66,25 +66,22 @@ namespace ChampionMod.Items.Weapons.Guns
             if (player.statLifeMax2 != 0) // Used to prevent a divide by 0 error if another mod set the max hp to 0 somehow
             {
                 float healthRemaining = (float)player.statLife / player.statLifeMax2; // Fraction of health left
-                if (healthRemaining == 1)
+
+                if (healthRemaining >= 0.8 && healthRemaining < 0.9)
                 {
-                    knockback = 4;
-                }
-                else if (healthRemaining >= 0.8)
-                {
-                    knockback = 5;
+                    knockback *= (float)1.25;
                 }
                 else if (healthRemaining >= 0.6)
                 {
-                    knockback = 6;
+                    knockback *= (float)1.5;
                 }
                 else if (healthRemaining >= 0.4)
                 {
-                    knockback = 7;
+                    knockback *= (float)1.75;
                 }
-                else if (healthRemaining >= 0.2)
+                else if (healthRemaining >= 0)
                 {
-                    knockback = 8;
+                    knockback *= 2;
                 }
             }
         }

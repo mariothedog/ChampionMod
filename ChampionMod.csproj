@@ -48,6 +48,7 @@
     <Compile Include="Items\Materials\Fish\MemoryFish.cs" />
     <Compile Include="Items\Potions\MemoryPotion.cs" />
     <Compile Include="Items\Useable\MemoryLens.cs" />
+    <Compile Include="Items\Weapons\Guns\AgonyBearer.cs" />
     <Compile Include="Items\Weapons\MagicStaffs\AcornStaff.cs" />
     <Compile Include="Items\Weapons\Guns\Bayonet.cs" />
     <Compile Include="Items\Weapons\Clubs\BrumousBeater.cs" />
@@ -161,6 +162,7 @@
     <Content Include="Items\Stove.png" />
     <Content Include="Items\SunStaff.png" />
     <Content Include="Items\Tomato.png" />
+    <Content Include="Items\Weapons\Guns\AgonyBearer.png" />
     <Content Include="Items\Weapons\MagicStaffs\AcornStaff.png" />
     <Content Include="Items\Weapons\Guns\Bayonet.png" />
     <Content Include="Items\Weapons\Clubs\BrumousBeater.png" />
