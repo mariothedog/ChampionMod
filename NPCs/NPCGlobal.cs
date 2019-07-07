@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -7,6 +9,12 @@ namespace ChampionMod.NPCs
 {
     public class NPCGlobal : GlobalNPC
     {
+        readonly static List<int> bloodMoonEnemies = new List<int>() // Enemies that spawn during a blood moon
+        { NPCID.TheGroom, NPCID.TheBride, NPCID.BloodZombie, NPCID.Drippler, // Common
+        NPCID.CorruptBunny, NPCID.CorruptGoldfish, NPCID.CorruptPenguin, // Corruption
+        NPCID.CrimsonBunny, NPCID.CrimsonGoldfish, NPCID.CrimsonPenguin, // Crimson
+        NPCID.Clown}; // Hardmode
+
         public override void NPCLoot(NPC npc)
         {
             if (npc.type == NPCID.KingSlime)
@@ -40,6 +48,24 @@ namespace ChampionMod.NPCs
                     if (Main.rand.Next(6) == 0) // 16.7% drop chance
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShadowflameSkullStaff"));
+                    }
+                }
+            }
+
+            if (bloodMoonEnemies.Contains(npc.type))
+            {
+                if (Main.expertMode)
+                {
+                    if (Main.rand.Next(200) == 0) // 0.5% drop chance
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AgonyBearer"));
+                    }
+                }
+                else
+                {
+                    if (Main.rand.Next(400) == 0) // 0.25% drop chance
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AgonyBearer"));
                     }
                 }
             }
