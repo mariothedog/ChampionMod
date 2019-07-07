@@ -46,6 +46,7 @@
     <Compile Include="Items\BossBags\BossBags.cs" />
     <Compile Include="Items\Materials\BossDrops\KingsGel.cs" />
     <Compile Include="Items\Materials\Fish\MemoryFish.cs" />
+    <Compile Include="Items\Materials\VerdantLeaf.cs" />
     <Compile Include="Items\Potions\MemoryPotion.cs" />
     <Compile Include="Items\Useable\MemoryLens.cs" />
     <Compile Include="Items\Weapons\Guns\AgonyBearer.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Projectiles\RoyalArrowProjectile.cs" />
     <Compile Include="Projectiles\SporeBulletProjectile.cs" />
     <Compile Include="Projectiles\UltrathrowerProjectile.cs" />
+    <Compile Include="Tiles\TileGlobal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
@@ -139,9 +141,9 @@
     <Content Include="Items\Apple.png" />
     <Content Include="Items\Avenger.png" />
     <Content Include="Items\Grape.png" />
-    <Content Include="Items\LivingLeaf.png" />
     <Content Include="Items\Materials\BossDrops\KingsGel.png" />
     <Content Include="Items\Materials\Fish\MemoryFish.png" />
+    <Content Include="Items\Materials\VerdantLeaf.png" />
     <Content Include="Items\Useable\MemoryLens.png" />
     <Content Include="Items\MoonStaff.png" />
     <Content Include="Items\NaturesProtection.png" />

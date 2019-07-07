@@ -11,12 +11,25 @@ namespace ChampionMod.NPCs
     {
         public override bool Drop(int i, int j, int type)
         {
-            // i is the X position in blocks and each block is 16 pixels wide so you need to multiply it by 16 to get the X position
-            // j is the Y position in blocks and each block is 16 pixels tall so you need to multiply it by 16 to get the Y position
-
-            if (type == TileID.Trees && Main.rand.Next(2) == 0)
+            if (type == TileID.Trees && Main.rand.Next(20) == 0) // 5% drop chance
             {
-                Item.NewItem(new Vector2(i*16, j*16), mod.ItemType("LivingLeaf"));
+                bool normalTree = false;
+
+                // Goes through the blocks under the tile and checks if they are not a part of the tree and if it isn't then it will check if it is forest grass
+                for (int x = 0; x < 10; x++)
+                {
+                    Tile tile = Main.tile[i, j + x];
+
+                    if (tile.type == 2) // If it is normal grass
+                    {
+                        normalTree = true;
+                    }
+                }
+
+                if (normalTree)
+                {
+                    Item.NewItem(new Vector2(i * 16, j * 16), mod.ItemType("VerdantLeaf"));
+                }
             }
 
             return true; // True to drop the default items

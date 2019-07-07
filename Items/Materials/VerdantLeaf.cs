@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Materials
 {
-    public class LivingLeaf : ModItem
+    public class VerdantLeaf : ModItem
     {
         public override void SetDefaults()
         {
