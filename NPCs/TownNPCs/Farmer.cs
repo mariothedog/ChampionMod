@@ -129,7 +129,7 @@ namespace ChampionMod.NPCs.TownNPCs            //We need this to basically indic
                 case 0:
                     return "You wanna buy something?";
                 case 1:
-                    return "What you want? I haven't got all day!";
+                    return "What do you want? I haven't got all day!";
                 case 2:
                     return "I like this house.";
                 case 3:
