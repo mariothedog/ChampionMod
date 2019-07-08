@@ -40,6 +40,7 @@
     <Compile Include="ChampionMod.cs" />
     <Compile Include="build.txt" />
     <Compile Include="description.txt" />
+    <Compile Include="Items\Accessories\NaturesProtection.cs" />
     <Compile Include="Items\Ammo\Flares\FrostburnFlare.cs" />
     <Compile Include="Items\Ammo\Arrows\MeteorArrow.cs" />
     <Compile Include="Items\Ammo\Bullets\SporeBullet.cs" />
@@ -126,7 +127,6 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Items\Accessories\" />
     <Folder Include="Items\Armour\" />
     <Folder Include="Items\Tools\" />
     <Folder Include="obj\Debug\TempPE\" />
@@ -140,13 +140,15 @@
     <Content Include="Items\Ammo\Bullets\SporeBullet.png" />
     <Content Include="Items\Apple.png" />
     <Content Include="Items\Avenger.png" />
+    <Content Include="Items\Corn stages.png" />
     <Content Include="Items\Grape.png" />
     <Content Include="Items\Materials\BossDrops\KingsGel.png" />
     <Content Include="Items\Materials\Fish\MemoryFish.png" />
     <Content Include="Items\Materials\VerdantLeaf.png" />
+    <Content Include="Items\RoyalSword.png" />
     <Content Include="Items\Useable\MemoryLens.png" />
     <Content Include="Items\MoonStaff.png" />
-    <Content Include="Items\NaturesProtection.png" />
+    <Content Include="Items\Accessories\NaturesProtection.png" />
     <Content Include="Items\NeonStorm.png" />
     <Content Include="Items\Pitchfork.png" />
     <Content Include="Items\Potions\MemoryPotion.png" />
