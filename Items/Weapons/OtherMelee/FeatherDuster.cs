@@ -69,7 +69,7 @@ namespace ChampionMod.Items.Weapons.OtherMelee
             }
 
             // This condition is only true if the player is on the ground because when the player is in the air "hitbox.Center.Y - player.Center.Y" is equal to about 3 but when on the ground it is 4
-            // It only becomes true (on the ground) when the feather duster is approaching the
+            // It only becomes true (on the ground) when the feather duster is approaching the ground
             if (hitbox.Center.Y - player.Center.Y >= 4)
             {
                 // SoundType.Custom meaning that it isn't in the item folder (SoundType.Item for that)
