@@ -36,6 +36,7 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Buffs\NaturesProtectionBuff.cs" />
     <Compile Include="Buffs\BunnyBuff.cs" />
     <Compile Include="ChampionMod.cs" />
     <Compile Include="build.txt" />
@@ -54,6 +55,7 @@
     <Compile Include="Items\Weapons\MagicStaffs\AcornStaff.cs" />
     <Compile Include="Items\Weapons\Guns\Bayonet.cs" />
     <Compile Include="Items\Weapons\Clubs\BrumousBeater.cs" />
+    <Compile Include="Items\Weapons\OtherMelee\Pitchfork.cs" />
     <Compile Include="Items\Weapons\SummonStaffs\BunnyStaff.cs" />
     <Compile Include="Items\Weapons\Guns\DualFlareshot.cs" />
     <Compile Include="Items\Weapons\Swords\EnchantedKatana.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Items\Weapons\MagicStaffs\ShadowflameSkullStaff.cs" />
     <Compile Include="Items\Weapons\Guns\SnowballRifle.cs" />
     <Compile Include="Items\Weapons\Guns\SnowballSledgeshot.cs" />
+    <Compile Include="Items\Weapons\Swords\RoyalSword.cs" />
     <Compile Include="MyPlayer.cs" />
     <Compile Include="NPCs\Bosses\Netherworm\Netherworm.cs" />
     <Compile Include="NPCs\NPCGlobal.cs" />
@@ -133,8 +136,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Buffs\BunnyBuff.png" />
+    <Content Include="Buffs\NaturesProtectionBuff.png" />
     <Content Include="ChampionMod.csproj.user" />
     <Content Include="icon.png" />
+    <Content Include="Items\Accessories\NaturesProtection_Shield.png" />
     <Content Include="Items\Ammo\Flares\FrostburnFlare.png" />
     <Content Include="Items\Ammo\Arrows\MeteorArrow.png" />
     <Content Include="Items\Ammo\Bullets\SporeBullet.png" />
@@ -170,6 +175,7 @@
     <Content Include="Items\Weapons\MagicStaffs\AcornStaff.png" />
     <Content Include="Items\Weapons\Guns\Bayonet.png" />
     <Content Include="Items\Weapons\Clubs\BrumousBeater.png" />
+    <Content Include="Items\Weapons\OtherMelee\Pitchfork.png" />
     <Content Include="Items\Weapons\SummonStaffs\BunnyStaff.png" />
     <Content Include="Items\Weapons\Guns\DualFlareshot.png" />
     <Content Include="Items\Weapons\Swords\EnchantedKatana.png" />
@@ -188,6 +194,7 @@
     <Content Include="Items\Weapons\MagicStaffs\ShadowflameSkullStaff.png" />
     <Content Include="Items\Weapons\Guns\SnowballRifle.png" />
     <Content Include="Items\Weapons\Guns\SnowballSledgeshot.png" />
+    <Content Include="Items\Weapons\Swords\RoyalSword.png" />
     <Content Include="NPCs\Bosses\Netherworm\NetherwormBody.png" />
     <Content Include="NPCs\Bosses\Netherworm\NetherwormHead.png" />
     <Content Include="NPCs\Bosses\Netherworm\NetherwormTail.png" />

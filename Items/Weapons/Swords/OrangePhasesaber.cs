@@ -35,7 +35,7 @@ namespace ChampionMod.Items.Weapons.Swords
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("OrangePhaseblade"), 1);
+			recipe.AddIngredient(mod.ItemType("OrangePhaseblade"));
 			recipe.AddIngredient(ItemID.CrystalShard, 50);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);

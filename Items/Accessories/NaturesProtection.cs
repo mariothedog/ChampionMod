@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Accessories
 {
+    [AutoloadEquip(EquipType.Shield)] // To make it appear on the player
     class NaturesProtection : ModItem
     {
         public override void SetStaticDefaults()
@@ -29,34 +30,36 @@ namespace ChampionMod.Items.Accessories
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.BorealWood, 20);
-            recipe.AddIngredient(ItemID.Silk, 5);
-            recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 6);
-            recipe.AddIngredient(ItemID.IceTorch, 1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddRecipeGroup("Wood", 20);
+            recipe.AddIngredient(mod.ItemType("VerdantLeaf"), 15);
+            recipe.AddIngredient(ItemID.Acorn, 3);
+            recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            //player.allDamage += 19f; // increase all damage by 1900%
-                                        /* Here are the individual weapon class bonuses.
-                                        player.meleeDamage += 19f;
-                                        player.thrownDamage += 19f;
-                                        player.rangedDamage += 19f;
-                                        player.magicDamage += 19f;
-                                        player.minionDamage += 19f;
-                                        */
-            //player.endurance = 1f - 0.1f * (1f - player.endurance);
-            player.GetModPlayer<MyPlayer>().NaturesProtection = true;
-            //Main.NewText(player.lifeRegen);
-            //Main.NewText(item.lifeRegen);
-            //player.lifeRegen = -100;
+            player.GetModPlayer<MyPlayer>().hasNaturesProtection = true;
 
-            //player.statDefense = 0;
-            //player.allDamage = 0.1f;
-            //player.lifeRegen = -120;
+            foreach (Player p in Main.player) // Goes through each player in the game
+            {
+                if (p.active) // If online (without this it would go through all 255 slots)
+                {
+                    if (p.GetModPlayer<MyPlayer>().hasNaturesProtection == false)
+                    {
+                        if (p.team == player.team && player.team != 0) // If they are in the same team and not in no team (white team)
+                        {
+                            if (Vector2.Distance(p.Center, player.Center) <= 1000)
+                            {
+                                //Main.NewText(p.name);
+                                p.AddBuff(mod.BuffType("NaturesProtectionBuff"), 6000);
+                                //p.GetModPlayer<MyPlayer>().NaturesProtectionBuff = true;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

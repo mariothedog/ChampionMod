@@ -33,7 +33,7 @@ namespace ChampionMod.Items.Weapons.Guns
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Wood, 10);
+            recipe.AddRecipeGroup("Wood", 10);
             recipe.AddIngredient(ItemID.StoneBlock, 5);
             recipe.AddTile(TileID.Anvils);
         }
