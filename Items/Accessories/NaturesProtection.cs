@@ -11,7 +11,7 @@ namespace ChampionMod.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nature's Protection");
-            Tooltip.SetDefault("Increases your defense by 5 and regenerates the health of the players around you by 2 every second" +
+            Tooltip.SetDefault("Increases your defense by 5 and increases the regenerative ability of your teammates" +
                 "\nYour regen is heavily nerfed");
         }
 
