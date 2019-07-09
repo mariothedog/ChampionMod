@@ -90,6 +90,7 @@
     <Compile Include="Projectiles\Minions\Bunny.cs" />
     <Compile Include="Projectiles\Minions\BunnyAI.cs" />
     <Compile Include="Projectiles\Minions\BunnyMinion.cs" />
+    <Compile Include="Projectiles\PitchforkProjectile.cs" />
     <Compile Include="Projectiles\PoisonSporeCloud.cs" />
     <Compile Include="Projectiles\RoyalArrowProjectile.cs" />
     <Compile Include="Projectiles\SporeBulletProjectile.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Projectiles\IchorthrowerProjectile.png" />
     <Content Include="Projectiles\MeteorArrowProjectile.png" />
     <Content Include="Projectiles\Minions\Bunny.png" />
+    <Content Include="Projectiles\PitchforkProjectile.png" />
     <Content Include="Projectiles\RoyalArrowProjectile.png" />
     <Content Include="Projectiles\SporeBulletProjectile.png" />
     <Content Include="Projectiles\UltrathrowerProjectile.png" />

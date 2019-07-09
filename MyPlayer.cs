@@ -62,7 +62,6 @@ namespace ChampionMod
             // For Memory Potion and Memory Lens
             if (memoryTimer > 0) // To delay the teleportation
             {
-                Main.NewText(player.position);
                 // Dust
                 if (Main.rand.NextFloat() < 0.5f)
                 {
@@ -78,8 +77,7 @@ namespace ChampionMod
                 memoryTimer = -1;
 
                 // Teleport player
-                player.position.X = player.GetModPlayer<MyPlayer>().LastDeathX;
-                player.position.Y = player.GetModPlayer<MyPlayer>().LastDeathY;
+                player.Teleport(new Vector2(player.GetModPlayer<MyPlayer>().LastDeathX, player.GetModPlayer<MyPlayer>().LastDeathY));
 
                 for (int i = 0; i < 70; i++) // Spawn lots of dust
                 {
