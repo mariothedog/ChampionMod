@@ -22,21 +22,16 @@ Netherworm boss coming soon.
 [c/CC0000:Unpleasant]
 
 [c/009933:-=-Changelog-=-]
-[c/996633:Beta 0.15:]
+[c/996633:Beta 0.16:]
 New Items:
-- Memory Lens
-Changes:
-- Frozen Chakram sprite changed
-Bugs Fixed:
-- Shadowflame Skull Staff now sells for 2 gold
-- Shadowflame Skull Staff now has a 33.3% drop chance in Expert Mode
+- Royal Sword
+- Agony Bearer
+- Verdant Leaf
+- Nature's Protection
 
-[c/996633:Beta 0.14:]
-New Items:
-- Shadowflame Skull Staff
-- Ichorthrower
-- Frozen Chakram
-- Ultrathrower
-Changes:
-- King's Gel sprite changed
-- Cursedthrower flame changed
+Bugs Fixed:
+- Peashooter's recipe now works with any wood
+- Memory Potion and Memory Lens no longer spams the chat
+- Memory Potion and Memory Lens teleportation is less glitchy with the rendering now
+
+===
