@@ -93,6 +93,7 @@
     <Compile Include="Projectiles\PitchforkProjectile.cs" />
     <Compile Include="Projectiles\PoisonSporeCloud.cs" />
     <Compile Include="Projectiles\RoyalArrowProjectile.cs" />
+    <Compile Include="Projectiles\FrostburnFlareProjectile.cs" />
     <Compile Include="Projectiles\SporeBulletProjectile.cs" />
     <Compile Include="Projectiles\UltrathrowerProjectile.cs" />
     <Compile Include="Tiles\TileGlobal.cs" />
@@ -146,12 +147,15 @@
     <Content Include="Items\Ammo\Bullets\SporeBullet.png" />
     <Content Include="Items\Apple.png" />
     <Content Include="Items\Avenger.png" />
+    <Content Include="Items\Bread.png" />
     <Content Include="Items\Corn stages.png" />
+    <Content Include="Items\DarkDefender.png" />
     <Content Include="Items\Grape.png" />
     <Content Include="Items\Materials\BossDrops\KingsGel.png" />
     <Content Include="Items\Materials\Fish\MemoryFish.png" />
     <Content Include="Items\Materials\VerdantLeaf.png" />
-    <Content Include="Items\RoyalSword.png" />
+    <Content Include="Items\Snowberry.png" />
+    <Content Include="Items\SnowberryJam.png" />
     <Content Include="Items\Useable\MemoryLens.png" />
     <Content Include="Items\MoonStaff.png" />
     <Content Include="Items\Accessories\NaturesProtection.png" />
@@ -211,6 +215,7 @@
     <Content Include="Projectiles\BayonetProjectile.png" />
     <Content Include="Projectiles\CursedthrowerProjectile.png" />
     <Content Include="Projectiles\EnchantedKatanaBeam.png" />
+    <Content Include="Projectiles\FrostburnFlareProjectile.png" />
     <Content Include="Projectiles\FrosthrowerProjectile.png" />
     <Content Include="Projectiles\FrozenChakramProjectile.png" />
     <Content Include="Projectiles\IchorthrowerProjectile.png" />

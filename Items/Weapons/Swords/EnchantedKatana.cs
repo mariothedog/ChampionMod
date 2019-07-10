@@ -63,5 +63,11 @@ namespace ChampionMod.Items.Weapons.Swords
                 enchantedDust.velocity *= 0.2f;
             }
         }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            position.X += 40;
+            return true;
+        }
     }
 }

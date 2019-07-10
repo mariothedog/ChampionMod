@@ -17,20 +17,21 @@ namespace ChampionMod.Items.Weapons.Swords
 			item.useAnimation = 23;
 			item.useStyle = 1;
 			item.knockBack = 5;
-			item.value = 15000;
+			item.value = 250000;
 			item.rare = 1;
 			item.UseSound = SoundID.Item1;
 			item.useTurn = false;
-			//item.scale = 0.6f;
+            item.autoReuse = true;
+			item.scale = 1.2f;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Gel, 100);
-			recipe.AddIngredient(mod.ItemType("KingsGel"), 1);
+            recipe.AddIngredient(mod.ItemType("KingsGel"), 5);
+            recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 12);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(TileID.Solidifier);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
