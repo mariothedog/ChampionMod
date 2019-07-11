@@ -40,11 +40,10 @@ namespace ChampionMod.Items.Weapons.Boomerangs
         public override void AddRecipes()
         {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.BorealWood, 20);
-				recipe.AddIngredient(ItemID.Silk, 5);
-				recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 6);
-				recipe.AddIngredient(ItemID.IceTorch, 1);
-				recipe.AddTile(TileID.Anvils); 
+				recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 12);
+                recipe.AddIngredient(ItemID.IceBlock, 20);
+                recipe.AddIngredient(ItemID.SnowBlock, 15);
+                recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
         }

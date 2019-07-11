@@ -12,7 +12,7 @@ namespace ChampionMod.Items.Accessories
         {
             DisplayName.SetDefault("Nature's Protection");
             Tooltip.SetDefault("Increases your defense by 5 and increases the regenerative ability of your teammates" +
-                "\nYour regen is heavily nerfed");
+                "\nYour regen is heavily nerfed and stops completely when moving");
         }
 
         public override void SetDefaults()
@@ -31,7 +31,7 @@ namespace ChampionMod.Items.Accessories
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("Wood", 20);
-            recipe.AddIngredient(mod.ItemType("VerdantLeaf"), 15);
+            recipe.AddIngredient(mod.ItemType("VerdantLeaf"), 8);
             recipe.AddIngredient(ItemID.Acorn, 3);
             recipe.AddTile(TileID.LivingLoom);
             recipe.SetResult(this);
