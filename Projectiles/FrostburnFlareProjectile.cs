@@ -43,6 +43,12 @@ namespace ChampionMod.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
+
+            for (int d = 0; d < 50; d++)
+            {
+            Terraria.Dust.NewDust(projectile.position, 30, 30, 148, 0f, 0f, 0, new Color(255,255,255), 1f);
+            }
+
             return false; // Doesn't kill the flare
         }
     }
