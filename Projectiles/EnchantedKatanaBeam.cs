@@ -10,22 +10,32 @@ namespace ChampionMod.Projectiles
 {
     public class EnchantedKatanaBeam : ModProjectile
     {
+        int timer = 0;
+
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.EnchantedBeam);
-            aiType = ProjectileID.EnchantedBeam;
         }
 
-        public override Color? GetAlpha (Color lightColor)
+        public override void AI()
         {
-            return Color.White;
-        }
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(45f); // Rotate sprite
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            Player player = Main.player[projectile.owner];
+            if (timer % 4 == 0)
+            {
+                projectile.scale = 1.1f;
+            }
+            else
+            {
+                projectile.scale = 1;
+            }
 
-            for (int i = 0; i < 200; i++)
+            if (projectile.alpha > 0)
+            {
+                projectile.alpha -= 10;
+            }
+
+            if (Main.rand.Next(2) == 0) // Lowers amount of dust
             {
                 int dustChoice;
                 switch (Main.rand.Next(3))
@@ -41,18 +51,29 @@ namespace ChampionMod.Projectiles
                         break;
                 }
 
-                Dust enchantedDust = Main.dust[Dust.NewDust(projectile.position, 20, 20, dustChoice, (float)(player.direction * 2), 0f, 150, default(Color), 1.3f)];
-                //enchantedDust.velocity *= 0.2f;
+                // Offset the dust
+                Vector2 dustPosition = projectile.position;
+                Vector2 offset = Vector2.Normalize(new Vector2(projectile.velocity.X, projectile.velocity.Y)) * -45;
+                dustPosition += offset;
+
+                // Create the dust
+                Dust enchantedDust = Main.dust[Dust.NewDust(dustPosition, projectile.width, projectile.height, dustChoice, (Main.player[projectile.owner].direction*2), 0f, 150, default(Color), 1.3f)];
+                enchantedDust.velocity *= 0.2f;
             }
 
-            return true;
+            timer += 1;
+        }
+
+        public override Color? GetAlpha (Color lightColor)
+        {
+            return Color.White * ((255 - projectile.alpha) / 255f);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             Player player = Main.player[projectile.owner];
 
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 15; i++)
             {
                 int dustChoice;
                 switch (Main.rand.Next(3))
@@ -68,17 +89,34 @@ namespace ChampionMod.Projectiles
                         break;
                 }
 
-                Dust enchantedDust = Main.dust[Dust.NewDust(target.position, projectile.width, projectile.height, dustChoice, player.direction, 0f, 150, default(Color), 1.3f)];
-
-                /*if (player.direction == 1) // Right
-                {
-                    Dust enchantedDust = Main.dust[Dust.NewDust(target.position, 20, 20, dustChoice, -1, 0f, 150, default(Color), 1.3f)];
-                }
-                else // Left
-                {
-                    Dust enchantedDust = Main.dust[Dust.NewDust(target.position, 20, 20, dustChoice, 1, 0f, 150, default(Color), 1.3f)];
-                }*/
+                Dust enchantedDust = Main.dust[Dust.NewDust(target.position, 1, 1, dustChoice, player.direction, 0f, 150, default(Color), 1.3f)];
             }
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Player player = Main.player[projectile.owner];
+
+            for (int i = 0; i < 15; i++)
+            {
+                int dustChoice;
+                switch (Main.rand.Next(3))
+                {
+                    case 0:
+                        dustChoice = 15;
+                        break;
+                    case 1:
+                        dustChoice = 57;
+                        break;
+                    default:
+                        dustChoice = 58;
+                        break;
+                }
+
+                Dust enchantedDust = Main.dust[Dust.NewDust(projectile.position, 1, 1, dustChoice, player.direction, 0f, 150, default(Color), 1.3f)];
+            }
+
+            return true; // Kill projectile
         }
     }
 }

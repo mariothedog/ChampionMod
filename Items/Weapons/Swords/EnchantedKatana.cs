@@ -15,7 +15,7 @@ namespace ChampionMod.Items.Weapons.Swords
         }
         public override void SetDefaults()
         {
-            item.damage = 32;
+            item.damage = 26;
             item.melee = true;
             item.width = 40;
             item.height = 40;
@@ -29,7 +29,7 @@ namespace ChampionMod.Items.Weapons.Swords
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("EnchantedKatanaBeam");
             item.shootSpeed = 10f;
-            item.crit = 15; // Terraria adds 4% crit to everything so 15 is actually 19
+            item.crit = 6; // Terraria adds 4% crit to everything so 6 is actually 10
         }
 
         public override void AddRecipes()
@@ -37,7 +37,7 @@ namespace ChampionMod.Items.Weapons.Swords
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.EnchantedSword, 1);
             recipe.AddIngredient(ItemID.Katana, 1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -62,12 +62,6 @@ namespace ChampionMod.Items.Weapons.Swords
                 Dust enchantedDust = Main.dust[Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), hitbox.Width, hitbox.Height, dustChoice, (float)(player.direction * 2), 0f, 150, default(Color), 1.3f)];
                 enchantedDust.velocity *= 0.2f;
             }
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            position.X += 40;
-            return true;
         }
     }
 }
