@@ -41,15 +41,12 @@ namespace ChampionMod.Items.Weapons.Swords
             target.AddBuff(BuffID.Slimed, 1200, false); // Slimed debuff for 20 seconds
         }
 
-        /*public override void MeleeEffects(Player player, Rectangle hitbox)
+        public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if (Main.rand.NextFloat() < 1f)
+            if (Main.rand.Next(2) == 0)
             {
-                Dust dust;
-                // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                //Vector2 position = Main.LocalPlayer.Center;
-                dust = Main.dust[Terraria.Dust.NewDust(item.position, 30, 30, 13, 0f, 0f, 0, new Color(255, 255, 255), 2.236842f)];
+                Terraria.Dust.NewDust(new Vector2((float)hitbox.X, (float)hitbox.Y), 30, 30, 33, 0f, 0f, 0, new Color(255, 255, 255));
             }
-        }*/
+        }
     }
 }
