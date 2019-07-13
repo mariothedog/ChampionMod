@@ -56,6 +56,7 @@
     <Compile Include="Items\Weapons\Guns\Bayonet.cs" />
     <Compile Include="Items\Weapons\Clubs\BrumousBeater.cs" />
     <Compile Include="Items\Weapons\OtherMelee\Pitchfork.cs" />
+    <Compile Include="Items\Weapons\Spears\Pitchfork.cs" />
     <Compile Include="Items\Weapons\SummonStaffs\BunnyStaff.cs" />
     <Compile Include="Items\Weapons\Guns\DualFlareshot.cs" />
     <Compile Include="Items\Weapons\Swords\EnchantedKatana.cs" />
@@ -134,6 +135,7 @@
     <Folder Include="bin\Release\" />
     <Folder Include="Items\Armour\" />
     <Folder Include="Items\Tools\" />
+    <Folder Include="Items\Weapons\MagicBeams\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +183,7 @@
     <Content Include="Items\Weapons\Guns\Bayonet.png" />
     <Content Include="Items\Weapons\Clubs\BrumousBeater.png" />
     <Content Include="Items\Weapons\OtherMelee\Pitchfork.png" />
+    <Content Include="Items\Weapons\Spears\Pitchfork.png" />
     <Content Include="Items\Weapons\SummonStaffs\BunnyStaff.png" />
     <Content Include="Items\Weapons\Guns\DualFlareshot.png" />
     <Content Include="Items\Weapons\Swords\EnchantedKatana.png" />

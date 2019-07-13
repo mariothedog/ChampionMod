@@ -27,10 +27,10 @@ namespace ChampionMod.Items.Ammo.Flares
 			item.shootSpeed = 6f;                  
 			item.ammo = AmmoID.Flare;              
 		}
-		
+
         // To do
 
-		/*public override void AddRecipes()
+        /*public override void AddRecipes()
          {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Flare, 10);
@@ -39,5 +39,16 @@ namespace ChampionMod.Items.Ammo.Flares
 			recipe.SetResult(this, 10);
 			recipe.AddRecipe();
         }*/
-	}
+
+
+        /*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
+            return true;
+        }*/
+    }
 }

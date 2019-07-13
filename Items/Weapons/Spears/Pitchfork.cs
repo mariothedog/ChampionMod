@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Weapons.OtherMelee
+namespace ChampionMod.Items.Weapons.Spears
 {
 	public class Pitchfork : ModItem
 	{
