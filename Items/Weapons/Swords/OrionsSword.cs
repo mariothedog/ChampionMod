@@ -3,12 +3,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Weapons
+namespace ChampionMod.Items.Weapons.Swords
 {
 	public class OrionsSword : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Orion's Sword")
+            DisplayName.SetDefault("Orion's Sword");
 		}
 
 		public override void SetDefaults() {
@@ -22,26 +22,33 @@ namespace ChampionMod.Items.Weapons
 			item.knockBack = 7;         //The force of knockback of the weapon. Maximum is 20
 			item.value = Item.buyPrice(gold: 4);           //The value of the weapon
 			item.rare = 5;              //The rarity of the weapon, from -1 to 13
-			item.UseSound = SoundID.Item1;      //The sound when the weapon is using
+			item.UseSound = SoundID.Item1;      //The sound of the weapon on use
 			item.autoReuse = true;      
 		}
 
-		public override void AddRecipes() {
-			//recipe.AddRecipeGroup("ChampionMod:Tier4BarSwords");
-            		recipe.AddIngredient(ItemID.FallenStar, 5);
-            		recipe.AddIngredient(ItemID.CrystalShard, 3);
-            		recipe.AddIngredient(ItemID.SoulofLight, 5);
-			recipe.AddIngredient(ItemID.SoulofNight, 5);
-            		recipe.AddIngredient(ItemID.HallowedBar, 12);
-            		recipe.AddTile(TileID.MythrilAnvil);
-            		recipe.SetResult(this);
-            		recipe.AddRecipe();
-		}
+        // Uncomment this when everything with the sword including projectiles are finished
+
+		/*public override void AddRecipes() {
+            ModRecipe recipe = new ModRecipe(mod);
+            //recipe.AddRecipeGroup("ChampionMod:Tier4BarSwords");
+            recipe.AddIngredient(ItemID.FallenStar, 5);
+            recipe.AddIngredient(ItemID.CrystalShard, 3);
+            recipe.AddIngredient(ItemID.SoulofLight, 5);
+            recipe.AddIngredient(ItemID.SoulofNight, 5);
+            recipe.AddIngredient(ItemID.HallowedBar, 12);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+		}*/
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			type = Main.rand.Next(new int[] { type, mod.ProjectileType("FlameStar"), mod.ProjectileType("FrostStar")() });
-			return true;
+            int[] projectiles = new int[] { mod.ProjectileType("FlameStar"), mod.ProjectileType("FrostStar") }; // List of projectiles
+
+            // Commented this out because it causes an error
+            //type = Main.rand.Next(new int[] { type, mod.ProjectileType("FlameStar"), mod.ProjectileType("FrostStar")() });
+
+            return true;
 		}
 	}
 }
