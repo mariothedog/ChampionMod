@@ -31,6 +31,7 @@ namespace ChampionMod.Items.Ammo.Flares
         public override void AddRecipes()
          {
 			ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddRecipeGroup("ChampionMod:Flares");
 			recipe.AddIngredient(ItemID.Flare, 10);
 			recipe.AddIngredient(ItemID.IceTorch, 1);
 			recipe.AddTile(TileID.Anvils);

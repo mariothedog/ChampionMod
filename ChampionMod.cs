@@ -75,6 +75,13 @@ namespace ChampionMod
             ItemID.IceMirror
         });
         RecipeGroup.RegisterGroup("ChampionMod:MagicMirrors", group);
+
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Flares", new int[]
+        {
+            ItemID.Flare,
+            ItemID.BlueFlare
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:Flares", group);
         }
     }
 }
