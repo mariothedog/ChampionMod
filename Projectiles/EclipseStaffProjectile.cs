@@ -14,7 +14,7 @@ namespace ChampionMod.Projectiles
             projectile.friendly = true;
             projectile.magic = true;
             projectile.extraUpdates = 100;
-            projectile.timeLeft = 80;
+            projectile.timeLeft = 400;
             projectile.penetrate = -1;
         }
 
@@ -41,7 +41,7 @@ namespace ChampionMod.Projectiles
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             // Reduces damage every time it hits an enemy
-            projectile.damage = (int)(projectile.damage * 0.6);
+            projectile.damage = (int)(projectile.damage * 0.9);
         }
 
         public override void AI()
@@ -54,7 +54,7 @@ namespace ChampionMod.Projectiles
                     Vector2 projectilePosition = projectile.position;
                     projectilePosition -= projectile.velocity * ((float)i * 0.25f);
                     projectile.alpha = 255;
-                    int dust = Dust.NewDust(projectilePosition, 1, 1, 181, 0f, 0f, 0, default(Color), 1f);
+                    int dust = Dust.NewDust(projectilePosition, 1, 1, 158, 0f, 0f, 0, default(Color), 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = projectilePosition;
                     Main.dust[dust].scale = (float)Main.rand.Next(70, 110) * 0.013f;

@@ -18,23 +18,22 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
-            item.shoot = mod.ProjectileType("MoonStaffProjectile");
-            item.damage = 16;
-            item.mana = 6;
-            item.useTime = 21;
-            item.useAnimation = 21;
-            item.value = 20000; // 40 silver
-            item.rare = 1;
+            item.shoot = mod.ProjectileType("EclipseStaffProjectile");
+            item.damage = 62;
+            item.mana = 8;
+            item.useTime = 15;
+            item.useAnimation = 15;
+            item.value = 400000; // 8 gold
+            item.rare = 8;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("ChampionMod:EvilBars", 15);
-            recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 5);
             recipe.AddIngredient(mod.ItemType("SunStaff"));
             recipe.AddIngredient(mod.ItemType("MoonStaff"));
-            recipe.AddIngredient(ItemID.Lens, 3);
+            recipe.AddIngredient(ItemID.LunarTabletFragment, 5);
+            recipe.AddIngredient(ItemID.Ectoplasm, 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
