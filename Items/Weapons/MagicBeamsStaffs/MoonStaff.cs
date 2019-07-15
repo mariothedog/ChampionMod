@@ -32,7 +32,6 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("ChampionMod:EvilBars", 15);
             recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 5);
-            recipe.AddIngredient(ItemID.HellstoneBar, 15);
             recipe.AddIngredient(ItemID.Lens, 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

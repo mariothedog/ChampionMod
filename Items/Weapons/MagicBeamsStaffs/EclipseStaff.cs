@@ -34,7 +34,7 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
             recipe.AddIngredient(mod.ItemType("MoonStaff"));
             recipe.AddIngredient(ItemID.LunarTabletFragment, 5);
             recipe.AddIngredient(ItemID.Ectoplasm, 5);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
