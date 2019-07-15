@@ -7,33 +7,34 @@ using Terraria.ModLoader;
 // https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption
 namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
 {
-    class SunStaff : ModItem
+    class EclipseStaff : ModItem
     {
         public override void SetStaticDefaults()
         {
             Item.staff[item.type] = true;
-            Tooltip.SetDefault("Creates a sun beam that bounces off walls");
+            Tooltip.SetDefault("Creates an eclipse beam that bounces off walls");
         }
 
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
-            item.shoot = mod.ProjectileType("SunStaffProjectile");
-            item.damage = 34;
-            item.mana = 9;
-            item.useTime = 23;
-            item.useAnimation = 23;
-            item.value = 27000; // 54 silver
-            item.autoReuse = false;
-            item.rare = 3;
+            item.shoot = mod.ProjectileType("MoonStaffProjectile");
+            item.damage = 16;
+            item.mana = 6;
+            item.useTime = 21;
+            item.useAnimation = 21;
+            item.value = 20000; // 40 silver
+            item.rare = 1;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HellstoneBar, 15);
-            recipe.AddIngredient(ItemID.SunplateBlock, 30);
-            recipe.AddIngredient(ItemID.Lens, 5);
+            recipe.AddRecipeGroup("ChampionMod:EvilBars", 15);
+            recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 5);
+            recipe.AddIngredient(mod.ItemType("SunStaff"));
+            recipe.AddIngredient(mod.ItemType("MoonStaff"));
+            recipe.AddIngredient(ItemID.Lens, 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

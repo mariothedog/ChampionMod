@@ -12,6 +12,7 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
         public override void SetStaticDefaults()
         {
             Item.staff[item.type] = true;
+            Tooltip.SetDefault("Creates a moon beam that bounces off walls");
         }
 
         public override void SetDefaults()
