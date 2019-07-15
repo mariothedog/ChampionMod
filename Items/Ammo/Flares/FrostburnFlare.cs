@@ -7,11 +7,6 @@ namespace ChampionMod.Items.Ammo.Flares
 {
 	public class FrostburnFlare : ModItem
 	{
-		public override void SetStaticDefaults()
-        {
-			//DisplayName.SetDefault("Frostburn Flare");
-		}
-
 		public override void SetDefaults()
         {
 			item.damage = 2;
@@ -31,8 +26,7 @@ namespace ChampionMod.Items.Ammo.Flares
         public override void AddRecipes()
          {
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("ChampionMod:Flares");
-			recipe.AddIngredient(ItemID.Flare, 10);
+            recipe.AddRecipeGroup("ChampionMod:Flares", 10);
 			recipe.AddIngredient(ItemID.IceTorch, 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this, 10);
