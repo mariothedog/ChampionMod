@@ -14,7 +14,7 @@ namespace ChampionMod.Projectiles
             projectile.friendly = true;
             projectile.magic = true;
             projectile.extraUpdates = 100;
-            projectile.timeLeft = 100;
+            projectile.timeLeft = 60;
             projectile.penetrate = -1;
         }
 

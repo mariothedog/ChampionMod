@@ -29,10 +29,10 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("ChampionMod:Flares");
+            recipe.AddRecipeGroup("ChampionMod:EvilBars", 15);
+            recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 5);
             recipe.AddIngredient(ItemID.HellstoneBar, 15);
-            recipe.AddIngredient(ItemID.SunplateBlock, 30);
-            recipe.AddIngredient(ItemID.Lens, 5);
+            recipe.AddIngredient(ItemID.Lens, 3);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
