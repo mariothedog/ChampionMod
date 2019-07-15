@@ -10,7 +10,6 @@ Champion Mod is a small community made project meant to make Terraria more inter
 Weapons to flesh out each biome more.
 Custom Potions, Tools, and Accessories to come.
 Farming expansion coming soon.
-Netherworm boss coming soon.
 
 [c/009933:-=-Credits-=-]
 [c/FF9900:Cornetto]
@@ -22,16 +21,30 @@ Netherworm boss coming soon.
 [c/CC0000:Unpleasant]
 
 [c/009933:-=-Changelog-=-]
-[c/996633:Beta 0.16:]
+[c/996633:Beta 0.17:]
 New Items:
-- Royal Sword
-- Agony Bearer
-- Verdant Leaf
-- Nature's Protection
+- Frostburn Flare
+- Sun Staff
+- Moon Staff
+- Eclipse Staff
+
+Changes:
+- Royal Sword now has a particle effect when swung
+- Enchanted Katana sprite changed
+- Enchanted Katana nerfed
+- Enchanted Katana better particle effect
+- Enchanted Katana recipe changed
+- Nature's Protection recipe changed
+- Nature's Protection tooltip updated
+- Royal Sword is now auto swing
+- Royal Sword's Price increased to 5 gold
+- Royal Sword's recipe changed
+- Royal Sword's sprite changed.
+- Royal Sword is now bigger in size
+- Frozen Chakram recipe changed
+- Sagittarius sprite changed
 
 Bugs Fixed:
-- Peashooter's recipe now works with any wood
-- Memory Potion and Memory Lens no longer spams the chat
-- Memory Potion and Memory Lens teleportation is less glitchy with the rendering now
+- Enchanted Katana projectile now comes out of the blade properly
 
 ===
