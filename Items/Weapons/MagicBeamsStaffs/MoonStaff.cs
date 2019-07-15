@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 // https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption
 namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
 {
-    class SunStaff : ModItem
+    class MoonStaff : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -17,19 +17,19 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
-            item.shoot = mod.ProjectileType("SunStaffProjectile");
-            item.damage = 34;
-            item.mana = 9;
-            item.useTime = 23;
-            item.useAnimation = 23;
+            item.shoot = mod.ProjectileType("MoonStaffProjectile");
+            item.damage = 14;
+            item.mana = 6;
+            item.useTime = 21;
+            item.useAnimation = 21;
             item.value = 27000; // 54 silver
-            item.autoReuse = false;
             item.rare = 3;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddRecipeGroup("ChampionMod:Flares");
             recipe.AddIngredient(ItemID.HellstoneBar, 15);
             recipe.AddIngredient(ItemID.SunplateBlock, 30);
             recipe.AddIngredient(ItemID.Lens, 5);

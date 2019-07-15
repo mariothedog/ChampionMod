@@ -41,12 +41,26 @@ namespace ChampionMod
         });
         RecipeGroup.RegisterGroup("ChampionMod:Tier3Bars", group);
 
-         group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 4 Bars", new int[]
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 4 Bars", new int[]
         {
             ItemID.GoldBar,
             ItemID.PlatinumBar
         });
         RecipeGroup.RegisterGroup("ChampionMod:Tier4Bars", group);
+
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Evil Bars", new int[]
+        {
+            ItemID.DemoniteBar,
+            ItemID.CrimtaneBar
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:EvilBars", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Bars", new int[]
+        {
+            ItemID.MythrilBar,
+            ItemID.OrichalcumBar
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:MythrilBars", group);
 
         group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 4 Bar Bows", new int[]
         {
@@ -61,13 +75,6 @@ namespace ChampionMod
             ItemType("Cursedthrower")
         });
         RecipeGroup.RegisterGroup("ChampionMod:EvilFlamethrowers", group);
-
-        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Bars", new int[]
-        {
-            ItemID.MythrilBar,
-            ItemID.OrichalcumBar
-        });
-        RecipeGroup.RegisterGroup("ChampionMod:MythrilBars", group);
 
         group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirrors", new int[]
         {
