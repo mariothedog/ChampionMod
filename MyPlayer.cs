@@ -84,6 +84,53 @@ namespace ChampionMod
                     Dust.NewDust(new Vector2(player.position.X-40, player.position.Y), 110, 110, 27, 0f, 0f, 100, default(Color), 1.6f);
                 }
             }
+
+            // If player holding normal flare gun
+            if (player.inventory[player.selectedItem].type == ItemID.FlareGun)
+            {
+                if (player.itemAnimation <= 0) // If not shooting (just holding)
+                {
+                    int flareDustType = 0; // So if you don't have a flare equipped it won't show the dust
+                    for (int i = 0; i < 4; i++) // Checks which flare comes first (to see which dust to use)
+                    {
+                        int slotType = player.inventory[54 + i].type;
+                        if (slotType == 931 || slotType == 1614) // Flare and Blue Flare
+                        {
+                            break;
+                        }
+                        else if (slotType == 3965) // Frostburn Flare
+                        {
+                            flareDustType = 197;
+                            break;
+                        }
+                    }
+
+                    if (flareDustType == 197) // Frostburn Flare needs its own thing since it uses NewDustPerfect and has a different scale
+                    {
+                        Vector2 loc = new Vector2(player.itemLocation.X + 16f * player.direction, player.itemLocation.Y - 14f * player.gravDir);
+                        player.itemLocation.Y -= 17;
+
+                        loc.Y += 28;
+                        loc.X -= 3;
+
+                        if (player.direction == 1) // If facing right
+                        {
+                            //loc.X -= 4; // So it looks like the dust is coming out of the gun
+                            loc.X += 41;
+                        }
+                        /*else // If facing left
+                        {
+                            loc.X -= 2;
+                        }*/
+
+                        Dust dust;
+                        // Top hole dust
+                        dust = Terraria.Dust.NewDustPerfect(loc, flareDustType, Vector2.Zero, 100);
+                        dust.noGravity = true;
+                        dust.velocity.Y -= 4f * player.gravDir;
+                    }
+                }
+            }
         }
 
         public override void UpdateLifeRegen()

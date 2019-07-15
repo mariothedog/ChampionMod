@@ -32,6 +32,7 @@ namespace ChampionMod.Items.Weapons.Guns
         }
 
         // Change damage based on health
+        [System.Obsolete]
         public override void GetWeaponDamage(Player player, ref int damage)
         {
             if (player.statLifeMax2 != 0) // Used to prevent a divide by 0 error if another mod set the max hp to 0 somehow

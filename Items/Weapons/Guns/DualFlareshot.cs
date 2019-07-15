@@ -7,11 +7,6 @@ namespace ChampionMod.Items.Weapons.Guns
 {
 	public class DualFlareshot : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Dual Flareshot");
-		}
-
 		public override void SetDefaults()
 		{
 			item.damage = 12;
@@ -59,7 +54,8 @@ namespace ChampionMod.Items.Weapons.Guns
 			return new Vector2(-3, 0);
 		}
 
-		public override void HoldItem(Player player) {
+		public override void HoldItem(Player player)
+        {
             if (player.itemAnimation <= 0) // If not shooting (just holding)
             {
 				// Dust location, loc = location
@@ -85,31 +81,60 @@ namespace ChampionMod.Items.Weapons.Guns
 				for (int i = 0; i < 4; i++) // Checks which flare comes first (to see which dust to use)
 				{
 					int slotType = player.inventory[54+i].type;
-					if (slotType == 931)
+					if (slotType == 931) // Flare
 					{
 						flareDustType = 127;
 						break;
 					}
-					else if (slotType == 1614)
+					else if (slotType == 1614) // Blue Flare
 					{
 						flareDustType = 187;
 						break;
 					}
+                    else if (slotType == 3965) // Frostburn Flare
+                    {
+                        flareDustType = 197;
+                        break;
+                    }
 				}
 
-                if (flareDustType != 0)
+                if (flareDustType == 197) // Frostburn Flare needs its own thing since it uses NewDustPerfect and has a different scale
                 {
+                    loc.Y += 5;
+
+                    if (player.direction == 1)
+                    {
+                        loc.X += 4;
+                    }
+
                     Dust dust;
                     // Top hole dust
-                    dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
+                    dust = Terraria.Dust.NewDustPerfect(loc, flareDustType, Vector2.Zero, 100);
                     dust.noGravity = true;
                     dust.velocity.Y -= 4f * player.gravDir;
 
                     // Bottom hole dust
                     loc.Y += 6; // So it comes out of the bottom hole
-                    dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
+                    dust = Terraria.Dust.NewDustPerfect(loc, flareDustType, Vector2.Zero, 100);
                     dust.noGravity = true;
                     dust.velocity.Y -= 4f * player.gravDir;
+                }
+                else
+                {
+                    if (flareDustType != 0)
+                    {
+                        Dust dust;
+                        // Top hole dust
+                        dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
+                        dust.noGravity = true;
+                        dust.velocity.Y -= 4f * player.gravDir;
+
+                        // Bottom hole dust
+                        loc.Y += 6; // So it comes out of the bottom hole
+                        dust = Main.dust[Dust.NewDust(loc, 4, 4, flareDustType, 0f, 0f, 100, default(Color), 1.6f)];
+                        dust.noGravity = true;
+                        dust.velocity.Y -= 4f * player.gravDir;
+                    }
                 }
 
 				// Orange lighting
