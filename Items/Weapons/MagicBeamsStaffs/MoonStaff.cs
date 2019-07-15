@@ -18,12 +18,12 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
         {
             item.CloneDefaults(ItemID.ShadowbeamStaff);
             item.shoot = mod.ProjectileType("MoonStaffProjectile");
-            item.damage = 14;
+            item.damage = 16;
             item.mana = 6;
             item.useTime = 21;
             item.useAnimation = 21;
-            item.value = 27000; // 54 silver
-            item.rare = 3;
+            item.value = 20000; // 40 silver
+            item.rare = 1;
         }
 
         public override void AddRecipes()
