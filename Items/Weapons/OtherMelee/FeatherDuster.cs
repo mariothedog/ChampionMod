@@ -55,9 +55,9 @@ namespace ChampionMod.Items.Weapons.OtherMelee
                     npc.velocity.X += Math.Abs(Vector2.Distance(npc.Center, player.Center)-50)/20 * player.direction;
 
                     // So the npc doesn't go super fast when hitting them multiple times with the feather duster
-                    if (npc.velocity.X >= 6 || npc.velocity.X <= -6)
+                    if (npc.velocity.X >= 3 || npc.velocity.X <= -3)
                     {
-                        npc.velocity.X = 6 * player.direction;
+                        npc.velocity.X = 3 * player.direction;
                     }
                 }
             }

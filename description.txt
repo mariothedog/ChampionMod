@@ -43,6 +43,7 @@ Changes:
 - Royal Sword is now bigger in size
 - Frozen Chakram recipe changed
 - Sagittarius sprite changed
+- Feather Duster nerfed
 
 Bugs Fixed:
 - Enchanted Katana projectile now comes out of the blade properly
