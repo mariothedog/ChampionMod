@@ -10,4 +10,8 @@
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
+  <ItemGroup>
+    <Folder Include="Items\Armour\" />
+    <Folder Include="Items\Tools\" />
+  </ItemGroup>
 </Project>
