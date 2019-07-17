@@ -89,6 +89,13 @@ namespace ChampionMod
             ItemID.BlueFlare
         });
         RecipeGroup.RegisterGroup("ChampionMod:Flares", group);
+
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 4 Bar Swords", new int[]
+        {
+            ItemID.GoldSword,
+            ItemID.PlatinumSword
+        });
+        RecipeGroup.RegisterGroup("ChampionMod:Tier4BarSwords", group);
         }
     }
 }
