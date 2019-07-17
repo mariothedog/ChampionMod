@@ -5,10 +5,10 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Projectiles
 {
-	public class FrostStar : ModProjectile
+	public class FlameStar : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("FrostStar");
+			DisplayName.SetDefault("Flame Star");
 		}
 
 		public override void SetDefaults() {
