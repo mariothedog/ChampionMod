@@ -15,5 +15,9 @@ namespace ChampionMod.Projectiles
 			item.CloneDefaults(ProjectileID.FallingStar);
 			projectile.penetrate = 1; 
 		}
-  }
+
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) {
+			target.AddBuff(BuffID.Frostburn, 180);
+		}
+  	}
 }
