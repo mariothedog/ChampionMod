@@ -37,8 +37,8 @@ namespace ChampionMod.Tiles.Crops
             //TileObjectData.addBaseTile(out TileObjectData.StyleAlch);
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 
-            TileObjectData.newTile.Height = 2;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
+            TileObjectData.newTile.Height = 3;
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 
             TileObjectData.newTile.AnchorValidTiles = new[]
             {
@@ -104,9 +104,15 @@ namespace ChampionMod.Tiles.Crops
             {
                 Main.tile[i, topY].frameX += 18;
             }
+
             if (Main.tile[i, topY + 1].frameX < 36)
             {
                 Main.tile[i, topY + 1].frameX += 18;
+            }
+
+            if (Main.tile[i, topY + 2].frameX < 36)
+            {
+                Main.tile[i, topY + 2].frameX += 18;
             }
             //Main.tile[i, ].frameX
             //short frameAdjustment = (short)(tile.frameX > 0 ? -18 : 18);
