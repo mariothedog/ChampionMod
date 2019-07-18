@@ -57,7 +57,3 @@ namespace ChampionMod.Items.Weapons.Swords
 		}
 	}
 }
-            return true;
-		}
-	}
-}
