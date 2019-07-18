@@ -24,7 +24,7 @@ namespace ChampionMod.Items.Weapons.Swords
 			item.rare = 5;              //The rarity of the weapon, from -1 to 13
 			item.UseSound = SoundID.Item1;      //The sound of the weapon on use
 			item.autoReuse = true;  
-			item.shootSpeed = 16f    
+			item.shootSpeed = 16f;    
 		}
 
         // Uncomment this when everything with the sword including projectiles are finished
