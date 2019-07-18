@@ -27,15 +27,15 @@ namespace ChampionMod.Items.Weapons.Magicstaffs
 			item.rare = 1;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("Boulder");
+			item.shoot = mod.ProjectileType("StoneBoulder");
 			item.shootSpeed = 3f;
 		}
 
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Stone, 20);
-      recipe.AddIngredient(ItemID.Wood, 15);
-      recipe.AddIngredient(ItemID.IronBar, 2);
+      			recipe.AddIngredient(ItemID.Wood, 15);
+     		 	recipe.AddIngredient(ItemID.IronBar, 2);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
