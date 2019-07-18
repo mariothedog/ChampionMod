@@ -23,15 +23,15 @@ namespace ChampionMod.Items.Weapons.MagicStaffs
 			item.useTime = 31;
 		    item.useAnimation = 31;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true; 
 			item.knockBack = 6;
 			item.value = 1;
 			item.rare = 1;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("StoneBoulder");
-			item.shootSpeed = 3f;
-		}
+			item.shootSpeed = 8f;
+	    	}
 
 		public override void AddRecipes()
         {
