@@ -23,8 +23,9 @@ namespace ChampionMod.Items.Weapons.Swords
 			item.value = Item.buyPrice(gold: 4);           //The value of the weapon
 			item.rare = 5;              //The rarity of the weapon, from -1 to 13
 			item.UseSound = SoundID.Item1;      //The sound of the weapon on use
-			item.autoReuse = true;  
-			item.shootSpeed = 16f    
+			item.autoReuse = true;
+            item.shoot = mod.ProjectileType("FlameStar");
+            item.shootSpeed = 16f; 
 		}
 
         // Uncomment this when everything with the sword including projectiles are finished
@@ -44,16 +45,16 @@ namespace ChampionMod.Items.Weapons.Swords
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			Main.rand.Next(2);
-				if (Main.rand.Next(2) == 0)
-					{
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FrostStar"), damage, knockBack, player.whoAmI);
-					}
-					else
-					{
-					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FlameStar"), damage, knockBack, player.whoAmI);
-					}
-		 return true;
+			if (Main.rand.Next(2) == 0)
+			{
+			    Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FrostStar"), damage, knockBack, player.whoAmI);
+			}
+			else
+			{
+			    Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FlameStar"), damage, knockBack, player.whoAmI);
+			}
+
+            return false;
 		}
 	}
 }
