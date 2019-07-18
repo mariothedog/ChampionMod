@@ -29,13 +29,13 @@ namespace Champion.Items.Weapons
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("StoneBoulder");
 			item.shootSpeed = 8f;
-	    }
+	    	}
 
 		public override void AddRecipes() {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.StoneBlock, 20);
-      		recipe.AddIngredient(ItemID.Wood, 15);
-     		recipe.AddIngredient(ItemID.IronBar, 2);
+      			recipe.AddIngredient(ItemID.Wood, 15);
+     			recipe.AddIngredient(ItemID.IronBar, 2);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
