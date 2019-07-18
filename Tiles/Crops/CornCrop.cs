@@ -37,8 +37,9 @@ namespace ChampionMod.Tiles.Crops
             //TileObjectData.addBaseTile(out TileObjectData.StyleAlch);
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 
-            TileObjectData.newTile.Height = 3;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
+            TileObjectData.newTile.Width = 2;
+            //TileObjectData.newTile.Height = 3;
+            //TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
 
             TileObjectData.newTile.AnchorValidTiles = new[]
             {
@@ -69,13 +70,19 @@ namespace ChampionMod.Tiles.Crops
 
         public override bool Drop(int i, int j)
         {
-            int stage = Main.tile[i, j].frameX / 18;
+            //int stage = Main.tile[i, j].frameX / 18;
+            int stage = Main.tile[i, j].frameX / 36;
             if (stage == 2)
             {
                 Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType<Items.Seeds.CornSeeds>());
             }
             return false;
         }
+
+        /*public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("ExampleMusicBox"));
+        }*/
 
         public override void RandomUpdate(int i, int j)
         {
@@ -97,15 +104,16 @@ namespace ChampionMod.Tiles.Crops
                 Main.tile[i, j + 1].frameX += 18;
             }*/
 
-            Tile tile = Main.tile[i, j];
-            int topY = j - tile.frameY / 18 % 3;
+            //Tile tile = Main.tile[i, j];
 
-            if (Main.tile[i, topY].frameX < 36)
+            //int topY = j - tile.frameY / 18 % 3;
+
+            /*if (Main.tile[i, topY].frameX < 36)
             {
                 Main.tile[i, topY].frameX += 18;
-            }
+            }*/
 
-            if (Main.tile[i, topY + 1].frameX < 36)
+            /*if (Main.tile[i, topY + 1].frameX < 36)
             {
                 Main.tile[i, topY + 1].frameX += 18;
             }
@@ -113,7 +121,18 @@ namespace ChampionMod.Tiles.Crops
             if (Main.tile[i, topY + 2].frameX < 36)
             {
                 Main.tile[i, topY + 2].frameX += 18;
+            }*/
+
+            if (Main.tile[i, j].frameX < 72)
+            {
+                Main.tile[i, j].frameX += 36;
             }
+
+            if (Main.tile[i + 1, j].frameX < 72)
+            {
+                Main.tile[i + 1, j].frameX += 36;
+            }
+
             //Main.tile[i, ].frameX
             //short frameAdjustment = (short)(tile.frameX > 0 ? -18 : 18);
             //Main.tile[i, topY].frameX += frameAdjustment;
