@@ -9,8 +9,8 @@ namespace ChampionMod.Items.Seeds
     {
         public override void SetDefaults()
         {
-            item.width = 48;
-            item.height = 66;
+            item.width = 20;
+            item.height = 22;
             item.maxStack = 99;
             item.autoReuse = true;
             item.useTime = 10;

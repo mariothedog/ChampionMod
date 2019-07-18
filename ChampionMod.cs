@@ -55,7 +55,7 @@ namespace ChampionMod
         });
         RecipeGroup.RegisterGroup("ChampionMod:EvilBars", group);
 
-            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Bars", new int[]
+        group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Mythril Bars", new int[]
         {
             ItemID.MythrilBar,
             ItemID.OrichalcumBar
