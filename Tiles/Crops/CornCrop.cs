@@ -62,10 +62,10 @@ namespace ChampionMod.Tiles.Crops
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
         {
             if (Main.rand.Next(20) == 0) RandomUpdate(i, j);
-            if (i % 2 == 1)
+            /*if (i % 2 == 1)
             {
                 spriteEffects = SpriteEffects.FlipHorizontally;
-            }
+            }*/
         }
 
         public override bool Drop(int i, int j)
@@ -86,28 +86,9 @@ namespace ChampionMod.Tiles.Crops
 
         public override void RandomUpdate(int i, int j)
         {
-            /*if (Main.tile[i, j].frameX == 0)
-            {
-                Main.tile[i, j].frameX += 18;
-            }
-            else if (Main.tile[i, j].frameX == 18)
-            {
-                Main.tile[i, j].frameX += 18;
-            }
-
-            if (Main.tile[i, j + 1].frameX == 0)
-            {
-                Main.tile[i, j + 1].frameX += 18;
-            }
-            else if (Main.tile[i, j + 1].frameX == 18)
-            {
-                Main.tile[i, j + 1].frameX += 18;
-            }*/
-
+            // Works for 1x3 plant
             //Tile tile = Main.tile[i, j];
-
             //int topY = j - tile.frameY / 18 % 3;
-
             /*if (Main.tile[i, topY].frameX < 36)
             {
                 Main.tile[i, topY].frameX += 18;
@@ -123,15 +104,42 @@ namespace ChampionMod.Tiles.Crops
                 Main.tile[i, topY + 2].frameX += 18;
             }*/
 
-            if (Main.tile[i, j].frameX < 72)
+            // For 2x1 plant [wip]
+            /*if (Main.tile[i, j].frameX < 72)
             {
                 Main.tile[i, j].frameX += 36;
+            }
+
+            if (Main.tile[i + 1, j].frameX == 0)
+            {
+                Main.tile[i + 1, j].frameX = 18;
             }
 
             if (Main.tile[i + 1, j].frameX < 72)
             {
                 Main.tile[i + 1, j].frameX += 36;
-            }
+            }*/
+
+            int x = i - Main.tile[i, j].frameX / 18 % 2;
+            int y = j - Main.tile[i, j].frameY / 18 % 1;
+
+            /*for (int l = x; l < x + 2; l++)
+            {
+                for (int m = y; m < y + 1; m++)
+                {
+                    if (Main.tile[l, m].active() && Main.tile[l, m].type == Type)
+                    {
+                        if (Main.tile[l, m].frameY < 18)
+                        {
+                            Main.tile[l, m].frameY += 18;
+                        }
+                        else
+                        {
+                            Main.tile[l, m].frameY -= 18;
+                        }
+                    }
+                }
+            }*/
 
             //Main.tile[i, ].frameX
             //short frameAdjustment = (short)(tile.frameX > 0 ? -18 : 18);
