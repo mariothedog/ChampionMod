@@ -46,13 +46,13 @@ namespace ChampionMod.Items.Weapons.Swords
 		{
 			Main.rand.Next(2);
 				if (Main.rand.Next(2) == 0)
-						{
-						item.shoot = mod.ProjectileType("FrostStar");//Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FrostStar"), damage, knockBack, player.whoAmI);
-						}
-						else
-						{
-						item.shoot = mod.ProjectileType("FlameStar");//Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FlameStar"), damage, knockBack, player.whoAmI);
-						}
+					{
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FrostStar"), damage, knockBack, player.whoAmI);
+					}
+					else
+					{
+					Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FlameStar"), damage, knockBack, player.whoAmI);
+					}
 		 return true;
 		}
 	}
