@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Useable
+namespace ChampionMod.Items.Tools
 {
     public class MemoryLens : ModItem
     {
