@@ -149,6 +149,11 @@
             Specifies a range for primative data values. Without this, default min and max are as follows: float: 0, 1 - int/uint: 0, 100 - byte: 0, 255
             </summary>
         </member>
+        <member name="T:Terraria.ModLoader.Config.SliderAttribute">
+            <summary>
+            Affects whether this data will be presented as a slider of an input field. Add this attribute to use a slider. Currently only affects data of type int.
+            </summary>
+        </member>
         <member name="T:Terraria.ModLoader.Config.DrawTicksAttribute">
             <summary>
             Add this attribute and the sliders will show white tick marks at each increment.
@@ -268,50 +273,9 @@
             It also improves loading performance on FNA
             </summary>
         </member>
-        <member name="M:Terraria.ModLoader.UI.DownloadManager.DownloadRequest.Start(System.Threading.CancellationToken)">
-            <summary>
-            Begin the request
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Terraria.ModLoader.UI.DownloadManager.DownloadRequest.Execute">
-            <summary>
-            Execution of the request
-            </summary>
-        </member>
-        <member name="M:Terraria.ModLoader.UI.DownloadManager.DownloadRequest.Cancel">
-            <summary>
-            Cancel the request
-            </summary>
-        </member>
-        <member name="M:Terraria.ModLoader.UI.DownloadManager.DownloadRequest.Complete">
-            <summary>
-            Complete the request. When executed you are certain the request is completed successfully
-            </summary>
-        </member>
-        <member name="T:Terraria.ModLoader.UI.DownloadManager.StreamingDownloadRequest">
-            <summary>
-            Responsible for a streaming download, handled by <see cref="T:Terraria.ModLoader.ModNet"/>
-            </summary>
-        </member>
-        <member name="T:Terraria.ModLoader.UI.DownloadManager.UIDownloadManager">
-            <summary>
-            Responsible for managing download requests and reporting the progress of it in a UI
-            </summary>
-        </member>
-        <member name="M:Terraria.ModLoader.UI.ModBrowser.UIModBrowser.EnqueueModBrowserDownload(Terraria.ModLoader.UI.ModBrowser.UIModDownloadItem)">
-            <summary>
-                Enqueue a Mod browser item to the download manager
-            </summary>
-        </member>
-        <member name="M:Terraria.ModLoader.UI.ModBrowser.UIModBrowser.EnqueueModBrowserDownloads(System.Collections.Generic.IEnumerable{System.String},System.String)">
+        <member name="M:Terraria.ModLoader.UI.ModBrowser.UIModBrowser.DownloadMods(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
                 Enqueues a list of mods, if found on the browser (also used for ModPacks)
-            </summary>
-        </member>
-        <member name="M:Terraria.ModLoader.UI.ModBrowser.UIModBrowser.StartDownloading">
-            <summary>
-                Will prompt the download manager to begin downloading
             </summary>
         </member>
         <member name="T:Terraria.ModLoader.UgBgStyleLoader">
@@ -1121,6 +1085,16 @@
             <param name="player">The player using the item</param>
             <param name="add">Used for additively stacking buffs (most common). Only ever use += on this field.</param>
             <param name="mult">Use to directly multiply the player's effective damage. Good for debuffs, or things which should stack separately (eg ammo type buffs)</param>
+        </member>
+        <member name="M:Terraria.ModLoader.GlobalItem.ModifyWeaponDamage(Terraria.Item,Terraria.Player,System.Single@,System.Single@,System.Single@)">
+            <summary>
+            Allows you to temporarily modify this weapon's damage based on player buffs, etc. This is useful for creating new classes of damage, or for making subclasses of damage (for example, Shroomite armor set boosts).
+            </summary>
+            <param name="item">The item being used</param>
+            <param name="player">The player using the item</param>
+            <param name="add">Used for additively stacking buffs (most common). Only ever use += on this field. Things with effects like "5% increased MyDamageClass damage" would use this: `add += 0.05`</param>
+            <param name="mult">Use to directly multiply the player's effective damage. Good for debuffs, or things which should stack separately (eg ammo type buffs)</param>
+            <param name="flat">This is a flat damage bonus that will be added after add and mult are applied. It facilitates effects like "4 more damage from weapons"</param>
         </member>
         <member name="M:Terraria.ModLoader.GlobalItem.GetWeaponKnockback(Terraria.Item,Terraria.Player,System.Single@)">
             <summary>
@@ -2971,7 +2945,7 @@
             Calls ModItem.GetWeaponDamage, then all GlobalItem.GetWeaponDamage hooks.
             </summary>
         </member>
-        <member name="M:Terraria.ModLoader.ItemLoader.ModifyWeaponDamage(Terraria.Item,Terraria.Player,System.Single@,System.Single@)">
+        <member name="M:Terraria.ModLoader.ItemLoader.ModifyWeaponDamage(Terraria.Item,Terraria.Player,System.Single@,System.Single@,System.Single@)">
             <summary>
             Calls ModItem.HookModifyWeaponDamage, then all GlobalItem.HookModifyWeaponDamage hooks.
             </summary>
@@ -4430,7 +4404,7 @@
         <member name="M:Terraria.ModLoader.BackupIO.AddZipEntry(Ionic.Zip.ZipFile,System.String,System.Boolean)">
             <summary>
             Adds a new entry to the archive .zip file
-            Will use the best compression level using BZip2 technique
+            Will use the best compression level using Deflate
             Some files are already compressed and will not be compressed further
             </summary>
         </member>
@@ -4458,14 +4432,10 @@
             Write the archive. Writes the .plr and .tplr files, then writes the player directory
             </summary>
         </member>
-        <member name="M:Terraria.ModLoader.BackupIO.Player.WriteCloud(Ionic.Zip.ZipFile,System.String)">
+        <!-- Badly formed XML comment ignored for member "M:Terraria.ModLoader.BackupIO.Player.WriteCloudFiles(Ionic.Zip.ZipFile,System.String)" -->
+        <member name="M:Terraria.ModLoader.BackupIO.Player.WriteLocalFiles(Ionic.Zip.ZipFile,System.String)">
             <summary>
-            Writes for cloud files
-            </summary>
-        </member>
-        <member name="M:Terraria.ModLoader.BackupIO.Player.WriteLocal(Ionic.Zip.ZipFile,System.String)">
-            <summary>
-            Writes for local files
+            Write local files, which simply writes the entire player dir
             </summary>
         </member>
         <member name="T:Terraria.ModLoader.ModUgBgStyle">
@@ -5326,6 +5296,15 @@
             <param name="add">Used for additively stacking buffs (most common). Only ever use += on this field.</param>
             <param name="mult">Use to directly multiply the player's effective damage. Good for debuffs, or things which should stack separately (eg ammo type buffs)</param>
         </member>
+        <member name="M:Terraria.ModLoader.ModItem.ModifyWeaponDamage(Terraria.Player,System.Single@,System.Single@,System.Single@)">
+            <summary>
+            Allows you to temporarily modify this weapon's damage based on player buffs, etc. This is useful for creating new classes of damage, or for making subclasses of damage (for example, Shroomite armor set boosts).
+            </summary>
+            <param name="player">The player using the item</param>
+            <param name="add">Used for additively stacking buffs (most common). Only ever use += on this field. Things with effects like "5% increased MyDamageClass damage" would use this: `add += 0.05`</param>
+            <param name="mult">Use to directly multiply the player's effective damage. Good for debuffs, or things which should stack separately (eg ammo type buffs)</param>
+            <param name="flat">This is a flat damage bonus that will be added after add and mult are applied. It facilitates effects like "4 more damage from weapons"</param>
+        </member>
         <member name="M:Terraria.ModLoader.ModItem.GetWeaponKnockback(Terraria.Player,System.Single@)">
             <summary>
             Allows you to temporarily modify this weapon's knockback based on player buffs, etc. This allows you to customize knockback beyond the Player class's limited fields.
@@ -5855,6 +5834,11 @@
         <member name="P:Terraria.ModLoader.ModItem.BossBagNPC">
             <summary>
             The type of NPC that drops this boss bag. Used to determine how many coins this boss bag contains. Defaults to 0, which means this isn't a boss bag.
+            </summary>
+        </member>
+        <member name="P:Terraria.ModLoader.ModItem.IgnoreDamageModifiers">
+            <summary>
+            Set this to true to prevent this weapon or ammo item from being adjusted by damage modifiers.
             </summary>
         </member>
         <member name="M:Terraria.ModLoader.ModItem.Save">
@@ -6974,6 +6958,15 @@
             <param name="item">The item being used</param>
             <param name="add">Used for additively stacking buffs (most common). Only ever use += on this field.</param>
             <param name="mult">Use to directly multiply the player's effective damage. Good for debuffs, or things which should stack separately (eg ammo type buffs)</param>
+        </member>
+        <member name="M:Terraria.ModLoader.ModPlayer.ModifyWeaponDamage(Terraria.Item,System.Single@,System.Single@,System.Single@)">
+            <summary>
+            Allows you to temporarily modify this weapon's damage based on player buffs, etc. This is useful for creating new classes of damage, or for making subclasses of damage (for example, Shroomite armor set boosts).
+            </summary>
+            <param name="item">The item being used</param>
+            <param name="add">Used for additively stacking buffs (most common). Only ever use += on this field. Things with effects like "5% increased MyDamageClass damage" would use this: `add += 0.05`</param>
+            <param name="mult">Use to directly multiply the player's effective damage. Good for debuffs, or things which should stack separately (eg ammo type buffs)</param>
+            <param name="flat">This is a flat damage bonus that will be added after add and mult are applied. It facilitates effects like "4 more damage from weapons"</param>
         </member>
         <member name="M:Terraria.ModLoader.ModPlayer.GetWeaponKnockback(Terraria.Item,System.Single@)">
             <summary>
@@ -8441,7 +8434,7 @@
         </member>
         <member name="T:Terraria.ModLoader.ModTileEntity">
             <summary>
-            Tile Entities are Entities tightly coupled with tiles, allowing the possibility of tiles to exhibit cool behavior. TileEntitry.Update is called in SP and on Server, not on Clients.
+            Tile Entities are Entities tightly coupled with tiles, allowing the possibility of tiles to exhibit cool behavior. TileEntity.Update is called in SP and on Server, not on Clients.
             </summary>
             <seealso cref="T:Terraria.DataStructures.TileEntity" />
         </member>
@@ -9865,7 +9858,7 @@
             This is where all ModPlayer hooks are gathered and called.
             </summary>
         </member>
-        <member name="M:Terraria.ModLoader.PlayerHooks.ModifyWeaponDamage(Terraria.Player,Terraria.Item,System.Single@,System.Single@)">
+        <member name="M:Terraria.ModLoader.PlayerHooks.ModifyWeaponDamage(Terraria.Player,Terraria.Item,System.Single@,System.Single@,System.Single@)">
             <summary>
             Calls ModItem.HookModifyWeaponDamage, then all GlobalItem.HookModifyWeaponDamage hooks.
             </summary>

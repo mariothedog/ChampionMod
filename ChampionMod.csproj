@@ -14,4 +14,7 @@
     <Folder Include="Items\Armour\" />
     <Folder Include="Items\Tools\" />
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe&quot; -build &quot;$(ProjectDir)\&quot; -eac &quot;$(TargetPath)&quot;" />
+  </Target>
 </Project>
