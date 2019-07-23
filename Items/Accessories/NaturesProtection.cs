@@ -21,10 +21,7 @@ namespace ChampionMod.Items.Accessories
             item.defense = 5;
             item.width = 40;
             item.height = 40;
-            item.noUseGraphic = true; // So you don't see the item swing (and you just see the projectile)
-            item.knockBack = 8;
             item.value = Item.sellPrice(silver : 2);
-            item.rare = 1;
         }
 
         public override void AddRecipes()
@@ -52,9 +49,7 @@ namespace ChampionMod.Items.Accessories
                         {
                             if (Vector2.Distance(p.Center, player.Center) <= 1000)
                             {
-                                //Main.NewText(p.name);
                                 p.AddBuff(mod.BuffType("NaturesProtectionBuff"), 6000);
-                                //p.GetModPlayer<MyPlayer>().NaturesProtectionBuff = true;
                             }
                         }
                     }

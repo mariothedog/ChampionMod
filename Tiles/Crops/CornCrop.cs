@@ -1,8 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
+using Terraria.Enums;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ChampionMod.Tiles.Crops
 {
@@ -12,249 +15,128 @@ namespace ChampionMod.Tiles.Crops
         {
             Main.tileFrameImportant[Type] = true;
             Main.tileCut[Type] = true;
-            //Main.tileAlch[Type] = true;
-            Main.tileNoFail[Type] = true;
-            //Main.tileLavaDeath[Type] = true;
-            //dustType = -1;
-            //disableSmartCursor = true;
-            //AddMapEntry(new Color(13, 88, 130), "Banner");
-            //TileObjectData.newTile.Origin = Point16.Zero;
-            //TileObjectData.newTile.UsesCustomCanPlace = true;
-            //TileObjectData.newTile.CoordinateWidth = 16;
-            //TileObjectData.newTile.CoordinatePadding = 2;
-            //TileObjectData.newTile.DrawYOffset = -1;
-            //TileObjectData.newTile.StyleHorizontal = true;
-            //TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.AlternateTile, TileObjectData.newTile.Width, 0);
-            //TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
-            //TileObjectData.newTile.LavaDeath = true;
-            //TileObjectData.newTile.LavaPlacement = LiquidPlacement.NotAllowed;
-            //TileObjectData.addBaseTile(out TileObjectData.StyleAlch);
+
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 
-            //TileObjectData.newTile.Width = 3;
-            //TileObjectData.newTile.Height = 4;
-            //TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
+            TileObjectData.newTile.Width = 3;
+            TileObjectData.newTile.Height = 4;
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 18 }; // Last one is 18 so it extends into the grass
 
-            TileObjectData.newTile.Width = 2;
-            TileObjectData.newTile.Height = 2;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
+            TileObjectData.newTile.Origin = new Point16(1, 3);
+
+            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, 1, 1);
 
             TileObjectData.newTile.AnchorValidTiles = new[]
             {
-                2, //TileID.Grass
-				109, // TileId.HallowedGrass
-				//mod.TileType<ExampleBlock>()
+                2, // Grass
+                109 // Hallowed Grass
             };
-            TileObjectData.newTile.AnchorAlternateTiles = new[]
-            {
-                78, //ClayPot
-				TileID.PlanterBox
-            };
+
             TileObjectData.addTile(Type);
-            //drop = mod.ItemType()
-        }
-        //public override bool CanPlace(int i, int j)
-        //{
-        //	return base.CanPlace(i, j);
-        //}
-        public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
-        {
-            if (Main.rand.Next(40) == 0) RandomUpdate(i, j);
-            /*if (i % 2 == 1)
-            {
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            }*/
         }
 
-        public override bool Drop(int i, int j)
+        public override bool CanPlace(int i, int j)
         {
-            //int stage = Main.tile[i, j].frameX / 18;
-            int stage = Main.tile[i, j].frameX / 36;
-            if (stage == 2)
+            // So you can't hold down the corn seeds to constantly replace it
+            // Since the corn crop is 3 blocks wide you also need to make sure it has enough space
+            return Main.tile[i, j].type != Type && Main.tile[i + 1, j].type != Type && Main.tile[i - 1, j].type != Type;
+        }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            int stage = frameX / 54;
+            if (stage == 0)
             {
-                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType<Items.Seeds.CornSeeds>());
+                for (int x = 0; x < 10; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
+                }
             }
-            return false;
-        }
+            else if (stage == 1)
+            {
+                for (int x = 0; x < 10; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
+                }
+            }
+            else if (stage == 2)
+            {
+                for (int x = 0; x < 15; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
+                }
+            }
+            else if (stage == 3)
+            {
+                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("CornSeeds"), 1 + Main.rand.Next(3));
+                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("Corn"), 1);
 
-        /*public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("ExampleMusicBox"));
-        }*/
+                for (int x = 0; x < 15; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
+                }
+
+                for (int x = 0; x < 8; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, mod.DustType("CornDust"));
+                }
+            }
+            else if (stage == 4)
+            {
+                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("CornSeeds"), 2 + Main.rand.Next(3));
+                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("Corn"), 1 + Main.rand.Next(3));
+
+                for (int x = 0; x < 15; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
+                }
+
+                for (int x = 0; x < 10; x++)
+                {
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, mod.DustType("CornDust"));
+                }
+            }
+        }
 
         public override void RandomUpdate(int i, int j)
         {
-            Main.NewText("Random Update");
-
-            Tile bottomLeftTile = null; // Todo
-            int bottomLeftTileX = 0;
-            int bottomLeftTileY = 0;
-
-            // Find the bottomLeftTile coords
-            for (int x = 0; x <= 1; x++)
+            // So it is not executing all this code for no reason when it's at the max stage
+            // So it slows down the growth especially since there are 12 tiles that could be randomly updated
+            // So the crop doesn't grow when it is not on the surface
+            if (Main.tile[i, j].frameX < 216 && Main.rand.Next(90) == 0 && j < Main.worldSurface)
             {
-                for (int y = 0; y >= -1; y--)
+                // Gets the top left tile coords
+                int topLeftX = i - Main.tile[i, j].frameX / 18 % 3;
+                int topLeftY = j - Main.tile[i, j].frameY / 18 % 4;
+
+                for (int x = 0; x <= 2; x++)
                 {
-                    if (Main.tile[i + x, j + y].type == Type)
+                    for (int y = 0; y <= 3; y++)
                     {
-                        bottomLeftTile = Main.tile[i + x, j + y];
-                        bottomLeftTileX = i + x;
-                        bottomLeftTileY = j + y;
+                        if (Main.tile[topLeftX + x, topLeftY + y].frameX < 216)
+                        {
+                            Main.tile[topLeftX + x, topLeftY + y].frameX += 54;
+                            NetMessage.SendTileSquare(-1, topLeftX + x, topLeftY + y, 1); // For multiplayer syncing
+                        }
                     }
                 }
             }
+        }
 
-            //Main.NewText("X: " + bottomLeftTileX);
-            //Main.NewText("Y: " + bottomLeftTileY);
-            //Main.NewText("Over");
+        public override bool CreateDust(int i, int j, ref int type)
+        {
+            return false;
+        }
 
-            bottomLeftTile.frameX += 36;
+        public override bool KillSound(int i, int j)
+        {
+            Main.PlaySound(6, new Vector2(i * 16, j * 16));
 
-            /*for (int x = 0; x <= 1; x++)
-            {
-                for (int y = 0; y <= 1; y++)
-                {
-                    if (Main.tile[bottomLeftTileX + x, bottomLeftTileY + y].frameX < 144)
-                    {
-                        Main.tile[bottomLeftTileX + x, bottomLeftTileY + y].frameX += 36;
-                    }
-                }
-            }*/
-
-            /*if (bottomLeftTile.frameX < 144)
-            {
-                bottomLeftTile.frameX += 36;
-            }*/
-
-            //Tile tile = Main.tile[i, j];
-            //int topY = j - tile.frameY / 18 % 4;
-
-            // Doesn't seem to work for the normal corn
-            //int topY = j - Main.tile[i, j].frameY / 54 % 4;
-
-            // This is needed as the i and j changes as in a multi tile each tile is separate so we need to make sure we are working with the right tile
-            /*if (Main.tile[i + 2, j].type == Type) // Far left tile
-            {
-                for (int x = 0; x < 3; x++)
-                {
-                    if (Main.tile[i + x, topY].frameX < 270) // Top
-                    {
-                        Main.tile[i + x, topY].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 1].frameX < 270) // Middle up (y axis)
-                    {
-                        Main.tile[i + x, topY + 1].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 2].frameX < 270) // Middle down (y axis)
-                    {
-                        Main.tile[i + x, topY + 2].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 3].frameX < 270) // Bottom
-                    {
-                        Main.tile[i + x, topY + 3].frameX += 54;
-                    }
-                }
-            }
-            else if (Main.tile[i + 1, j].type == Type) // Middle tile (x axis)
-            {
-                for (int x = -1; x < 2; x++)
-                {
-                    if (Main.tile[i + x, topY].frameX < 270) // Top
-                    {
-                        Main.tile[i + x, topY].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 1].frameX < 270) // Middle up (y axis)
-                    {
-                        Main.tile[i + x, topY + 1].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 2].frameX < 270) // Middle down (y axis)
-                    {
-                        Main.tile[i + x, topY + 2].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 3].frameX < 270) // Bottom
-                    {
-                        Main.tile[i + x, topY + 3].frameX += 54;
-                    }
-                }
-            }
-            else
-            {
-                for (int x = -2; x < 2; x++) // Far right tile
-                {
-                    if (Main.tile[i + x, topY].frameX < 270) // Top
-                    {
-                        Main.tile[i + x, topY].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 1].frameX < 270) // Middle up (y axis)
-                    {
-                        Main.tile[i + x, topY + 1].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 2].frameX < 270) // Middle down (y axis)
-                    {
-                        Main.tile[i + x, topY + 2].frameX += 54;
-                    }
-
-                    if (Main.tile[i + x, topY + 3].frameX < 270) // Bottom
-                    {
-                        Main.tile[i + x, topY + 3].frameX += 54;
-                    }
-                }
-            }*/
-
-            // Works for 1x3 plant
-            //Tile tile = Main.tile[i, j];
-            //int topY = j - tile.frameY / 18 % 3;
-            /*if (Main.tile[i, topY].frameX < 36)
-            {
-                Main.tile[i, topY].frameX += 18;
-            }
-
-            if (Main.tile[i, topY + 1].frameX < 36)
-            {
-                Main.tile[i, topY + 1].frameX += 18;
-            }
-
-            if (Main.tile[i, topY + 2].frameX < 36)
-            {
-                Main.tile[i, topY + 2].frameX += 18;
-            }*/
-
-            // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-            // For 2x1 plant
-            // Need to do this as it keeps on switching between the 2 tiles so it needs to make sure which one it is in at the moment
-            /*if (Main.tile[i + 1, j].type == Type)
-            {
-                if (Main.tile[i, j].frameX < 72)
-                {
-                    Main.tile[i, j].frameX += 36;
-                }
-
-                if (Main.tile[i + 1, j].frameX < 72)
-                {
-                    Main.tile[i + 1, j].frameX += 36;
-                }
-            }
-            else
-            {
-                if (Main.tile[i, j].frameX < 72)
-                {
-                    Main.tile[i, j].frameX += 36;
-                }
-
-                if (Main.tile[i - 1, j].frameX < 72)
-                {
-                    Main.tile[i - 1, j].frameX += 36;
-                }
-            }*/
+            return false;
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -49,6 +51,5 @@ namespace ChampionMod.Items.Weapons.Guns
 		{
 			return new Vector2(0, 0);
 		}
-        
     }
 }

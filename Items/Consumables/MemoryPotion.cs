@@ -1,14 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Useable
+namespace ChampionMod.Items.Consumables
 {
-    public class MemoryLens : ModItem
+    public class MemoryPotion : ModItem
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Memory Potion");
             Tooltip.SetDefault("Teleports you to your last death point");
         }
 
@@ -16,21 +17,23 @@ namespace ChampionMod.Items.Useable
         {
             item.width = 20;
             item.height = 30;
+            item.maxStack = 30;
             item.rare = 7;
-            item.useTime = 90;
-            item.useAnimation = 90;
-            item.useStyle = 4;
+            item.useTime = 17;
+            item.useAnimation = 17;
+            item.useStyle = 2;
             item.UseSound = SoundID.Item6;
-            item.value = 250000; // 5 gold
+            item.consumable = true;
+            item.value = 205000; // 4 gold + 10 silver
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("ChampionMod:MagicMirrors");
-            recipe.AddIngredient(mod.ItemType("MemoryPotion"), 5);
-            recipe.AddRecipeGroup("ChampionMod:MythrilBars", 5);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddIngredient(ItemID.BottledWater);
+            recipe.AddIngredient(ItemID.Waterleaf);
+            recipe.AddIngredient(mod.ItemType("MemoryFish"));
+            recipe.AddTile(TileID.Bottles);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
@@ -44,7 +47,7 @@ namespace ChampionMod.Items.Useable
             }
             else
             {
-                player.GetModPlayer<MyPlayer>().memoryTimer = 30;
+                player.GetModPlayer<MyPlayer>().memoryTimer = 5;
 
                 // See MyPlayer.cs for the teleportation and dust effect
             }
