@@ -19,8 +19,8 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 16;//25
-            NPCID.Sets.ExtraFramesCount[npc.type] = 0; //9
+            Main.npcFrameCount[npc.type] = 25;
+            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 0;
@@ -88,19 +88,6 @@ namespace ChampionMod.NPCs.TownNPCs
                 default:
                     return "Colorless";
             }
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            /*npc.frame.Width = 40;
-			if (((int)Main.time / 10) % 2 == 0)
-			{
-				npc.frame.X = 40;
-			}
-			else
-			{
-				npc.frame.X = 0;
-			}*/
         }
 
         public override string GetChat()

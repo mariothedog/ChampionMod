@@ -14,7 +14,7 @@ namespace ChampionMod.Projectiles
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.aiStyle = -1; // -1 so it uses the method AI()
+            projectile.aiStyle = 19;//-1; // -1 so it uses the method AI()
             projectile.penetrate = -1;
             projectile.alpha = 0;
 
@@ -44,29 +44,32 @@ namespace ChampionMod.Projectiles
 			if (!projOwner.frozen) {
 				if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
 				{
-					movementFactor = 1.8f; // Make sure the spear moves forward when initially thrown out
+					movementFactor = 1.9f; // Make sure the spear moves forward when initially thrown out
 					projectile.netUpdate = true; // Make sure to netUpdate this spear
 				}
 				if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
 				{
-					movementFactor -= 1.2f;
+					movementFactor -= 1.3f;
 				}
 				else // Otherwise, increase the movement factor
 				{
-					movementFactor += 0.9f;
+					movementFactor += 1f;
 				}
 			}
 			// Change the spear position based off of the velocity and the movementFactor
 			projectile.position += projectile.velocity * movementFactor;
 			// When we reach the end of the animation, we can kill the spear projectile
-			if (projOwner.itemAnimation == 0) {
+			if (projOwner.itemAnimation == 0)
+            {
 				projectile.Kill();
 			}
-			// MathHelper.ToRadians(xx degrees here)
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
 
-            // So the projectile's sprite doesn't flip upside down when hitting towards the left
-            projectile.spriteDirection = projectile.direction;
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
+
+            if (projectile.spriteDirection == -1)
+            {
+                projectile.rotation -= MathHelper.ToRadians(90f);
+            }
 		}
     }
 }

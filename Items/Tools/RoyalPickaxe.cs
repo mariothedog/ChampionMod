@@ -7,11 +7,13 @@ namespace ChampionMod.Items.Tools
 {
 	public class RoyalPickaxe : ModItem
 	{
-		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("It's really slimey.");
+		public override void SetStaticDefaults()
+        {
+			Tooltip.SetDefault("It's really slimey");
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults()
+        {
 			item.damage = 6;
 			item.melee = true;
 			item.width = 40;
@@ -27,20 +29,23 @@ namespace ChampionMod.Items.Tools
 			item.autoReuse = true;
 		}
 
-		public override void AddRecipes() {
+		public override void AddRecipes()
+        {
 			ModRecipe recipe = new ModRecipe(mod);
 			
 			recipe.AddIngredient(mod.ItemType("KingsGel"), 5);
-			recipe.AddRecipeGroup("ChampionMod:Tier3Bars"), 12;
+			recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 12);
 			recipe.AddIngredient(ItemID.Gel, 3);
 			recipe.AddTile(TileID.Solidifier);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
 
-		public override void MeleeEffects(Player player, Rectangle hitbox) {
-			if (Main.rand.NextBool(10)) {
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("Sparkle"));
+		public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+			if (Main.rand.NextBool(10))
+            {
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 33);
 			}
 		}
 	}
