@@ -6,7 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Projectiles
+namespace ChampionMod.Projectiles.Arrows
 {
     public class MeteorArrowProjectile : ModProjectile
     {

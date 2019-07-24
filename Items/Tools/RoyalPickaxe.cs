@@ -19,12 +19,12 @@ namespace ChampionMod.Items.Tools
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 20;
-			item.useAnimation = 10;
-			item.pick = 220;
+			item.useAnimation = 20;
+			item.pick = 60;
 			item.useStyle = 1;
 			item.knockBack = 3;
-			item.value = 15000;
-			item.rare = 1;
+            item.value = 250000;
+            item.rare = 1;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}
@@ -43,10 +43,15 @@ namespace ChampionMod.Items.Tools
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-			if (Main.rand.NextBool(10))
-            {
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 33);
-			}
+			Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 33);
 		}
-	}
+
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            if (Main.rand.Next(2) == 0)
+            {
+                target.AddBuff(BuffID.Slimed, 1200, false); // Slimed debuff for 20 seconds
+            }
+        }
+    }
 }

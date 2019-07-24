@@ -2,5 +2,5 @@ author = Mariothedog
 version = 0.171
 displayName = Champion Mod
 homepage = https://forums.terraria.org/index.php?threads/champion-mod.81176/
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.sln
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.sln, Properties\*
 includePDB = true

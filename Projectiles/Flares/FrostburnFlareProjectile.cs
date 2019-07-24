@@ -7,7 +7,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Projectiles
+namespace ChampionMod.Projectiles.Flares
 {
     public class FrostburnFlareProjectile : ModProjectile
     {

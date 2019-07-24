@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Projectiles
+namespace ChampionMod.Projectiles.Magic
 {
     class MoonStaffProjectile : ModProjectile
     {

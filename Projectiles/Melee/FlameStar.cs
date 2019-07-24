@@ -3,12 +3,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Projectiles
+namespace ChampionMod.Projectiles.Melee
 {
-	public class FrostStar : ModProjectile
+	public class FlameStar : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("FrostStar");
+			DisplayName.SetDefault("FlameStar");
 		}
 
 		public override void SetDefaults() {
@@ -16,9 +16,9 @@ namespace ChampionMod.Projectiles
 			projectile.penetrate = 1; 
 		}
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Frostburn, 180);
+            target.AddBuff(BuffID.OnFire, 1200);
         }
-    }
+  	}
 }

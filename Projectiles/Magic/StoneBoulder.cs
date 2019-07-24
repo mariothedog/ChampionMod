@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Projectiles
+namespace ChampionMod.Items.Projectiles.Magic
 {
 	public class StoneBoulder : ModProjectile
 	{
