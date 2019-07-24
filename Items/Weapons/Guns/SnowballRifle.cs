@@ -15,6 +15,7 @@ namespace ChampionMod.Items.Weapons.Guns
 		{
 			item.damage = 14;
 			item.ranged = true;
+            item.noMelee = true;
 			item.width = 40;
 			item.height = 20;
 			item.useTime = 33;

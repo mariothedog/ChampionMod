@@ -13,7 +13,7 @@ namespace ChampionMod.Projectiles
         public override void SetDefaults()
         {
             projectile.magic = true;
-            projectile.friendly = true; // So it doesn't damage you
+            projectile.friendly = true; // So it does damage to enemies
             projectile.tileCollide = true;
             projectile.penetrate = 1; // how many npcs it will go through
             projectile.timeLeft = 200;
