@@ -25,7 +25,6 @@ namespace ChampionMod.Items.Weapons.MagicStaffs
 			item.useStyle = 5;
 			item.noMelee = true; 
 			item.knockBack = 6;
-			item.value = 1;
 			item.rare = 1;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
@@ -37,7 +36,7 @@ namespace ChampionMod.Items.Weapons.MagicStaffs
         {
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.StoneBlock, 20);
-      		recipe.AddIngredient(ItemID.Wood, 15);
+            recipe.AddRecipeGroup("Wood", 15);
      		recipe.AddIngredient(ItemID.IronBar, 2);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
