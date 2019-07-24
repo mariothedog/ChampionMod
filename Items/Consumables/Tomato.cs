@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChampionMod.Items.Consumables
 {
-    class Corn : ModItem
+    class Tomato : ModItem
     {
         public override void SetDefaults()
         {
@@ -15,7 +15,7 @@ namespace ChampionMod.Items.Consumables
             item.useTime = 17;
             item.useAnimation = 17;
             item.useStyle = 2;
-            item.healLife = 20;
+            item.healLife = 15;
             item.consumable = true;
             item.maxStack = 30;
             item.potion = true; // For potion sickness and quick heal

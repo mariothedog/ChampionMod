@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChampionMod.Tiles.Crops
 {
-    public class CornCrop : ModTile
+    public class TomatoCrop : ModTile
     {
         public override void SetDefaults()
         {
@@ -19,10 +19,10 @@ namespace ChampionMod.Tiles.Crops
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 
             TileObjectData.newTile.Width = 3;
-            TileObjectData.newTile.Height = 4;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 20 }; // Last one is 18 so it extends into the grass
+            TileObjectData.newTile.Height = 3;
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 20 }; // Last one is 20 so it extends into the grass
 
-            TileObjectData.newTile.Origin = new Point16(1, 3);
+            TileObjectData.newTile.Origin = new Point16(1, 2);
 
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, 1, 1);
 
@@ -37,8 +37,8 @@ namespace ChampionMod.Tiles.Crops
 
         public override bool CanPlace(int i, int j)
         {
-            // So you can't hold down the corn seeds to constantly replace it
-            // Since the corn crop is 3 blocks wide you also need to make sure it has enough space
+            // So you can't hold down the tomato seeds to constantly replace it
+            // Since the tomato crop is 3 blocks wide you also need to make sure it has enough space
             return Main.tile[i, j].type != Type && Main.tile[i + 1, j].type != Type && Main.tile[i - 1, j].type != Type;
         }
 
@@ -49,55 +49,42 @@ namespace ChampionMod.Tiles.Crops
             {
                 for (int x = 0; x < 10; x++)
                 {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
                 }
             }
             else if (stage == 1)
             {
                 for (int x = 0; x < 10; x++)
                 {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
                     Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, 3);
                 }
             }
             else if (stage == 2)
             {
                 for (int x = 0; x < 15; x++)
                 {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
                     Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, 3);
                 }
             }
             else if (stage == 3)
             {
-                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("CornSeeds"), 1 + Main.rand.Next(3));
-                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("Corn"), 1);
-
                 for (int x = 0; x < 15; x++)
                 {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
                     Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
-                }
-
-                for (int x = 0; x < 8; x++)
-                {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, mod.DustType("CornDust"));
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, 3);
                 }
             }
             else if (stage == 4)
             {
-                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("CornSeeds"), 2 + Main.rand.Next(3));
-                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("Corn"), 1 + Main.rand.Next(3));
+                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("TomatoSeeds"), 2 + Main.rand.Next(3));
+                Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType("Tomato"), 2 + Main.rand.Next(2));
 
                 for (int x = 0; x < 15; x++)
                 {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 3) * 16), 16, 16, 3);
                     Dust.NewDust(new Vector2((i + 1) * 16, (j + 2) * 16), 16, 16, 3);
-                }
-
-                for (int x = 0; x < 10; x++)
-                {
-                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, mod.DustType("CornDust"));
+                    Dust.NewDust(new Vector2((i + 1) * 16, (j + 1) * 16), 16, 16, 3);
                 }
             }
         }
@@ -105,17 +92,17 @@ namespace ChampionMod.Tiles.Crops
         public override void RandomUpdate(int i, int j)
         {
             // So it is not executing all this code for no reason when it's at the max stage
-            // So it slows down the growth especially since there are 12 tiles that could be randomly updated
+            // So it slows down the growth
             // So the crop doesn't grow when it is not on the surface
-            if (Main.tile[i, j].frameX < 216 && Main.rand.Next(90) == 0 && j < Main.worldSurface)
+            if (Main.tile[i, j].frameX < 216 && Main.rand.Next(65) == 0 && j < Main.worldSurface)
             {
                 // Gets the top left tile coords
                 int topLeftX = i - Main.tile[i, j].frameX / 18 % 3;
-                int topLeftY = j - Main.tile[i, j].frameY / 18 % 4;
+                int topLeftY = j - Main.tile[i, j].frameY / 18 % 3;
 
                 for (int x = 0; x <= 2; x++)
                 {
-                    for (int y = 0; y <= 3; y++)
+                    for (int y = 0; y <= 2; y++)
                     {
                         if (Main.tile[topLeftX + x, topLeftY + y].frameX < 216)
                         {
