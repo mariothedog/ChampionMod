@@ -35,10 +35,10 @@ namespace ChampionMod.Items.Weapons.Throwing
             item.shoot = mod.ProjectileType("CorruptKnife");
         }
 		
-	public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+	    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float numberProjectiles = 2; 
-            float rotation = MathHelper.ToRadians(3); // So the jester's arrows don't fly in the same position (adds spread)
+            float rotation = MathHelper.ToRadians(3); // adds spread
 			
             for (int i = 0; i < numberProjectiles; i++)
             {
@@ -47,6 +47,6 @@ namespace ChampionMod.Items.Weapons.Throwing
             }
         
             return false; // False so it doesn't create another projectile like normal
-	}
+	    }
     }
 }

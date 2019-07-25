@@ -34,7 +34,7 @@ namespace ChampionMod.Projectiles.Spears
         {
             projectile.ai[0] += 1f;
 
-            //NPC projOwner = Main.npc[projectile.owner]; //TODO GET npc.whoAmI
+            NPC projOwner = Main.npc[projectile.owner]; //TODO GET npc.whoAmI
             //NPC projOwner = NPC.FindFirstNPC//Main.npc[farmer];
 
             //Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
