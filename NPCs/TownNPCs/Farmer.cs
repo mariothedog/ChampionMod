@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -11,6 +12,10 @@ namespace ChampionMod.NPCs.TownNPCs
     [AutoloadHead]
     public class Farmer : ModNPC
     {
+        //public override string Texture => "ChampionMod/NPCs/TownNPCs/Farmer";
+
+        //public override string[] AltTextures => new[] { "ChampionMod/NPCs/TownNPCs/ExamplePerson_Alt_1" };
+
         public override bool Autoload(ref string name)
         {
             name = "Farmer";
@@ -47,6 +52,12 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
+            List<int> plants = new List<int>()
+            { ItemID.DaybloomSeeds, ItemID.BlinkrootSeeds, ItemID.DeathweedSeeds,
+            ItemID.FireblossomSeeds, ItemID.MoonglowSeeds, ItemID.WaterleafSeeds,
+            ItemID.ShiverthornSeeds, ItemID.PumpkinSeed,
+            mod.ItemType("CornSeeds"), mod.ItemType("TomatoSeeds")};
+
             for (int k = 0; k < 255; k++)
             {
                 Player player = Main.player[k];
@@ -57,7 +68,7 @@ namespace ChampionMod.NPCs.TownNPCs
 
                 foreach (Item item in player.inventory)
                 {
-                    if (item.type == mod.ItemType("CornSeeds") || item.type == mod.ItemType("TomatoSeeds"))
+                    if (plants.Contains(item.type))
                     {
                         return true;
                     }
@@ -68,7 +79,7 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            switch (WorldGen.genRand.Next(9))
+            switch (WorldGen.genRand.Next(30))
             {
                 case 0:
                     return "Joseph";
@@ -86,6 +97,48 @@ namespace ChampionMod.NPCs.TownNPCs
                     return "Albert";
                 case 7:
                     return "John";
+                case 8:
+                    return "Zebadiah";
+                case 9:
+                    return "Noel";
+                case 10:
+                    return "Maurice";
+                case 11:
+                    return "George";
+                case 12:
+                    return "Butch";
+                case 13:
+                    return "Dean";
+                case 14:
+                    return "Barrett";
+                case 15:
+                    return "Beau";
+                case 16:
+                    return "Claude";
+                case 17:
+                    return "Paddy";
+                case 18:
+                    return "Sean";
+                case 19:
+                    return "Calhoun";
+                case 20:
+                    return "Rhett";
+                case 21:
+                    return "Edison";
+                case 22:
+                    return "Hudson";
+                case 23:
+                    return "Brady";
+                case 24:
+                    return "John Joe";
+                case 25:
+                    return "Brody";
+                case 26:
+                    return "Nash";
+                case 27:
+                    return "Grant";
+                case 28:
+                    return "Garret";
                 default:
                     return "Walter";
             }
@@ -96,25 +149,66 @@ namespace ChampionMod.NPCs.TownNPCs
             int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
             if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
             {
-                return "Yes, " + Main.npc[wizardNPC].GivenName + " is a wizard, I'm as surprised as you are.";
+                if (Main.rand.Next(2) == 0)
+                {
+                    return "Yes, " + Main.npc[wizardNPC].GivenName + " is a wizard, I'm as surprised as you are.";
+                }
+                else
+                {
+                    return "Hah, " + Main.npc[wizardNPC].GivenName + " thinks his magic can grow better crops than I ever could! What a joke.";
+                }
             }
 
             int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
             if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
             {
-                return "Sure, you can ask " + Main.npc[guideNPC].GivenName + " how to farm, but you ain't no novice!";
+                return "Sure, you can ask " + Main.npc[guideNPC].GivenName + " how to farm, but he 'aint gonna give you no advice.";
             }
 
-            switch (Main.rand.Next(4))
+            int tavernkeepNPC = NPC.FindFirstNPC(NPCID.DD2Bartender);
+            if (tavernkeepNPC >= 0 && Main.rand.Next(4) == 0)
+            {
+                return "Have ya tried " + Main.npc[tavernkeepNPC].GivenName + "'s Ale?";
+            }
+
+            int anglerNPC = NPC.FindFirstNPC(NPCID.Angler);
+            if (anglerNPC >= 0 && Main.rand.Next(4) == 0)
+            {
+                return Main.npc[anglerNPC].GivenName + " thinks fishing's better than farming! Crazy, right?";
+            }
+
+            int witchdoctorNPC = NPC.FindFirstNPC(NPCID.WitchDoctor);
+            if (witchdoctorNPC >= 0 && Main.rand.Next(4) == 0)
+            {
+                return "I don't trust that " + Main.npc[witchdoctorNPC].GivenName + " guy. Something's wrong 'bout him.";
+            }
+
+            int truffleNPC = NPC.FindFirstNPC(NPCID.Truffle);
+            if (truffleNPC >= 0 && Main.rand.Next(4) == 0)
+            {
+                return "I'm sure " + Main.npc[truffleNPC].GivenName + " understands the value of good farmin'.";
+            }
+
+            int dryadNPC = NPC.FindFirstNPC(NPCID.Dryad);
+            if (dryadNPC >= 0 && Main.rand.Next(4) == 0)
+            {
+                return "I wonder if " + Main.npc[dryadNPC].GivenName + " could help with the harvest?";
+            }
+
+            switch (Main.rand.Next(7))
             {
                 case 0:
-                    return "You wanna buy something?";
+                    return "Hey, wanna buy somthin'?";
                 case 1:
-                    return "What do you want? I haven't got all day!";
+                    return "Whaddya want? I haven't got all day!";
                 case 2:
-                    return "I like this house.";
+                    return "Nice house ya got there.";
                 case 3:
-                    return "Where I'm from, you'd say a prayer for this weather!";
+                    return "Where I'm from, you'd say a prayer for this here weather!";
+                case 4:
+                    return "I'm not old McDonald!";
+                case 5:
+                    return "If ya 'aint willin' to buy my crops, grow 'em yourself!";
                 default:
                     return "Any good harvests lately?";
             }
@@ -150,7 +244,6 @@ namespace ChampionMod.NPCs.TownNPCs
             if (Main.netMode == NetmodeID.Server)
             {
                 ModPacket packet = mod.GetPacket();
-                //packet.Write((byte)ExampleModMessageType.ExampleTeleportToStatue);
                 packet.Write((byte)npc.whoAmI);
                 packet.Send();
             }
@@ -174,7 +267,6 @@ namespace ChampionMod.NPCs.TownNPCs
                 {
                     position.Y = Math.Sign(position.Y) * 20;
                 }
-                Dust.NewDustPerfect(npc.Center + position, mod.DustType("CornDust"), Vector2.Zero).noGravity = true;
             }
         }
 
@@ -192,7 +284,7 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = mod.ProjectileType("Pitchfork");
+            projType = mod.ProjectileType("FarmerPitchforkProjectile");
             attackDelay = 1;
         }
 
