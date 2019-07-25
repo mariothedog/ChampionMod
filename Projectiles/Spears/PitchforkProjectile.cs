@@ -23,7 +23,8 @@ namespace ChampionMod.Projectiles.Spears
             projectile.friendly = true;
         }
 
-		public float movementFactor {
+		public float movementFactor
+        {
 			get { return projectile.ai[0]; }
 			set { projectile.ai[0] = value; }
 		}

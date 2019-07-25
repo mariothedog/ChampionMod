@@ -29,43 +29,36 @@ namespace ChampionMod.Projectiles.Spears
             set { projectile.ai[0] = value; }
         }
 
-        // It appears that for this AI, only the ai0 field is used!
         public override void AI()
         {
-            projectile.ai[0] += 1f;
+            projectile.ai[1] += 1f;
 
-            NPC projOwner = Main.npc[NPC.FindFirstNPC(mod.NPCType("Farmer"))];
+            NPC projOwner = Main.npc[ChampionMod.farmer];
 
-            //Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
             projectile.direction = projOwner.direction;
-            //projOwner.heldProj = projectile.whoAmI;
-            //projOwner.itemTime = projOwner.itemAnimation;
             projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2);
             projectile.position.Y = projOwner.Center.Y - (float)(projectile.height / 2);
+
             // As long as the player isn't frozen, the spear can move
             if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
             {
-                movementFactor = 1.9f; // Make sure the spear moves forward when initially thrown out
-                projectile.netUpdate = true; // Make sure to netUpdate this spear
+                movementFactor = 1.9f;
+                projectile.netUpdate = true;
             }
-            /*if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
+            if (projectile.ai[1] % 600 == 0)
             {
                 movementFactor -= 1.3f;
-            }*/
-            if (projectile.ai[0] >= 1200)
-            {
-                movementFactor -= 1.3f;
-                //projectile.ai[0] = 0f;
             }
             else // Otherwise, increase the movement factor
             {
                 movementFactor += 1f;
             }
-            // Change the spear position based off of the velocity and the movementFactor
-            projectile.position += projectile.velocity * movementFactor;
-            // When we reach the end of the animation, we can kill the spear projectile
 
-            if (projectile.ai[0] >= 120000)
+            projectile.position += projectile.velocity * movementFactor;
+
+            //Main.NewText(projectile.position);
+
+            if (projectile.ai[1] >= 2400)
             {
                 projectile.Kill();
             }

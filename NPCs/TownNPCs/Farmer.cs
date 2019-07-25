@@ -12,10 +12,6 @@ namespace ChampionMod.NPCs.TownNPCs
     [AutoloadHead]
     public class Farmer : ModNPC
     {
-        //public override string Texture => "ChampionMod/NPCs/TownNPCs/Farmer";
-
-        //public override string[] AltTextures => new[] { "ChampionMod/NPCs/TownNPCs/ExamplePerson_Alt_1" };
-
         public override bool Autoload(ref string name)
         {
             name = "Farmer";
@@ -30,7 +26,7 @@ namespace ChampionMod.NPCs.TownNPCs
             NPCID.Sets.DangerDetectRange[npc.type] = 700;
             NPCID.Sets.AttackType[npc.type] = 0;
             NPCID.Sets.AttackTime[npc.type] = 90;
-            NPCID.Sets.AttackAverageChance[npc.type] = 30;
+            NPCID.Sets.AttackAverageChance[npc.type] = 100;
             NPCID.Sets.HatOffsetY[npc.type] = 4;
         }
 
@@ -146,8 +142,8 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
-            if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
+            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard); // this make so when this npc is close to Wizard
+            if (wizardNPC >= 0 && Main.rand.Next(4) == 0) // has 1 in 3 chance to show this message
             {
                 if (Main.rand.Next(2) == 0)
                 {
@@ -159,8 +155,8 @@ namespace ChampionMod.NPCs.TownNPCs
                 }
             }
 
-            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
-            if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
+            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); // this make so when this npc is close to the Guide
+            if (guideNPC >= 0 && Main.rand.Next(4) == 0) // has 1 in 3 chance to show this message
             {
                 return "Sure, you can ask " + Main.npc[guideNPC].GivenName + " how to farm, but he 'aint gonna give you no advice.";
             }
@@ -239,7 +235,7 @@ namespace ChampionMod.NPCs.TownNPCs
         }
 
         // Make something happen when the npc teleports to a statue. Since this method only runs server side, any visual effects like dusts or gores have to be synced across all clients manually.
-        public override void OnGoToStatue(bool toKingStatue)
+        /*public override void OnGoToStatue(bool toKingStatue)
         {
             if (Main.netMode == NetmodeID.Server)
             {
@@ -268,7 +264,7 @@ namespace ChampionMod.NPCs.TownNPCs
                     position.Y = Math.Sign(position.Y) * 20;
                 }
             }
-        }
+        }*/
 
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
@@ -286,6 +282,7 @@ namespace ChampionMod.NPCs.TownNPCs
         {
             projType = mod.ProjectileType("FarmerPitchforkProjectile");
             attackDelay = 1;
+            ChampionMod.farmer = npc.whoAmI;
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)

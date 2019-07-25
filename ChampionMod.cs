@@ -8,6 +8,8 @@ namespace ChampionMod
 {
     class ChampionMod : Mod
     {
+        public static int farmer;
+
         public override void AddRecipeGroups()
         {
             RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Tier 2 Broadswords", new int[]
