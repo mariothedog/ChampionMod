@@ -45,15 +45,6 @@ namespace ChampionMod.NPCs.TownNPCs
             animationType = NPCID.Guide;
         }
 
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            int num = npc.life > 0 ? 1 : 5;
-            for (int k = 0; k < num; k++)
-            {
-                Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("CornDust"));
-            }
-        }
-
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             for (int k = 0; k < 255; k++)
@@ -77,40 +68,55 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            switch (WorldGen.genRand.Next(4))
+            switch (WorldGen.genRand.Next(9))
             {
                 case 0:
-                    return "Someone";
+                    return "Joseph";
                 case 1:
-                    return "Somebody";
+                    return "Flan";
                 case 2:
-                    return "Blocky";
+                    return "Mario";
+                case 3:
+                    return "Jack";
+                case 4:
+                    return "Robert";
+                case 5:
+                    return "Thomas";
+                case 6:
+                    return "Albert";
+                case 7:
+                    return "John";
                 default:
-                    return "Colorless";
+                    return "Walter";
             }
         }
 
         public override string GetChat()
         {
-            int partyGirl = NPC.FindFirstNPC(NPCID.PartyGirl);
-            if (partyGirl >= 0 && Main.rand.NextBool(4))
+            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
+            if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
             {
-                return "Can you please tell " + Main.npc[partyGirl].GivenName + " to stop decorating my house with colors?";
+                return "Yes, " + Main.npc[wizardNPC].GivenName + " is a wizard, I'm as surprised as you are.";
             }
+
+            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
+            if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
+            {
+                return "Sure, you can ask " + Main.npc[guideNPC].GivenName + " how to farm, but you ain't no novice!";
+            }
+
             switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "Sometimes I feel like I'm different from everyone else here.";
+                    return "You wanna buy something?";
                 case 1:
-                    return "What's your favorite color? My favorite colors are white and black.";
+                    return "What do you want? I haven't got all day!";
                 case 2:
-                    {
-                        // Main.npcChatCornerItem shows a single item in the corner, like the Angler Quest chat.
-                        Main.npcChatCornerItem = ItemID.HiveBackpack;
-                        return $"Hey, if you find a [i:{ItemID.HiveBackpack}], I can upgrade it for you.";
-                    }
+                    return "I like this house.";
+                case 3:
+                    return "Where I'm from, you'd say a prayer for this weather!";
                 default:
-                    return "What? I don't have any arms or legs? Oh, don't be ridiculous!";
+                    return "Any good harvests lately?";
             }
         }
 
@@ -186,7 +192,7 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = mod.ProjectileType("Acorn");
+            projType = mod.ProjectileType("Pitchfork");
             attackDelay = 1;
         }
 
