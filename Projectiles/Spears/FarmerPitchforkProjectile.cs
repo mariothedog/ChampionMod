@@ -14,7 +14,7 @@ namespace ChampionMod.Projectiles.Spears
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.aiStyle = 19;//-1; // -1 so it uses the method AI()
+            projectile.aiStyle = 19;
             projectile.penetrate = -1;
             projectile.alpha = 0;
 
@@ -34,8 +34,7 @@ namespace ChampionMod.Projectiles.Spears
         {
             projectile.ai[0] += 1f;
 
-            NPC projOwner = Main.npc[projectile.owner]; //TODO GET npc.whoAmI
-            //NPC projOwner = NPC.FindFirstNPC//Main.npc[farmer];
+            NPC projOwner = Main.npc[NPC.FindFirstNPC(mod.NPCType("Farmer"))];
 
             //Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
             projectile.direction = projOwner.direction;
@@ -53,10 +52,10 @@ namespace ChampionMod.Projectiles.Spears
             {
                 movementFactor -= 1.3f;
             }*/
-            if (projectile.ai[0] >= 120)
+            if (projectile.ai[0] >= 1200)
             {
                 movementFactor -= 1.3f;
-                projectile.ai[0] = 0f;
+                //projectile.ai[0] = 0f;
             }
             else // Otherwise, increase the movement factor
             {
@@ -65,6 +64,11 @@ namespace ChampionMod.Projectiles.Spears
             // Change the spear position based off of the velocity and the movementFactor
             projectile.position += projectile.velocity * movementFactor;
             // When we reach the end of the animation, we can kill the spear projectile
+
+            if (projectile.ai[0] >= 120000)
+            {
+                projectile.Kill();
+            }
 
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(135f);
 

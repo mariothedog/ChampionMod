@@ -290,8 +290,8 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            multiplier = 12f;
-            randomOffset = 2f;
+            multiplier = 1f;
+            randomOffset = 0f;
         }
     }
 }

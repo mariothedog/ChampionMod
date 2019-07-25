@@ -14,7 +14,7 @@ namespace ChampionMod.Projectiles.Spears
         {
             projectile.width = 18;
             projectile.height = 18;
-            projectile.aiStyle = 19;//-1; // -1 so it uses the method AI()
+            projectile.aiStyle = 19;
             projectile.penetrate = -1;
             projectile.alpha = 0;
 
