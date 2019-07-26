@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
@@ -30,10 +31,12 @@ namespace ChampionMod.Projectiles.Spears
 		}
 
         // It appears that for this AI, only the ai0 field is used!
-		public override void AI() {
-			// Since we access the owner player instance so much, it's useful to create a helper local variable for this
+		public override void AI()
+        {
+            // Since we access the owner player instance so much, it's useful to create a helper local variable for this
 			// Sadly, Projectile/ModProjectile does not have its own
 			Player projOwner = Main.player[projectile.owner];
+
 			// Here we set some of the projectile's owner properties, such as held item and itemtime, along with projectile direction and position based on the player
 			Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
 			projectile.direction = projOwner.direction;
@@ -71,6 +74,6 @@ namespace ChampionMod.Projectiles.Spears
             {
                 projectile.rotation -= MathHelper.ToRadians(90f);
             }
-		}
+        }
     }
 }

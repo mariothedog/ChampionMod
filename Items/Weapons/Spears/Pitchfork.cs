@@ -30,10 +30,8 @@ namespace ChampionMod.Items.Weapons.Spears
             item.ranged = false;
             item.noUseGraphic = true; // Stops the melee animation               
             item.shootSpeed = 3f;
-            item.shoot = 0; // So it doesn't shoot anything
             item.shoot = mod.ProjectileType("PitchforkProjectile");
             item.useAmmo = 0;
 	    }
-		
 	}
 }
