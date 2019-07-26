@@ -29,39 +29,52 @@ namespace ChampionMod.Projectiles.Spears
             set { projectile.ai[0] = value; }
         }
 
+        /*public Vector2 MountedCenter
+        {
+            get
+            {
+                return new Vector2(projOwner.position.X + (float)(projOwner.width / 2), projOwner.position.Y + 21f);// + (float)projOwner.mount.PlayerOffsetHitbox);
+            }
+            set
+            {
+                projOwner.position = new Vector2(value.X - (float)(projOwner.width / 2), value.Y - 21f); //- (float)projOwner.mount.PlayerOffsetHitbox);
+            }
+        }*/
+
         public override void AI()
         {
-            projectile.ai[1] += 1f;
-
             NPC projOwner = Main.npc[ChampionMod.farmer];
 
+            projectile.ai[1] += 1f;
+
             projectile.direction = projOwner.direction;
-            /*if (projectile.spriteDirection == 1)
-            {
-                projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2) + 10;
-            }
-            else
-            {
-                projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2);
-            }*/
+
+            /*Vector2 pos = projOwner.position;
+            Vector2 fullRotationOrigin = new Vector2((float)(projOwner.width / 2), (float)projOwner.height);
+            Vector2 value = projOwner.position + fullRotationOrigin;
+            Matrix matrix = Matrix.CreateRotationZ(projOwner.fullRotation * 1); // May need to change 1?
+            pos -= projOwner.position + fullRotationOrigin;
+            pos = Vector2.Transform(pos, matrix);
+            Vector2 renamePls = pos + value;*/
+
+            //Vector2 ownerMountedCenter = RotatedRelativePoint(projOwner, MountedCenter, true);
 
             projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2);
             projectile.position.Y = projOwner.Center.Y - (float)(projectile.height / 2);
-
-            //Main.NewText(projectile.position.X);
+            projectile.position += projectile.velocity * 25;
 
             if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
             {
-                movementFactor = 1.9f;
+                movementFactor = 2.4f;
                 projectile.netUpdate = true;
             }
-            if (projectile.ai[1] >= 40) // Makes the spear move back
+            if (projectile.ai[1] >= 30) // Makes the spear move back
             {
-                movementFactor -= 1.3f;
+                movementFactor -= 1.8f;
             }
             else // Otherwise, increase the movement factor
             {
-                movementFactor += 1f;
+                movementFactor += 1.5f;
             }
 
             //Main.NewText(movementFactor);
@@ -69,7 +82,7 @@ namespace ChampionMod.Projectiles.Spears
 
             projectile.position += projectile.velocity * movementFactor;
 
-            if (projectile.ai[1] >= 80)
+            if (projectile.ai[1] >= 50)
             {
                 projectile.Kill();
             }
@@ -105,5 +118,18 @@ namespace ChampionMod.Projectiles.Spears
 
             return false;
         }
+
+        // Taken from the vanilla code since NPCs don't have a RotatedRelativePoint
+        /*public Vector2 RotatedRelativePoint(NPC projOwner, Vector2 pos, bool rotateForward = true)
+        {
+            Vector2 fullRotationOrigin = Vector2.Zero;
+            float fullRotation = 0; // Mabye change 0?
+
+            Vector2 value = projOwner.position + fullRotationOrigin;
+            Matrix matrix = Matrix.CreateRotationZ(fullRotation * (float)rotateForward.ToInt());
+            pos -= projOwner.position + fullRotationOrigin;
+            pos = Vector2.Transform(pos, matrix);
+            return pos + value;
+        }*/
     }
 }

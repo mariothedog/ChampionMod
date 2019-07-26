@@ -28,17 +28,18 @@ namespace ChampionMod.Items.Weapons.Swords
             item.shootSpeed = 16f; 
 		}
 
-		public override void AddRecipes() {
-            		ModRecipe recipe = new ModRecipe(mod);
-            		recipe.AddRecipeGroup("ChampionMod:Tier4BarSwords");
-            		recipe.AddIngredient(ItemID.FallenStar, 5);
-            		recipe.AddIngredient(ItemID.CrystalShard, 3);
-           		recipe.AddIngredient(ItemID.SoulofLight, 5);
-            		recipe.AddIngredient(ItemID.SoulofNight, 5);
-            		recipe.AddIngredient(ItemID.HallowedBar, 12);
-            		recipe.AddTile(TileID.MythrilAnvil);
-            		recipe.SetResult(this);
-            		recipe.AddRecipe();
+		public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddRecipeGroup("ChampionMod:Tier4BarSwords");
+            recipe.AddIngredient(ItemID.FallenStar, 5);
+            recipe.AddIngredient(ItemID.CrystalShard, 3);
+            recipe.AddIngredient(ItemID.SoulofLight, 5);
+            recipe.AddIngredient(ItemID.SoulofNight, 5);
+            recipe.AddIngredient(ItemID.HallowedBar, 12);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
