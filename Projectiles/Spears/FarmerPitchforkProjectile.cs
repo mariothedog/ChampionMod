@@ -36,8 +36,19 @@ namespace ChampionMod.Projectiles.Spears
             NPC projOwner = Main.npc[ChampionMod.farmer];
 
             projectile.direction = projOwner.direction;
+            /*if (projectile.spriteDirection == 1)
+            {
+                projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2) + 10;
+            }
+            else
+            {
+                projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2);
+            }*/
+
             projectile.position.X = projOwner.Center.X - (float)(projectile.width / 2);
             projectile.position.Y = projOwner.Center.Y - (float)(projectile.height / 2);
+
+            //Main.NewText(projectile.position.X);
 
             if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
             {

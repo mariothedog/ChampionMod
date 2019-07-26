@@ -16,8 +16,8 @@ namespace ChampionMod.Items.Tools
         {
 			item.damage = 6;
 			item.melee = true;
-			item.width = 40;
-			item.height = 40;
+			item.width = 16;
+			item.height = 16;
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.pick = 60;
@@ -48,10 +48,7 @@ namespace ChampionMod.Items.Tools
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if (Main.rand.Next(2) == 0)
-            {
-                target.AddBuff(BuffID.Slimed, 1200, false); // Slimed debuff for 20 seconds
-            }
+            target.AddBuff(BuffID.Slimed, 1200, false); // Slimed debuff for 20 seconds
         }
     }
 }
