@@ -86,7 +86,7 @@ namespace ChampionMod.Projectiles.Melee
 
             // Please note the usage of MathHelper, please use this!
             // We subtract 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
-            Vector2 rotVector = (projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity
+            Vector2 rotVector = (projectile.rotation - MathHelper.ToRadians(45f)).ToRotationVector2(); // rotation vector to use for dust velocity
             usePos += rotVector * 16f;
 
             // Declaring a constant in-line is fine as it will be optimized by the compiler
