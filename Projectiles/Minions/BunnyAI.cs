@@ -87,22 +87,31 @@ namespace ChampionMod.Projectiles.Minions
                     }
                 }
 
+                float dist = Vector2.Distance(projectile.Center, player.Center);
+
                 // Checks if the minion is too far away from the player
                 // If the minion has found an enemy to attack then the distance that it can be from the player will be increased
-                if (Vector2.Distance(projectile.Center, player.Center) > (target ? 1200 : 700))
+                if (dist > (target ? 1200 : 700))
                 {
                     AI_State = State_Far;
                 }
                 else
                 {
-                    if (target == false)
+                    if (target == false) // If the minion hasn't already found an enemy
                     {
-                        // Follow player
-                        Vector2 directionToPlayer = projectile.DirectionTo(player.Center);
+                        Vector2 directionToPlayer = projectile.DirectionTo(player.Center); // Get the direction to he player
+                        projectile.direction = directionToPlayer.X > 0 ? -1 : 1; // Used for switching the sprite direction (in SelectFrame)
 
-                        projectile.direction = directionToPlayer.X > 0 ? -1 : 1;
+                        if (dist > 50) // So the minion isn't constantly bumping into the player
+                        {
+                            // Follow player
 
-                        projectile.velocity = directionToPlayer * 5;
+                            projectile.velocity = directionToPlayer * 5;
+                        }
+                        else
+                        {
+                            projectile.velocity *= 0.97f;
+                        }
                     }
                 }
             }

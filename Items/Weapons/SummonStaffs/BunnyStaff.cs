@@ -10,7 +10,7 @@ namespace ChampionMod.Items.Weapons.SummonStaffs
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Summons a bunny to fight for you.");
+            Tooltip.SetDefault("Summons a bunny to fight for you");
         }
 
         public override void SetDefaults()
@@ -26,7 +26,6 @@ namespace ChampionMod.Items.Weapons.SummonStaffs
             item.noMelee = true;
             item.knockBack = 3;
             item.value = Item.buyPrice(0, 30, 0, 0);
-            item.rare = 11;
             item.UseSound = SoundID.Item44;
             item.shoot = mod.ProjectileType("Bunny");
             item.shootSpeed = 7f;
