@@ -141,14 +141,20 @@ namespace ChampionMod.Projectiles.Minions
                 // Jump to the right!
                 if (AI_Timer >= 30)
                 {
-                    //Main.NewText("this");
-                    //projectile.velocity.Y += 12;
-                    AI_State = State_Waiting;
+                    if (AI_Timer % 10 == 0)
+                    {
+                        projectile.velocity.Y += 2f;
+                    }
+
+                    if (AI_Timer >= 50)
+                    {
+                        AI_State = State_Waiting;
+                    }
                 }
                 else
                 {
                     //Main.NewText("thing");
-                    projectile.velocity = new Vector2(1, -12);
+                    projectile.velocity = new Vector2(1, -10);
                 }
 
                 AI_Timer += 1;
@@ -158,14 +164,20 @@ namespace ChampionMod.Projectiles.Minions
                 // Jump to the left!
                 if (AI_Timer >= 30)
                 {
-                    //Main.NewText("this");
-                    //projectile.velocity.Y += 12;
-                    AI_State = State_Waiting;
+                    if (AI_Timer % 10 == 0)
+                    {
+                        projectile.velocity.Y += 2f;
+                    }
+
+                    if (AI_Timer >= 50)
+                    {
+                        AI_State = State_Waiting;
+                    }
                 }
                 else
                 {
                     //Main.NewText("thing");
-                    projectile.velocity = new Vector2(-1, -12);
+                    projectile.velocity = new Vector2(-1, -10);
                 }
 
                 AI_Timer += 1;
