@@ -17,8 +17,8 @@ namespace ChampionMod.Items.Weapons.Guns
             item.ranged = true;
             item.width = 16;
             item.height = 16;
-            item.useTime = 14;
-            item.useAnimation = 23;
+            item.useTime = 23;
+            item.useAnimation = 14;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 4;
@@ -31,9 +31,15 @@ namespace ChampionMod.Items.Weapons.Guns
             // If you are reading this, you're gay.
         }
 		
-		 public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+	      public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            target.AddBuff(BuffID.Slimed, 1200, false); // Slimed debuff for 20 seconds
+            // Change bullet to a royal bullet
+            if (type == ProjectileID.Bullet)
+            {
+                type = mod.ProjectileType("RoyalBulletProjectile");
+            }
+
+            return true; // return true to allow tmodloader to call Projectile.NewProjectile as normal
         }
 
 
@@ -44,6 +50,8 @@ namespace ChampionMod.Items.Weapons.Guns
             recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 15);
             recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
+            recipe.AddRecipe();
         }
 
     }
