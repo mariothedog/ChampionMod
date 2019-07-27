@@ -20,8 +20,8 @@ namespace ChampionMod.Projectiles.Minions
         protected int attackingTimer = 0;
         protected bool hitTile = false;
         protected bool aboveGround = false;
-        protected bool noBlockRight = true;
-        protected bool noBlockLeft = true;
+        //protected bool noBlockRight = true;
+        //protected bool noBlockLeft = true;
         //protected int jumpDelayTimer = 200; // Timer till the next time the bunny can jump
         //protected int jumpTimer = 0; // Timer for when the bunny is jumping and when to stop
 
@@ -29,7 +29,7 @@ namespace ChampionMod.Projectiles.Minions
         {
         }
 
-        public virtual void SelectFrame(Vector2 vel)
+        public virtual void SelectFrame()
         {
         }
 
@@ -48,7 +48,9 @@ namespace ChampionMod.Projectiles.Minions
         private const int State_Waiting = 0; // Waiting for an enemy
         private const int State_Far = 1; // Player is too far away
         private const int State_Notice = 2; // Found an enemy
-        private const int State_Jump = 3; // Jump over blocks and just general hopping around
+        private const int State_BlockRight = 3; // Block to the right that needs to be jumped over
+        private const int State_BlockLeft = 4; // Block to the left that needs to be jumped over
+        private const int State_Jump = 5;
 
         public float AI_State
         {
@@ -72,7 +74,7 @@ namespace ChampionMod.Projectiles.Minions
             {
                 bool target = false;
 
-                // TO DO IF PLAYER HAS RIGHT CLICK TARGET
+                // TO DO IF PLAYER HAS RIGHT CLICK TARGET, DON'T HURT TARGET DUMMIES
                 for (int k = 0; k < 200; k++) // Finds npc to attack
                 {
                     NPC npc = Main.npc[k];
@@ -102,12 +104,29 @@ namespace ChampionMod.Projectiles.Minions
                         Vector2 directionToPlayer = projectile.DirectionTo(player.Center); // Get the direction to he player
                         projectile.direction = directionToPlayer.X > 0 ? -1 : 1; // Used for switching the sprite direction (in SelectFrame)
 
-                        if (dist > 90) // So the minion isn't constantly bumping into the player
+                        if (dist > 110) // So the minion isn't constantly bumping into the player
                         {
                             // Follow player
-
                             projectile.velocity = directionToPlayer * 5;
                         }
+                    }
+
+                    // Checks if there is a block to the left or right of the minion
+
+                    // Checks if there is a block to the right of the minion
+                    Tile right = Main.tile[(int)projectile.Center.X / 16 + 1, (int)projectile.Center.Y / 16];
+                    if (Main.tileSolid[right.type] && right.type != 0)
+                    {
+                        AI_State = State_BlockRight;
+                        AI_Timer = 0;
+                    }
+
+                    // Checks if there is a block to the left of the minion
+                    Tile left = Main.tile[(int)projectile.Center.X / 16 - 1, (int)projectile.Center.Y / 16];
+                    if (Main.tileSolid[left.type] && left.type != 0)
+                    {
+                        AI_State = State_BlockLeft;
+                        AI_Timer = 0;
                     }
                 }
             }
@@ -116,6 +135,40 @@ namespace ChampionMod.Projectiles.Minions
                 // Teleport to player
                 projectile.position = player.Center;
                 AI_State = State_Waiting;
+            }
+            else if (AI_State == State_BlockRight)
+            {
+                // Jump to the right!
+                if (AI_Timer >= 30)
+                {
+                    //Main.NewText("this");
+                    //projectile.velocity.Y += 12;
+                    AI_State = State_Waiting;
+                }
+                else
+                {
+                    //Main.NewText("thing");
+                    projectile.velocity = new Vector2(1, -12);
+                }
+
+                AI_Timer += 1;
+            }
+            else if (AI_State == State_BlockLeft)
+            {
+                // Jump to the left!
+                if (AI_Timer >= 30)
+                {
+                    //Main.NewText("this");
+                    //projectile.velocity.Y += 12;
+                    AI_State = State_Waiting;
+                }
+                else
+                {
+                    //Main.NewText("thing");
+                    projectile.velocity = new Vector2(-1, -12);
+                }
+
+                AI_Timer += 1;
             }
             else if (AI_State == State_Notice)
             {
@@ -126,7 +179,9 @@ namespace ChampionMod.Projectiles.Minions
                 }
             }
 
-            SelectFrame(projectile.velocity);
+            projectile.velocity.Y += 6f; // Gravity!
+
+            SelectFrame(); // So it is animated correctly
         }
 
         /*public override void Behavior()
