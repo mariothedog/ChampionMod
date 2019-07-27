@@ -102,15 +102,11 @@ namespace ChampionMod.Projectiles.Minions
                         Vector2 directionToPlayer = projectile.DirectionTo(player.Center); // Get the direction to he player
                         projectile.direction = directionToPlayer.X > 0 ? -1 : 1; // Used for switching the sprite direction (in SelectFrame)
 
-                        if (dist > 50) // So the minion isn't constantly bumping into the player
+                        if (dist > 90) // So the minion isn't constantly bumping into the player
                         {
                             // Follow player
 
                             projectile.velocity = directionToPlayer * 5;
-                        }
-                        else
-                        {
-                            projectile.velocity *= 0.97f;
                         }
                     }
                 }
