@@ -59,6 +59,8 @@ namespace ChampionMod.Projectiles.Minions
 
         public override void SelectFrame(Vector2 vel)
         {
+            projectile.spriteDirection = projectile.direction;
+
             projectile.frameCounter++; // Increment frameCounter by 1
             attackingTimer--;
 

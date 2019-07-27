@@ -23,7 +23,7 @@ namespace ChampionMod.Projectiles.Minions
         protected bool noBlockRight = true;
         protected bool noBlockLeft = true;
         //protected int jumpDelayTimer = 200; // Timer till the next time the bunny can jump
-        protected int jumpTimer = 0; // Timer for when the bunny is jumping and when to stop
+        //protected int jumpTimer = 0; // Timer for when the bunny is jumping and when to stop
 
         public virtual void CreateDust()
         {
@@ -33,16 +33,98 @@ namespace ChampionMod.Projectiles.Minions
         {
         }
 
-        Vector2 targetPos; // Target position
+        //Vector2 targetPos; // Target position
 
-        public int vMax = 6; // Maximum velocity of the minion
-        public float vAccel = 0.2f; // Maximum acceleration of the minion
+        //public int vMax = 6; // Maximum velocity of the minion
+        //public float vAccel = 0.2f; // Maximum acceleration of the minion
 
         // There are 2 separate variables for this because it makes the moving transition smoother
-        public float tVel = 0; // Target velocity
-        public float vMag = 0; // Velocity magnitude (speed)
+        //public float tVel = 0; // Target velocity
+        //public float vMag = 0; // Velocity magnitude (speed)
+
+        private const int AI_State_Slot = 0;
+        private const int AI_Timer_Slot = 1;
+
+        private const int State_Waiting = 0; // Waiting for an enemy
+        private const int State_Far = 1; // Player is too far away
+        private const int State_Notice = 2; // Found an enemy
+        private const int State_Jump = 3; // Jump over blocks and just general hopping around
+
+        public float AI_State
+        {
+            get => projectile.ai[AI_State_Slot];
+            set => projectile.ai[AI_State_Slot] = value;
+        }
+
+        public float AI_Timer
+        {
+            get => projectile.ai[AI_Timer_Slot];
+            set => projectile.ai[AI_Timer_Slot] = value;
+        }
+
+        NPC enemy = null;
 
         public override void Behavior()
+        {
+            Player player = Main.player[projectile.owner]; // Get player that summoned the minion
+
+            if (AI_State == State_Waiting)
+            {
+                bool target = false;
+
+                // TO DO IF PLAYER HAS RIGHT CLICK TARGET
+                for (int k = 0; k < 200; k++) // Finds npc to attack
+                {
+                    NPC npc = Main.npc[k];
+                    if (npc.CanBeChasedBy(this, false))
+                    {
+                        if (Vector2.Distance(npc.Center, projectile.Center) < 300 && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                        {
+                            enemy = npc;
+                            target = true;
+                            AI_State = State_Notice;
+                        }
+                    }
+                }
+
+                // Checks if the minion is too far away from the player
+                // If the minion has found an enemy to attack then the distance that it can be from the player will be increased
+                if (Vector2.Distance(projectile.Center, player.Center) > (target ? 1200 : 700))
+                {
+                    AI_State = State_Far;
+                }
+                else
+                {
+                    if (target == false)
+                    {
+                        // Follow player
+                        Vector2 directionToPlayer = projectile.DirectionTo(player.Center);
+
+                        projectile.direction = directionToPlayer.X > 0 ? -1 : 1;
+
+                        projectile.velocity = directionToPlayer * 5;
+                    }
+                }
+            }
+            else if (AI_State == State_Far)
+            {
+                // Teleport to player
+                projectile.position = player.Center;
+                AI_State = State_Waiting;
+            }
+            else if (AI_State == State_Notice)
+            {
+                if (Vector2.Distance(enemy.Center, projectile.Center) < 500) // If still in range
+                {
+                    Main.NewText("In range");
+                    //projectile.velocity = new Vector2(projectile.direction * 2, -10f);
+                }
+            }
+
+            SelectFrame(projectile.velocity);
+        }
+
+        /*public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
             targetPos = player.Center;
@@ -106,7 +188,7 @@ namespace ChampionMod.Projectiles.Minions
             }
 
             SelectFrame(projectile.velocity); // Walking animation
-        }
+        }*/
 
         /*public override void Behavior()
         {
