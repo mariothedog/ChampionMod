@@ -34,8 +34,8 @@ namespace ChampionMod.Items.Tools
 			ModRecipe recipe = new ModRecipe(mod);
 			
 			recipe.AddIngredient(mod.ItemType("KingsGel"), 5);
-			recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 12);
-			recipe.AddIngredient(ItemID.Gel, 3);
+			recipe.AddIngredient(ItemID.Gel, 100);
+			recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 12);
 			recipe.AddTile(TileID.Solidifier);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

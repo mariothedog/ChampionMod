@@ -14,6 +14,8 @@ namespace ChampionMod.NPCs
         NPCID.CorruptBunny, NPCID.CorruptGoldfish, NPCID.CorruptPenguin, // Corruption
         NPCID.CrimsonBunny, NPCID.CrimsonGoldfish, NPCID.CrimsonPenguin, // Crimson
         NPCID.Clown}; // Hardmode
+		
+		readonly static List<int> sporeEnemies = new List<int>() { NPCID.FungiBulb, NPCID.ZombieMushroom, NPCID.AnomuraFungus, NPCID.MushiLadybug, NPCID.ZombieMushroomHat, NPCID.GiantFungiBulb, NPCID.FungoFish };
 
         public override void NPCLoot(NPC npc)
         {
@@ -25,6 +27,15 @@ namespace ChampionMod.NPCs
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
                 }
             }
+
+			if(sporeEnemies.Contains(npc.type))
+			{
+				if (Main.rand.Next(50) == 0)
+				{
+			        Item.NewItem(npc.getRect(), mod.ItemType("Mushblade"));
+				}
+		    }
+		    
 
             if (npc.type == NPCID.IchorSticker)
             {

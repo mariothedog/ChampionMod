@@ -27,17 +27,22 @@ namespace ChampionMod.Items.Weapons.Guns
             item.shootSpeed = 5f;
             item.useAmmo = AmmoID.Bullet;
             item.rare = 1;
-            item.value = 50000;
+            item.value = 250000;
             // If you are reading this, you're gay.
         }
-        
+		
+		public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-2, -2);
+        }
+		
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("KingsGel"), 5);;
             recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
