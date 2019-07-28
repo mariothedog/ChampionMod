@@ -11,7 +11,7 @@ namespace ChampionMod.Tiles.Crops
 {
     public class CornCrop : ModTile
     {
-        public override void SetDefaults()
+        public override void SetDefaults() // TODO SMART CURSOR
         {
             Main.tileFrameImportant[Type] = true;
             Main.tileCut[Type] = true;

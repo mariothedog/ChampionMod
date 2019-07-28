@@ -57,9 +57,9 @@ namespace ChampionMod.Projectiles.Minions
             Lighting.AddLight((int)(projectile.Center.X / 16f), (int)(projectile.Center.Y / 16f), 0.6f, 0.9f, 0.3f);
         }*/
 
-        public override void SelectFrame(Vector2 vel)
+        public override void SelectFrame()
         {
-            projectile.spriteDirection = projectile.direction;
+            /*projectile.spriteDirection = projectile.direction;
 
             projectile.frameCounter++; // Increment frameCounter by 1
             attackingTimer--;
@@ -101,7 +101,7 @@ namespace ChampionMod.Projectiles.Minions
                 }
 
                 hitTile = false;
-            }
+            }*/
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
