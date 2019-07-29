@@ -17,19 +17,28 @@ namespace ChampionMod.Items.Weapons.Guns
             item.ranged = true;
             item.width = 16;
             item.height = 16;
-            item.useTime = 23;
-            item.useAnimation = 23;
+            item.useTime = 6;
+            item.useAnimation = 12;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 4;
             item.UseSound = SoundID.Item11;
             item.shoot = 10;
-            item.shootSpeed = 5f;
+            item.shootSpeed = 3f;
             item.useAmmo = AmmoID.Bullet;
             item.rare = 1;
             item.value = 250000;
+			item.reuseDelay = 14;
             // If you are reading this, you're gay.
         }
+		
+		public override bool ConsumeAmmo(Player player)
+		{
+			// Because of how the game works, player.itemAnimation will be 11, 7, and finally 3. (UseAmination - 1, then - useTime until less than 0.) 
+			// We can get the Clockwork Assault Riffle Effect by not consuming ammo when itemAnimation is lower than the first shot.
+			return !(player.itemAnimation < item.useAnimation - 2);
+		}
+
 		
 		public override Vector2? HoldoutOffset()
         {
