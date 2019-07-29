@@ -9,7 +9,7 @@ namespace ChampionMod.Items.Weapons.Guns
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("It feels like it will slip out of your hands.");
+            Tooltip.SetDefault("It feels like it will slip out of your hands");
         }
 
         public override void SetDefaults() {

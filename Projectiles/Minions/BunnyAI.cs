@@ -50,7 +50,7 @@ namespace ChampionMod.Projectiles.Minions
         private const int State_Notice = 2; // Found an enemy
         private const int State_BlockRight = 3; // Block to the right that needs to be jumped over
         private const int State_BlockLeft = 4; // Block to the left that needs to be jumped over
-        private const int State_Jump = 5;
+        private const int State_Flying = 5; // Minion is flying in the air
 
         public float AI_State
         {
@@ -66,6 +66,10 @@ namespace ChampionMod.Projectiles.Minions
 
         NPC enemy = null;
 
+        // These 2 variables are needed so when the minion is jumping over the block it can determine how big the "block tower" is so it knows how high it needs to jump
+        int blockLocationX;
+        int blockLocationY;
+
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner]; // Get player that summoned the minion
@@ -74,7 +78,7 @@ namespace ChampionMod.Projectiles.Minions
             {
                 bool target = false;
 
-                // TO DO IF PLAYER HAS RIGHT CLICK TARGET, DON'T HURT TARGET DUMMIES
+                // TO DO IF PLAYER HAS RIGHT CLICK TARGET, DON'T HURT TARGET DUMMIES, ANIMATION, ATTACKING, FLYING = NO GRAVITY
                 for (int k = 0; k < 200; k++) // Finds npc to attack
                 {
                     NPC npc = Main.npc[k];
@@ -113,20 +117,38 @@ namespace ChampionMod.Projectiles.Minions
 
                     // Checks if there is a block to the left or right of the minion
 
-                    // Checks if there is a block to the right of the minion
-                    Tile right = Main.tile[(int)projectile.Center.X / 16 + 1, (int)projectile.Center.Y / 16];
-                    if (Main.tileSolid[right.type] && right.type != 0)
+                    if (projectile.direction == -1)
                     {
-                        AI_State = State_BlockRight;
-                        AI_Timer = 0;
+                        for (int i = 1; i < 4; i++) // Using a for loop so it can see blocks more than just 1 block ahead of it
+                        {
+                            // Checks if there is a block to the right of the minion
+                            Tile right = Main.tile[(int)projectile.Center.X / 16 + i, (int)projectile.Center.Y / 16];
+                            if (Main.tileSolid[right.type] && right.active())
+                            {
+                                AI_State = State_BlockRight;
+                                AI_Timer = 0;
+                                blockLocationX = (int)projectile.Center.X / 16 + i;
+                                blockLocationY = (int)projectile.Center.Y / 16;
+                                break;
+                            }
+                        }
                     }
 
-                    // Checks if there is a block to the left of the minion
-                    Tile left = Main.tile[(int)projectile.Center.X / 16 - 1, (int)projectile.Center.Y / 16];
-                    if (Main.tileSolid[left.type] && left.type != 0)
+                    if (projectile.direction == 1)
                     {
-                        AI_State = State_BlockLeft;
-                        AI_Timer = 0;
+                        for (int i = 1; i < 4; i++) // Using a for loop so it can see blocks more than just 1 block ahead of it
+                        {
+                            // Checks if there is a block to the left of the minion
+                            Tile left = Main.tile[(int)projectile.Center.X / 16 - i, (int)projectile.Center.Y / 16];
+                            if (Main.tileSolid[left.type] && left.active())
+                            {
+                                AI_State = State_BlockLeft;
+                                AI_Timer = 0;
+                                blockLocationX = (int)projectile.Center.X / 16 - i;
+                                blockLocationY = (int)projectile.Center.Y / 16;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -141,20 +163,30 @@ namespace ChampionMod.Projectiles.Minions
                 // Jump to the right!
                 if (AI_Timer >= 30)
                 {
-                    if (AI_Timer % 10 == 0)
-                    {
-                        projectile.velocity.Y += 2f;
-                    }
+                    projectile.velocity += new Vector2(1, 0.5f);
 
-                    if (AI_Timer >= 50)
+                    if (AI_Timer >= 40)
                     {
                         AI_State = State_Waiting;
                     }
                 }
                 else
                 {
-                    //Main.NewText("thing");
-                    projectile.velocity = new Vector2(1, -10);
+                    int height = 1; // Height of the "block tower" that needs to be jumped over, set to 1 since if the bunny is in this AI_State then there is at least 1 block already
+                    for (int y = 1; y < 10; y++)
+                    {
+                        Tile tile = Main.tile[blockLocationX, blockLocationY - y];
+                        if (Main.tileSolid[tile.type] && tile.active())
+                        {
+                            height += 1;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    projectile.velocity = new Vector2(2, -(height + 6));
                 }
 
                 AI_Timer += 1;
@@ -164,20 +196,30 @@ namespace ChampionMod.Projectiles.Minions
                 // Jump to the left!
                 if (AI_Timer >= 30)
                 {
-                    if (AI_Timer % 10 == 0)
-                    {
-                        projectile.velocity.Y += 2f;
-                    }
+                    projectile.velocity += new Vector2(-1, 0.5f);
 
-                    if (AI_Timer >= 50)
+                    if (AI_Timer >= 40)
                     {
                         AI_State = State_Waiting;
                     }
                 }
                 else
                 {
-                    //Main.NewText("thing");
-                    projectile.velocity = new Vector2(-1, -10);
+                    int height = 1; // Height of the "block tower" that needs to be jumped over, set to 1 since if the bunny is in this AI_State then there is at least 1 block already
+                    for (int y = 1; y < 10; y++)
+                    {
+                        Tile tile = Main.tile[blockLocationX, blockLocationY - y];
+                        if (Main.tileSolid[tile.type] && tile.active())
+                        {
+                            height += 1;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    projectile.velocity = new Vector2(-2, -(height + 6));
                 }
 
                 AI_Timer += 1;
