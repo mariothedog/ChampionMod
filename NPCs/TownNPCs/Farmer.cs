@@ -142,7 +142,7 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard); // this make so when this npc is close to Wizard
+            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard); // this make it so when this npc is close to Wizard
             if (wizardNPC >= 0 && Main.rand.Next(4) == 0) // has 1 in 3 chance to show this message
             {
                 if (Main.rand.Next(2) == 0)
@@ -155,8 +155,8 @@ namespace ChampionMod.NPCs.TownNPCs
                 }
             }
 
-            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); // this make so when this npc is close to the Guide
-            if (guideNPC >= 0 && Main.rand.Next(4) == 0) // has 1 in 3 chance to show this message
+            int guideNPC = NPC.FindFirstNPC(NPCID.Guide);
+            if (guideNPC >= 0 && Main.rand.Next(4) == 0)
             {
                 return "Sure, you can ask " + Main.npc[guideNPC].GivenName + " how to farm, but he 'aint gonna give you no advice.";
             }

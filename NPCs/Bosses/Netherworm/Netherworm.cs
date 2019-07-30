@@ -106,7 +106,7 @@ namespace ChampionMod.NPCs.Bosses.Netherworm
 		}
 	}
 
-	//ported from my tAPI mod because I'm lazy
+	// ported from my tAPI mod because I'm lazy
 	// This abstract class can be used for non splitting worm type NPC.
 	public abstract class Worm : ModNPC
 	{

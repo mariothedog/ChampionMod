@@ -11,11 +11,11 @@ namespace ChampionMod.Projectiles.Minions
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 21; // First 7 for walking, next 7 for attacking, final 7 for flying
+            Main.projFrames[projectile.type] = 18; // First 3 for idle, next 4 for walking next 7 for attacking, final 4 for flying
             Main.projPet[projectile.type] = true;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
-            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true; //This is necessary for right-click targeting
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true; // This is necessary for right-click targeting
         }
 
         public override void SetDefaults()
@@ -59,6 +59,26 @@ namespace ChampionMod.Projectiles.Minions
 
         public override void SelectFrame()
         {
+            projectile.spriteDirection = projectile.direction;
+
+            projectile.frameCounter++;
+
+            int frameTimer = 8;
+            if (AI_State == State_Flying) frameTimer = 2; // So when flying the animation is faster
+
+            if (projectile.frameCounter >= frameTimer) // So the animation isn't super fast
+            {
+                projectile.frameCounter = 0;
+
+                int max = 3;
+                if (Math.Abs(projectile.velocity.X) > 0.001) max = 7; // When moving switch to walking animation
+                if (AI_State == State_Flying) max = 4;
+
+                projectile.frame = (projectile.frame + 1) % max;
+
+                if (AI_State == State_Notice) projectile.frame += 7;
+                else if (AI_State == State_Flying) projectile.frame += 14;
+            }
             /*projectile.spriteDirection = projectile.direction;
 
             projectile.frameCounter++; // Increment frameCounter by 1
@@ -104,10 +124,10 @@ namespace ChampionMod.Projectiles.Minions
             }*/
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        /*public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             attackingTimer = 200;
-        }
+        }*/
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
@@ -118,7 +138,8 @@ namespace ChampionMod.Projectiles.Minions
             //oldVelocity.Y = 0;
             //Main.NewText(projectile.velocity);
             //Main.NewText(oldVelocity);
-            hitTile = true;
+
+            //hitTile = true;
             return false;
         }
     }
