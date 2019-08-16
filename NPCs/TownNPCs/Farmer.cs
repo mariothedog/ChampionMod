@@ -20,9 +20,9 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 25;
+            Main.npcFrameCount[npc.type] = 22;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-            NPCID.Sets.AttackFrameCount[npc.type] = 4;
+            NPCID.Sets.AttackFrameCount[npc.type] = 1;
             NPCID.Sets.DangerDetectRange[npc.type] = 100;
             NPCID.Sets.AttackType[npc.type] = 0;
             NPCID.Sets.AttackTime[npc.type] = 90;
@@ -274,8 +274,8 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 40;
-            randExtraCooldown = 30;
+            cooldown = 20;
+            randExtraCooldown = 10;
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
