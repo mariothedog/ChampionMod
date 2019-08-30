@@ -1,5 +1,5 @@
 author = Mariothedog
-version = 0.171
+version = 0.200
 displayName = Champion Mod
 homepage = https://discord.gg/x28RTWk
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.sln, Properties\*
