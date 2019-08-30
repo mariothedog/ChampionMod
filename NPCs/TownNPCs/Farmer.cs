@@ -46,13 +46,46 @@ namespace ChampionMod.NPCs.TownNPCs
             animationType = NPCID.Guide;
         }
 
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frame.Y >= 1176) // If attacking
+            {
+                if (ChampionMod.farmerProjectileRotation >= 40)
+                {
+                    if (ChampionMod.farmerProjectileRotation >= 300)
+                    {
+                        npc.frame.Y = 1232;
+                    }
+                    else if (ChampionMod.farmerProjectileRotation >= 180)
+                    {
+                        npc.frame.Y = 1288;
+                    }
+                    else if (ChampionMod.farmerProjectileRotation >= 135)
+                    {
+                        npc.frame.Y = 1232;
+                    }
+                    else
+                    {
+                        npc.frame.Y = 1176;
+                    }
+                }
+                else
+                {
+                    if (ChampionMod.farmerProjectileRotation <= 40)
+                    {
+                        npc.frame.Y = 1232;
+                    }
+                }
+            }
+        }
+
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             List<int> plants = new List<int>()
             { ItemID.DaybloomSeeds, ItemID.BlinkrootSeeds, ItemID.DeathweedSeeds,
             ItemID.FireblossomSeeds, ItemID.MoonglowSeeds, ItemID.WaterleafSeeds,
             ItemID.ShiverthornSeeds, ItemID.PumpkinSeed,
-            mod.ItemType("CornSeeds"), mod.ItemType("TomatoSeeds")};
+            mod.ItemType("CornSeeds"), mod.ItemType("TomatoSeeds"), mod.ItemType("GrapeSeeds")};
 
             for (int k = 0; k < 255; k++)
             {
@@ -222,9 +255,13 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            shop.item[nextSlot].SetDefaults(mod.ItemType("Pitchfork"));
+            nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("CornSeeds"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("TomatoSeeds"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("GrapeSeeds"));
             nextSlot++;
         }
 
@@ -274,8 +311,8 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 20;
-            randExtraCooldown = 10;
+            cooldown = 5;
+            randExtraCooldown = 5;
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)

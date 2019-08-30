@@ -29,31 +29,33 @@ Changes:
 
 ===
 
-[c/996633:Beta 0.17:]
+[c/996633:Beta 0.2:]
+New NPCs:
+- Farmer NPC
+
 New Items:
-- Frostburn Flare
-- Sun Staff
-- Moon Staff
-- Eclipse Staff
+- Orion's Sword
+- Stone Staff
+- Royal Pick
+- Royal Gun
+- Pitchfork
+- Mushblade
+- Corn
+- Corn Seeds
+- Tomato
+- Tomato Seeds
+- Grape
+- Grape Seeds
 
 Changes:
-- Royal Sword now has a particle effect when swung
-- Enchanted Katana sprite changed
-- Enchanted Katana nerfed
-- Enchanted Katana better particle effect
-- Enchanted Katana recipe changed
-- Nature's Protection recipe changed
-- Nature's Protection tooltip updated
-- Royal Sword is now auto swing
-- Royal Sword's Price increased to 5 gold
-- Royal Sword's recipe changed
-- Royal Sword's sprite changed.
-- Royal Sword is now bigger in size
-- Frozen Chakram recipe changed
-- Sagittarius sprite changed
-- Feather Duster nerfed
+- Nature's Protection rarity changed from blue to white
+- Nature's Protection sprite changed
+- Acorn Staff sprite changed
+- Feather Duster sprite changed
+- Brumous Beater sprite changed
 
 Bugs Fixed:
-- Enchanted Katana projectile now comes out of the blade properly
+- Snowball Rifle no longer does damage when an enemy touches the rifle itself
+- Peashooter is actually craftable now
 
 ===

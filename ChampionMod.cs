@@ -9,6 +9,7 @@ namespace ChampionMod
     class ChampionMod : Mod
     {
         public static int farmer;
+        public static float farmerProjectileRotation;
 
         public override void AddRecipeGroups()
         {
