@@ -23,12 +23,6 @@ Farming expansion coming soon.
 [c/CC00FF:Sans The Skelecrab]
 
 [c/009933:-=-Changelog-=-]
-[c/996633:Beta 0.171:]
-Changes:
-- Frostburn Flare recipe changed slightly
-
-===
-
 [c/996633:Beta 0.2:]
 New NPCs:
 - Farmer NPC
