@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Materials
 {
-    public class AlchemerGunCasing : ModItem
+    public class AlchemerCasing : ModItem
     {
         public override void SetStaticDefaults()
         {
