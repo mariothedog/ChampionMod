@@ -42,11 +42,6 @@ namespace ChampionMod.Tiles.Crops
             return Main.tile[i, j].type != Type && Main.tile[i + 1, j].type != Type && Main.tile[i - 1, j].type != Type;
         }
 
-        public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
-        {
-            RandomUpdate(i, j);
-        }
-
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             int stage = frameX / 54;
