@@ -5,15 +5,11 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Ammo.Arrows
 {
-    public class MeteorArrow : ModItem
+    public class RoyalArrow : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Meteor Arrow");
-        }
         public override void SetDefaults()
         {
-            item.damage = 8;
+            item.damage = 13;
             item.ranged = true;
             item.width = 14;
             item.height = 34;
@@ -23,17 +19,19 @@ namespace ChampionMod.Items.Ammo.Arrows
             item.maxStack = 999;
             item.consumable = true;
             item.ammo = 40;
-            item.shoot = mod.ProjectileType("MeteorArrowProjectile");
-            item.shootSpeed = 5f;
+            item.shoot = mod.ProjectileType("RoyalArrowProjectile");
+            item.shootSpeed = 6f;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WoodenArrow, 70);
-            recipe.AddIngredient(ItemID.MeteoriteBar);
+            recipe.AddIngredient(mod.ItemType("KingsGel"), 1);
+            recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 1);
+            recipe.AddIngredient(ItemID.Gel, 10);
+            recipe.AddIngredient(ItemID.WoodenArrow, 100);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 70);
+            recipe.SetResult(this, 100);
             recipe.AddRecipe();
         }
     }

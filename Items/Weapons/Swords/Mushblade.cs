@@ -26,6 +26,5 @@ namespace ChampionMod.Items.Weapons.Swords
 
 			// Crit by default is 4
 		}
-
 	}
 }
