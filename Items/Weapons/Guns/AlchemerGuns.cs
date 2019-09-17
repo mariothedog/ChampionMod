@@ -94,4 +94,32 @@ namespace ChampionMod.Items.Weapons.Guns
             Tooltip.SetDefault("Inflicts \"Cursed Inferno\" to those hit by its bullets.");
         }
     }
+
+    public class AcidicAlchemerGun : AlchemerGuns
+    {
+        public AcidicAlchemerGun()
+        {
+            gun_type = "Acidic";
+            items = new Dictionary<int, int>() { { ItemID.FlaskofIchor, 10 }, { ItemID.Ichor, 20 } };
+        }
+
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Inflicts \"Ichor\" to those hit by its bullets.");
+        }
+    }
+
+    public class DreadfulAlchemerGun : AlchemerGuns
+    {
+        public DreadfulAlchemerGun()
+        {
+            gun_type = "Dreadful";
+            items = new Dictionary<int, int>() { { ItemID.FlaskofPoison, 10 }, { ItemID.JungleSpores, 20 } };
+        }
+
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Inflicts \"Poison\" to those hit by its bullets.");
+        }
+    }
 }

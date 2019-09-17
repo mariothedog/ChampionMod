@@ -33,4 +33,22 @@ namespace ChampionMod.Projectiles.Bullets
             type = "Corrosive";
         }
     }
+
+    class AcidicBulletProjectile : AlchemerGunBullets
+    {
+        public AcidicBulletProjectile()
+        {
+            debuff = BuffID.Ichor;
+            type = "Acidic";
+        }
+    }
+
+    class DreadfulBulletProjectile : AlchemerGunBullets
+    {
+        public DreadfulBulletProjectile()
+        {
+            debuff = BuffID.Poisoned;
+            type = "Dreadful";
+        }
+    }
 }
