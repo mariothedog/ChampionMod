@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,6 +10,7 @@ namespace ChampionMod.Items.Weapons.Guns
     public class AlchemerGuns : ModItem
     {
         public string gun_type = "Blazing"; // Default
+        public Dictionary<int, int> items = new Dictionary<int, int>() { { ItemID.FlaskofFire, 10 }, { ItemID.Hellstone, 70 } };
 
         public override string Texture { get { return $"ChampionMod/Items/Weapons/Guns/{gun_type}AlchemerGun"; } }
 
@@ -30,6 +32,24 @@ namespace ChampionMod.Items.Weapons.Guns
             item.shootSpeed = 10f;
             item.useAmmo = AmmoID.Bullet;
             item.useStyle = 5; // Holding out
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("AlchemerCasing"));
+
+            foreach(var item in items)
+            {
+                int id = item.Key;
+                int amount = item.Value;
+
+                recipe.AddIngredient(id, amount);
+            }
+
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -59,17 +79,6 @@ namespace ChampionMod.Items.Weapons.Guns
         {
             Tooltip.SetDefault("Inflicts \"On Fire!\" to those hit by its bullets.");
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("AlchemerCasing"));
-            recipe.AddIngredient(ItemID.FlaskofFire, 10);
-            recipe.AddIngredient(ItemID.Hellstone, 70);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 
     public class CorrosiveAlchemerGun : AlchemerGuns
@@ -77,22 +86,12 @@ namespace ChampionMod.Items.Weapons.Guns
         public CorrosiveAlchemerGun()
         {
             gun_type = "Corrosive";
+            items = new Dictionary<int, int>() { { ItemID.FlaskofCursedFlames, 10 }, { ItemID.CursedFlame, 20 } };
         }
 
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Inflicts \"Cursed Inferno\" to those hit by its bullets.");
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("AlchemerCasing"));
-            recipe.AddIngredient(ItemID.FlaskofCursedFlames, 10);
-            recipe.AddIngredient(ItemID.CursedFlame, 20);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }
