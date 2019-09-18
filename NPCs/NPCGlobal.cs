@@ -28,15 +28,6 @@ namespace ChampionMod.NPCs
                 }
             }
 
-			if(sporeEnemies.Contains(npc.type))
-			{
-				if (Main.rand.Next(50) == 0)
-				{
-			        Item.NewItem(npc.getRect(), mod.ItemType("Mushblade"));
-				}
-		    }
-		    
-
             if (npc.type == NPCID.IchorSticker)
             {
                 if (Main.rand.Next(50) == 0) // 2% item rarity
@@ -63,6 +54,14 @@ namespace ChampionMod.NPCs
                 }
             }
 
+            if (npc.type == NPCID.IceElemental)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WhimsicalShard"));
+                }
+            }
+
             if (bloodMoonEnemies.Contains(npc.type))
             {
                 if (Main.expertMode)
@@ -78,6 +77,14 @@ namespace ChampionMod.NPCs
                     {
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AgonyBearer"));
                     }
+                }
+            }
+
+            if (sporeEnemies.Contains(npc.type))
+            {
+                if (Main.rand.Next(50) == 0)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("Mushblade"));
                 }
             }
         }

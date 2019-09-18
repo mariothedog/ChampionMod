@@ -5,14 +5,14 @@ using Terraria.ModLoader;
  
 namespace ChampionMod.Items.Weapons.Boomerangs
 {
-    public class FrozenChakram : ModItem
+    public class FrozenMallet : ModItem
     {
 		public override void SetDefaults() {
             item.damage = 19;            
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.scale = 0.8f; // Changes sprite size
+            //item.scale = 0.8f; // Changes sprite size
             item.useTime = 15;
             item.useAnimation = 15;
             item.noUseGraphic = true; // So you don't see the item swing (and you just see the projectile)
@@ -20,8 +20,8 @@ namespace ChampionMod.Items.Weapons.Boomerangs
             item.knockBack = 8;
             item.value = Item.sellPrice(silver : 2);
             item.rare = 1;
-            item.shootSpeed = 11f;
-            item.shoot = mod.ProjectileType("FrozenChakramProjectile");
+            item.shootSpeed = 20f;
+            item.shoot = mod.ProjectileType ("FrozenMalletProjectile");
             item.UseSound = SoundID.Item1;
         }
 
@@ -49,7 +49,7 @@ namespace ChampionMod.Items.Weapons.Boomerangs
         }
 
         // So the chakram starts at the player's hand
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        /*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
@@ -57,7 +57,6 @@ namespace ChampionMod.Items.Weapons.Boomerangs
 				position += muzzleOffset;
 			}
 			return true;
-		}
-
+		}*/
     }
 }
