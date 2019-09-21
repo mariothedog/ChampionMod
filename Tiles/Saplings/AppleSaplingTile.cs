@@ -9,7 +9,7 @@ using Terraria.ObjectData;
 
 namespace ChampionMod.Tiles.Saplings
 {
-    public class AppleSapling : ModTile
+    public class AppleSaplingTile : ModTile
     {
         public override void SetDefaults()
         {
@@ -46,16 +46,20 @@ namespace ChampionMod.Tiles.Saplings
 
         public override void RandomUpdate(int i, int j)
         {
-            if (WorldGen.genRand.Next(20) == 0)
+            //if (WorldGen.genRand.Next(20) == 0)
+            //{
+            //Main.NewText("failed update");
+            bool isPlayerNear = WorldGen.PlayerLOS(i, j);
+            bool success = WorldGen.GrowTree(i, j);
+            Main.NewText(isPlayerNear);
+            Main.NewText(success);
+            Main.NewText("");
+            if (success && isPlayerNear)
             {
-                bool isPlayerNear = WorldGen.PlayerLOS(i, j);
-                bool success = WorldGen.GrowTree(i, j);
-                if (success && isPlayerNear)
-                {
-                    WorldGen.TreeGrowFXCheck(i, j);
-                    Main.NewText("Successfull update");
-                }
+                WorldGen.TreeGrowFXCheck(i, j);
+                Main.NewText("Successfull update");
             }
+            //}
         }
 
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects effects)

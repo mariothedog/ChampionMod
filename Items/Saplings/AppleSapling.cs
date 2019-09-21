@@ -17,7 +17,7 @@ namespace ChampionMod.Items.Saplings
             item.width = 12;
             item.height = 14;
             item.value = 80;
-            item.createTile = mod.TileType("AppleSapling");
+            item.createTile = mod.TileType("AppleSaplingTile");
         }
     }
 }
