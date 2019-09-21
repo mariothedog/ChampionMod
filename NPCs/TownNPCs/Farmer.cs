@@ -271,38 +271,6 @@ namespace ChampionMod.NPCs.TownNPCs
             return true;
         }
 
-        // Make something happen when the npc teleports to a statue. Since this method only runs server side, any visual effects like dusts or gores have to be synced across all clients manually.
-        /*public override void OnGoToStatue(bool toKingStatue)
-        {
-            if (Main.netMode == NetmodeID.Server)
-            {
-                ModPacket packet = mod.GetPacket();
-                packet.Write((byte)npc.whoAmI);
-                packet.Send();
-            }
-            else
-            {
-                StatueTeleport();
-            }
-        }
-
-        // Create a square of pixels around the NPC on teleport.
-        public void StatueTeleport()
-        {
-            for (int i = 0; i < 30; i++)
-            {
-                Vector2 position = Main.rand.NextVector2Square(-20, 21);
-                if (Math.Abs(position.X) > Math.Abs(position.Y))
-                {
-                    position.X = Math.Sign(position.X) * 20;
-                }
-                else
-                {
-                    position.Y = Math.Sign(position.Y) * 20;
-                }
-            }
-        }*/
-
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
             damage = 20;
