@@ -60,7 +60,7 @@ namespace ChampionMod.Items.Weapons.Guns
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY);
                 float scale = 1f - (Main.rand.NextFloat() * 0.3f);
-                perturbedSpeed = perturbedSpeed * scale;
+                perturbedSpeed *= scale;
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             }
 

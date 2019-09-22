@@ -55,26 +55,35 @@ namespace ChampionMod.NPCs.Enemies
             int num8 = 300;
             int num9 = 120;
             npc.dontTakeDamage = false;
+
             if (npc.ai[2] < 0f)
             {
                 npc.dontTakeDamage = true;
                 npc.ai[2] += 1f;
                 npc.velocity.X *= 0.9f;
+
                 if ((double)Math.Abs(npc.velocity.X) < 0.001)
                 {
+                    Main.NewText("first");
                     npc.velocity.X = 0.001f * (float)npc.direction;
                 }
+
                 if (Math.Abs(npc.velocity.Y) > 1f)
                 {
+                    Main.NewText("second");
                     npc.ai[2] += 10f;
                 }
+
                 if (npc.ai[2] >= 0f)
                 {
+                    Main.NewText("third");
                     npc.netUpdate = true;
                     npc.velocity.X += (float)npc.direction * 0.3f;
                 }
+
                 return;
             }
+
             if (npc.ai[2] < (float)num8)
             {
                 if (npc.justHit)

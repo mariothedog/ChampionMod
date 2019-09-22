@@ -24,16 +24,16 @@ namespace ChampionMod.Tiles.Saplings
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
-            TileObjectData.newTile.AnchorValidTiles = new[] { 2, 109 };
+            TileObjectData.newTile.AnchorValidTiles = new[] { mod.TileType("AppleTreePotTile") };
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.DrawFlipHorizontal = true;
             TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
             TileObjectData.newTile.LavaDeath = true;
             TileObjectData.newTile.RandomStyleRange = 3;
             TileObjectData.addTile(Type);
-            //sapling = true;
+            sapling = true;
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("AppleSapling");
+            name.SetDefault("Sapling");
             AddMapEntry(new Color(200, 200, 200), name);
             dustType = DustID.Grass;
             adjTiles = new int[] { TileID.Saplings };
@@ -46,20 +46,15 @@ namespace ChampionMod.Tiles.Saplings
 
         public override void RandomUpdate(int i, int j)
         {
-            //if (WorldGen.genRand.Next(20) == 0)
-            //{
-            //Main.NewText("failed update");
-            bool isPlayerNear = WorldGen.PlayerLOS(i, j);
-            bool success = WorldGen.GrowTree(i, j);
-            Main.NewText(isPlayerNear);
-            Main.NewText(success);
-            Main.NewText("");
-            if (success && isPlayerNear)
+            if (WorldGen.genRand.Next(20) == 0)
             {
-                WorldGen.TreeGrowFXCheck(i, j);
-                Main.NewText("Successfull update");
+                bool isPlayerNear = WorldGen.PlayerLOS(i, j);
+                bool success = WorldGen.GrowTree(i, j);
+                if (success && isPlayerNear)
+                {
+                    WorldGen.TreeGrowFXCheck(i, j);
+                }
             }
-            //}
         }
 
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects effects)
@@ -69,6 +64,11 @@ namespace ChampionMod.Tiles.Saplings
             {
                 effects = SpriteEffects.FlipHorizontally;
             }
+        }
+
+        public override void MouseOver(int i, int j)
+        {
+            Main.NewText("idk");
         }
     }
 }
