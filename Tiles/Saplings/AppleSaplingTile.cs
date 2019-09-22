@@ -65,10 +65,5 @@ namespace ChampionMod.Tiles.Saplings
                 effects = SpriteEffects.FlipHorizontally;
             }
         }
-
-        public override void MouseOver(int i, int j)
-        {
-            Main.NewText("idk");
-        }
     }
 }

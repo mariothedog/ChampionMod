@@ -8,21 +8,32 @@ namespace ChampionMod.Items.Weapons.Boomerangs
     public class FrozenMallet : ModItem
     {
 		public override void SetDefaults() {
-            item.damage = 19;            
+            item.damage = 46;            
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            //item.scale = 0.8f; // Changes sprite size
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.noUseGraphic = true; // So you don't see the item swing (and you just see the projectile)
+            item.useTime = 24;
+            item.useAnimation = 24;
+            item.noUseGraphic = true;
             item.useStyle = 1;
-            item.knockBack = 8;
+            item.knockBack = 7;
             item.value = Item.sellPrice(silver : 2);
-            item.rare = 1;
-            item.shootSpeed = 20f;
+            item.rare = 5;
+            item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType ("FrozenMalletProjectile");
             item.UseSound = SoundID.Item1;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("WhimsicalShard"), 5);
+            recipe.AddIngredient(ItemID.FrostCore);
+            recipe.AddIngredient(ItemID.BorealWoodHammer);
+            recipe.AddIngredient(ItemID.IceBlock, 25);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
 
         public override bool CanUseItem(Player player)     
@@ -36,27 +47,5 @@ namespace ChampionMod.Items.Weapons.Boomerangs
             }
             return true;
         }
-
-        public override void AddRecipes()
-        {
-                ModRecipe recipe = new ModRecipe(mod);
-				recipe.AddRecipeGroup("ChampionMod:Tier3Bars", 12);
-                recipe.AddIngredient(ItemID.IceBlock, 20);
-                recipe.AddIngredient(ItemID.SnowBlock, 15);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-        }
-
-        // So the chakram starts at the player's hand
-        /*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
-			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-			{
-				position += muzzleOffset;
-			}
-			return true;
-		}*/
     }
 }
