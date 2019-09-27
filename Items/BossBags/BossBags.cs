@@ -8,9 +8,17 @@ namespace ExampleMod.Items
 	{
 		public override void OpenVanillaBag(string context, Player player, int arg)
         {
-			if (context == "bossBag" && arg == ItemID.KingSlimeBossBag)
+			if (context == "bossBag")
             {
-				player.QuickSpawnItem(mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
+                if (arg == ItemID.KingSlimeBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
+                }
+                
+                if (arg == ItemID.BrainOfCthulhuBossBag)
+                {
+                    player.QuickSpawnItem(mod.ItemType("BaronsBlade"));
+                }
 			}
 		}
 	}

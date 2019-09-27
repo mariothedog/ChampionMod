@@ -28,6 +28,17 @@ namespace ChampionMod.NPCs
                 }
             }
 
+            if (npc.type == NPCID.BrainofCthulhu)
+            {
+                if (!Main.expertMode)
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BaronsBlade"));
+                    }
+                }
+            }
+
             if (npc.type == NPCID.IchorSticker)
             {
                 if (Main.rand.Next(50) == 0) // 2% item rarity
