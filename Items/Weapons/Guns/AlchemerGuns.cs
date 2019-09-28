@@ -7,12 +7,17 @@ using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Weapons.Guns
 {
-    public class AlchemerGuns : ModItem
+    public class BlazingAlchemerGun : ModItem
     {
         public string gun_type = "Blazing"; // Default
         public Dictionary<int, int> items = new Dictionary<int, int>() { { ItemID.FlaskofFire, 10 }, { ItemID.Hellstone, 70 } };
 
         public override string Texture { get { return $"ChampionMod/Items/Weapons/Guns/{gun_type}AlchemerGun"; } }
+
+        public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Inflicts \"On Fire!\" to those hit by its bullets.");
+        }
 
         public override void SetDefaults()
         {
@@ -73,15 +78,7 @@ namespace ChampionMod.Items.Weapons.Guns
         }
     }
 
-    public class BlazingAlchemerGun : AlchemerGuns
-    {
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Inflicts \"On Fire!\" to those hit by its bullets.");
-        }
-    }
-
-    public class CorrosiveAlchemerGun : AlchemerGuns
+    public class CorrosiveAlchemerGun : BlazingAlchemerGun
     {
         public CorrosiveAlchemerGun()
         {
@@ -95,7 +92,7 @@ namespace ChampionMod.Items.Weapons.Guns
         }
     }
 
-    public class AcidicAlchemerGun : AlchemerGuns
+    public class AcidicAlchemerGun : BlazingAlchemerGun
     {
         public AcidicAlchemerGun()
         {
@@ -109,7 +106,7 @@ namespace ChampionMod.Items.Weapons.Guns
         }
     }
 
-    public class DreadfulAlchemerGun : AlchemerGuns
+    public class DreadfulAlchemerGun : BlazingAlchemerGun
     {
         public DreadfulAlchemerGun()
         {
