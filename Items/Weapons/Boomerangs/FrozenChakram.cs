@@ -21,7 +21,7 @@ namespace ChampionMod.Items.Weapons.Boomerangs
             item.value = Item.sellPrice(silver : 2);
             item.rare = 1;
             item.shootSpeed = 11f;
-            item.shoot = mod.ProjectileType ("FrozenChakramProjectile");
+            item.shoot = mod.ProjectileType("FrozenChakramProjectile");
             item.UseSound = SoundID.Item1;
         }
 

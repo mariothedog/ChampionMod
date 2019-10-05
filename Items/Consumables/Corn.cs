@@ -31,7 +31,6 @@ namespace ChampionMod.Items.Consumables
             // Since item.height (hitbox) is smaller than texture.Height it will add a negative number which brings the position upwards
             Vector2 position = item.position - Main.screenPosition + new Vector2(item.width / 2, item.height - texture.Height * scale);
 
-            //spriteBatch.Draw(texture, position, lightColor);
             spriteBatch.Draw(texture, position, null, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None, 0f);
             return false;
         }

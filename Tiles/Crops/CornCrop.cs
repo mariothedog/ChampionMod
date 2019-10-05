@@ -20,7 +20,7 @@ namespace ChampionMod.Tiles.Crops
 
             TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.Height = 4;
-            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 20 }; // Last one is 18 so it extends into the grass
+            TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 20 }; // Last one is 20 so it extends into the grass
 
             TileObjectData.newTile.Origin = new Point16(1, 3);
 

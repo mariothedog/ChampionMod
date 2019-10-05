@@ -11,6 +11,7 @@ namespace ChampionMod.NPCs
     {
         public override bool Drop(int i, int j, int type)
         {
+            // Verdant Leaf
             if (type == TileID.Trees && Main.rand.Next(20) == 0) // 5% drop chance
             {
                 bool normalTree = false;

@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace ChampionMod.Projectiles.Minions
 {
@@ -17,9 +19,9 @@ namespace ChampionMod.Projectiles.Minions
         protected float shootCool = 50f;       //how fast the minion can shoot
         protected float shootSpeed;
         protected int shoot;*/
-        protected int attackingTimer = 0;
-        protected bool hitTile = false;
-        protected bool aboveGround = false;
+        //protected int attackingTimer = 0;
+        //protected bool hitTile = false;
+        //protected bool aboveGround = false;
         //protected bool noBlockRight = true;
         //protected bool noBlockLeft = true;
         //protected int jumpDelayTimer = 200; // Timer till the next time the bunny can jump
@@ -47,10 +49,10 @@ namespace ChampionMod.Projectiles.Minions
 
         private const int State_Waiting = 0; // Waiting for an enemy
         private const int State_Far = 1; // Player is too far away
-        private const int State_Notice = 2; // Found an enemy
+        public const int State_Notice = 2; // Found an enemy
         private const int State_BlockRight = 3; // Block to the right that needs to be jumped over
         private const int State_BlockLeft = 4; // Block to the left that needs to be jumped over
-        private const int State_Flying = 5; // Minion is flying in the air
+        public const int State_Flying = 5; // Minion is flying in the air
 
         public float AI_State
         {
@@ -70,172 +72,279 @@ namespace ChampionMod.Projectiles.Minions
         int blockLocationX;
         int blockLocationY;
 
+        bool jumping = false; // If the minion is jumping or flying
+
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner]; // Get player that summoned the minion
 
+            //Vector2 offset = player.direction == 1 ? new Vector2(90, 0) : new Vector2(-90, 0);
+            Vector2 offset = player.velocity == Vector2.Zero ? Vector2.Zero : Vector2.Normalize(player.velocity) * 70;
+            Vector2 directionToPlayer = projectile.DirectionTo(player.Center + offset); // Get the direction to the player
+            float dist = Vector2.Distance(projectile.Center, player.Center + offset);
+
             if (AI_State == State_Waiting)
             {
-                bool target = false;
-
                 // TO DO IF PLAYER HAS RIGHT CLICK TARGET, DON'T HURT TARGET DUMMIES, ANIMATION, ATTACKING, FLYING = NO GRAVITY
                 for (int k = 0; k < 200; k++) // Finds npc to attack
                 {
                     NPC npc = Main.npc[k];
-                    if (npc.CanBeChasedBy(this, false))
+                    if (npc.CanBeChasedBy(projectile, false))
                     {
-                        if (Vector2.Distance(npc.Center, projectile.Center) < 300 && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))
+                        if (Vector2.Distance(npc.Center, projectile.Center) < 300 && Collision.CanHitLine(projectile.position + new Vector2(0, -32), projectile.width, projectile.height, npc.position, npc.width, npc.height)) // Put the position of the minion 32 pixels up on the Collision.CanHitLine method because high ground = better visibility for minion
                         {
                             enemy = npc;
-                            target = true;
                             AI_State = State_Notice;
                         }
                     }
                 }
 
-                float dist = Vector2.Distance(projectile.Center, player.Center);
+                Tile tileBelow = Main.tile[(int)player.Bottom.X / 16, (int)player.Bottom.Y / 16 + 1];
+                if (!(Main.tileSolid[tileBelow.type] && tileBelow.active()))
+                {
+                    jumping = true;
+                    AI_State = State_Flying;
+                }
 
                 // Checks if the minion is too far away from the player
                 // If the minion has found an enemy to attack then the distance that it can be from the player will be increased
-                if (dist > (target ? 1200 : 700))
+                if (dist > (enemy == null ? 700 : 1200))
                 {
                     AI_State = State_Far;
                 }
                 else
                 {
-                    if (target == false) // If the minion hasn't already found an enemy
+                    if (enemy == null) // If the minion hasn't already found an enemy
                     {
-                        Vector2 directionToPlayer = projectile.DirectionTo(player.Center); // Get the direction to he player
                         projectile.direction = directionToPlayer.X > 0 ? -1 : 1; // Used for switching the sprite direction (in SelectFrame)
 
-                        if (dist > 110) // So the minion isn't constantly bumping into the player
+                        int multi = 5;
+
+                        if (dist <= 20)
                         {
-                            // Follow player
-                            projectile.velocity = directionToPlayer * 5;
+                            multi = 1;
                         }
+                        else if (dist <= 40)
+                        {
+                            multi = 2;
+                        }
+                        else if (dist <= 60)
+                        {
+                            multi = 3;
+                        }
+                        else if (dist <= 80)
+                        {
+                            multi = 4;
+                        }
+
+                        projectile.velocity = directionToPlayer * multi;
                     }
 
-                    // Checks if there is a block to the left or right of the minion
-
-                    if (projectile.direction == -1)
-                    {
-                        for (int i = 1; i < 4; i++) // Using a for loop so it can see blocks more than just 1 block ahead of it
-                        {
-                            // Checks if there is a block to the right of the minion
-                            Tile right = Main.tile[(int)projectile.Center.X / 16 + i, (int)projectile.Center.Y / 16];
-                            if (Main.tileSolid[right.type] && right.active())
-                            {
-                                AI_State = State_BlockRight;
-                                AI_Timer = 0;
-                                blockLocationX = (int)projectile.Center.X / 16 + i;
-                                blockLocationY = (int)projectile.Center.Y / 16;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (projectile.direction == 1)
-                    {
-                        for (int i = 1; i < 4; i++) // Using a for loop so it can see blocks more than just 1 block ahead of it
-                        {
-                            // Checks if there is a block to the left of the minion
-                            Tile left = Main.tile[(int)projectile.Center.X / 16 - i, (int)projectile.Center.Y / 16];
-                            if (Main.tileSolid[left.type] && left.active())
-                            {
-                                AI_State = State_BlockLeft;
-                                AI_Timer = 0;
-                                blockLocationX = (int)projectile.Center.X / 16 - i;
-                                blockLocationY = (int)projectile.Center.Y / 16;
-                                break;
-                            }
-                        }
-                    }
+                    BlockJump();
                 }
             }
             else if (AI_State == State_Far)
             {
                 // Teleport to player
                 projectile.position = player.Center;
-                AI_State = State_Waiting;
-            }
-            else if (AI_State == State_BlockRight)
-            {
-                // Jump to the right!
-                if (AI_Timer >= 30)
-                {
-                    projectile.velocity += new Vector2(1, 0.5f);
 
-                    if (AI_Timer >= 40)
-                    {
-                        AI_State = State_Waiting;
-                    }
+                Tile tileBelow = Main.tile[(int)player.Bottom.X / 16, (int)player.Bottom.Y / 16 + 1];
+                if (Main.tileSolid[tileBelow.type] && tileBelow.active())
+                {
+                    jumping = false;
+                    AI_State = State_Waiting;
                 }
                 else
                 {
-                    int height = 1; // Height of the "block tower" that needs to be jumped over, set to 1 since if the bunny is in this AI_State then there is at least 1 block already
-                    for (int y = 1; y < 10; y++)
-                    {
-                        Tile tile = Main.tile[blockLocationX, blockLocationY - y];
-                        if (Main.tileSolid[tile.type] && tile.active())
-                        {
-                            height += 1;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    jumping = true;
+                    AI_State = State_Flying;
+                }
+            }
+            else if (AI_State == State_BlockRight || AI_State == State_BlockLeft)
+            {
+                jumping = true;
 
-                    projectile.velocity = new Vector2(2, -(height + 6));
+                int height = 1; // Height of the "block tower" that needs to be jumped over, set to 1 since if the bunny is in projectile AI_State then there is at least 1 block already
+                for (int y = 1; y < 4; y++)
+                {
+                    Tile tile = Main.tile[blockLocationX, blockLocationY - y];
+                    if (Main.tileSolid[tile.type] && tile.active())
+                    {
+                        height += 1;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
-                AI_Timer += 1;
-            }
-            else if (AI_State == State_BlockLeft)
-            {
-                // Jump to the left!
-                if (AI_Timer >= 30)
+                if (AI_State == State_BlockRight)
                 {
-                    projectile.velocity += new Vector2(-1, 0.5f);
+                    //projectile.velocity = new Vector2(4, -height - 1);
+                    projectile.velocity.Y = -height - 1;
+                    if (projectile.velocity.X == 0) projectile.velocity.X = 4;
 
-                    if (AI_Timer >= 40)
-                    {
-                        AI_State = State_Waiting;
-                    }
+                    projectile.direction = -1;
                 }
                 else
                 {
-                    int height = 1; // Height of the "block tower" that needs to be jumped over, set to 1 since if the bunny is in this AI_State then there is at least 1 block already
-                    for (int y = 1; y < 10; y++)
-                    {
-                        Tile tile = Main.tile[blockLocationX, blockLocationY - y];
-                        if (Main.tileSolid[tile.type] && tile.active())
-                        {
-                            height += 1;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
+                    //projectile.velocity = new Vector2(-4, -height - 1);
+                    projectile.velocity.Y = -height - 1;
+                    if (projectile.velocity.X == 0) projectile.velocity.X = -4;
 
-                    projectile.velocity = new Vector2(-2, -(height + 6));
+                    projectile.direction = 1;
+                }
+
+                if (AI_Timer >= 30)
+                {
+                    projectile.velocity.Y += height + 7;
+
+                    Tile tileBelow = Main.tile[(int)projectile.Center.X / 16, (int)projectile.Center.Y / 16 + 1];
+                    if (Main.tileSolid[tileBelow.type] && tileBelow.active()) // Checks if minion is on the ground
+                    {
+                        jumping = false;
+                        AI_State = State_Waiting;
+                    }
                 }
 
                 AI_Timer += 1;
             }
             else if (AI_State == State_Notice)
             {
-                if (Vector2.Distance(enemy.Center, projectile.Center) < 500) // If still in range
+                Vector2 directionToEnemy = projectile.DirectionTo(enemy.Center);
+
+                if (dist > 1200) // If too far away from the player
                 {
-                    Main.NewText("In range");
-                    //projectile.velocity = new Vector2(projectile.direction * 2, -10f);
+                    AI_State = State_Far;
+                }
+                else
+                {
+                    if (Vector2.Distance(enemy.Center, projectile.Center) < 500) // If the enemy is still in range
+                    {
+                        projectile.direction = directionToEnemy.X > 0 ? -1 : 1;
+                        projectile.velocity = directionToEnemy * 5;
+                    }
+                    else // If the enemy has gone out of range
+                    {
+                        enemy = null;
+                        AI_State = State_Waiting;
+                    }
+                }
+
+                if (!enemy.active) // If the enemy has died
+                {
+                    enemy = null;
+                    AI_State = State_Waiting;
+                }
+
+                BlockJump();
+            }
+            else if (AI_State == State_Flying)
+            {
+                if (projectile.velocity.X > 0)
+                {
+                    projectile.direction = 1; // Used for switching the sprite direction (in SelectFrame)
+                }
+                else if (projectile.velocity.X < 0)
+                {
+                    projectile.direction = 1;
+                }
+
+                int multi = 5;
+
+                if (dist <= 20)
+                {
+                    multi = 1;
+                }
+                else if (dist <= 40)
+                {
+                    multi = 2;
+                }
+                else if (dist <= 60)
+                {
+                    multi = 3;
+                }
+                else if (dist <= 80)
+                {
+                    multi = 4;
+                }
+
+                projectile.velocity = directionToPlayer * multi;
+
+                Tile tileBelow = Main.tile[(int)player.Bottom.X / 16, (int)player.Bottom.Y / 16 + 1];
+                if (Main.tileSolid[tileBelow.type] && tileBelow.active())
+                {
+                    jumping = false;
+                    AI_State = State_Waiting;
+                }
+
+                if (dist > 700)
+                {
+                    AI_State = State_Far;
                 }
             }
 
-            projectile.velocity.Y += 6f; // Gravity!
+            if (!jumping)
+            {
+                projectile.velocity.Y += 6f; // Gravity! (It just forces the minion to stay on the ground unless it's jumping or flying)
+            }
 
-            SelectFrame(); // So it is animated correctly
+            //Main.NewText("State: " + AI_State);
+
+            // So the minions don't clump together in the same spot
+            var minionList = Main.projectile.Where(x => x.active && x.type == mod.ProjectileType("Bunny"));
+            foreach (Projectile proj in minionList)
+            {
+                if (proj != projectile)
+                {
+                    Vector2 distance = projectile.position - proj.position;
+                    if (distance.Length() < 30)
+                    {
+                        Main.NewText(Vector2.Normalize(distance) * 4);
+                        projectile.velocity += Vector2.Normalize(distance) * 4;
+                    }
+                }
+            }
+
+            SelectFrame(); // So it is animated
+        }
+        
+
+        private void BlockJump() // Checks if there is a block to the left or right of the minion and if there is then switch state to jump over the block
+        {
+            if (projectile.velocity.X > 0)
+            {
+                for (int i = 1; i < 4; i++) // Using a for loop so it can see blocks more than just 1 block ahead of it
+                {
+                    // Checks if there is a block to the right of the minion
+                    Tile right = Main.tile[(int)projectile.Center.X / 16 + i, (int)projectile.Center.Y / 16];
+                    if (Main.tileSolid[right.type] && right.active())
+                    {
+                        AI_State = State_BlockRight;
+                        AI_Timer = 0;
+                        blockLocationX = (int)projectile.Center.X / 16 + i;
+                        blockLocationY = (int)projectile.Center.Y / 16;
+                        break;
+                    }
+                }
+            }
+
+            if (projectile.velocity.X < 0)
+            {
+                for (int i = 1; i < 4; i++) // Using a for loop so it can see blocks more than just 1 block ahead of it
+                {
+                    // Checks if there is a block to the left of the minion
+                    Tile left = Main.tile[(int)projectile.Center.X / 16 - i, (int)projectile.Center.Y / 16];
+                    if (Main.tileSolid[left.type] && left.active())
+                    {
+                        AI_State = State_BlockLeft;
+                        AI_Timer = 0;
+                        blockLocationX = (int)projectile.Center.X / 16 - i;
+                        blockLocationY = (int)projectile.Center.Y / 16;
+                        break;
+                    }
+                }
+            }
         }
 
         /*public override void Behavior()
@@ -350,7 +459,7 @@ namespace ChampionMod.Projectiles.Minions
                 for (int k = 0; k < 200; k++)
                 {
                     NPC npc = Main.npc[k]; // Goes through each npc
-                    if (npc.CanBeChasedBy(this, false))
+                    if (npc.CanBeChasedBy(projectile, false))
                     {
                         float distance = Vector2.Distance(npc.Center, projectile.Center);
                         if ((distance < targetDist || !target) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height))

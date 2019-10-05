@@ -93,6 +93,8 @@ namespace ChampionMod.Projectiles.Spears
             {
                 projectile.rotation -= MathHelper.ToRadians(90f);
             }
+
+            ChampionMod.farmerProjectileRotation = MathHelper.ToDegrees(projectile.rotation);
         }
 
         // This code is taken from how vanilla draws projectiles from aiStyle 19

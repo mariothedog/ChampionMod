@@ -9,6 +9,7 @@ namespace ChampionMod
     class ChampionMod : Mod
     {
         public static int farmer;
+        public static float farmerProjectileRotation;
 
         public override void AddRecipeGroups()
         {
@@ -95,6 +96,13 @@ namespace ChampionMod
                 ItemID.PlatinumBroadsword
             });
             RecipeGroup.RegisterGroup("ChampionMod:Tier4BarSwords", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Shadow Scales", new int[]
+            {
+                ItemID.ShadowScale,
+                ItemID.TissueSample
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:ShadowScales", group);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ChampionMod.Items.Weapons.Guns
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Not to be confused with a certain plant.");
+            Tooltip.SetDefault("Not to be confused with a certain plant");
         }
 
         public override void SetDefaults() {
@@ -36,6 +36,8 @@ namespace ChampionMod.Items.Weapons.Guns
             recipe.AddRecipeGroup("Wood", 10);
             recipe.AddIngredient(ItemID.StoneBlock, 5);
             recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
 
         // So bullet comes out of muzzle

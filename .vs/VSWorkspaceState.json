@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\NPCs",
+    "\\NPCs\\TownNPCs"
   ],
-  "SelectedNode": "\\Items",
+  "SelectedNode": "\\NPCs\\TownNPCs\\Farmer.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -16,12 +16,6 @@ namespace ChampionMod.Projectiles.Melee
 
             projectile.width = 34;
             projectile.height = 34;
-            projectile.scale = 0.5f;
-
-            //drawOffsetX = -10;//-15;
-            //drawOriginOffsetY = -10;
-            drawOffsetX = -25;
-            drawOriginOffsetY = -26;
         }
 
         public override void AI()
@@ -30,7 +24,7 @@ namespace ChampionMod.Projectiles.Melee
             {
                 Dust dust;
                 // You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.
-                dust = Main.dust[Terraria.Dust.NewDust(projectile.position, 30, 30, 67, 0f, 0f, 0, new Color(255,255,255))];
+                dust = Main.dust[Dust.NewDust(projectile.position, 30, 30, 67, 0f, 0f, 0, new Color(255,255,255))];
                 dust.noGravity = true;
             }
         }

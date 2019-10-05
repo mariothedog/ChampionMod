@@ -28,3 +28,5 @@ C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\obj\
 C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\obj\Debug\net45\ChampionMod.csproj.CopyComplete
 C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\obj\Debug\net45\ChampionMod.dll
 C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\obj\Debug\net45\ChampionMod.pdb
+C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\bin\Debug\net45\MonoMod.RuntimeDetour.xml
+C:\Users\User\Documents\My Games\Terraria\ModLoader\Mod Sources\ChampionMod\bin\Debug\net45\MonoMod.Utils.xml

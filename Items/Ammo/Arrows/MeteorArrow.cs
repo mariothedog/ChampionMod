@@ -36,7 +36,5 @@ namespace ChampionMod.Items.Ammo.Arrows
             recipe.SetResult(this, 70);
             recipe.AddRecipe();
         }
-
-        
     }
 }

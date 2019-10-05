@@ -46,13 +46,46 @@ namespace ChampionMod.NPCs.TownNPCs
             animationType = NPCID.Guide;
         }
 
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frame.Y >= 1176) // If attacking
+            {
+                if (ChampionMod.farmerProjectileRotation >= 40)
+                {
+                    if (ChampionMod.farmerProjectileRotation >= 300)
+                    {
+                        npc.frame.Y = 1232;
+                    }
+                    else if (ChampionMod.farmerProjectileRotation >= 180)
+                    {
+                        npc.frame.Y = 1288;
+                    }
+                    else if (ChampionMod.farmerProjectileRotation >= 135)
+                    {
+                        npc.frame.Y = 1232;
+                    }
+                    else
+                    {
+                        npc.frame.Y = 1176;
+                    }
+                }
+                else
+                {
+                    if (ChampionMod.farmerProjectileRotation <= 40)
+                    {
+                        npc.frame.Y = 1232;
+                    }
+                }
+            }
+        }
+
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             List<int> plants = new List<int>()
             { ItemID.DaybloomSeeds, ItemID.BlinkrootSeeds, ItemID.DeathweedSeeds,
             ItemID.FireblossomSeeds, ItemID.MoonglowSeeds, ItemID.WaterleafSeeds,
             ItemID.ShiverthornSeeds, ItemID.PumpkinSeed,
-            mod.ItemType("CornSeeds"), mod.ItemType("TomatoSeeds")};
+            mod.ItemType("CornSeeds"), mod.ItemType("TomatoSeeds"), mod.ItemType("GrapeSeeds")};
 
             for (int k = 0; k < 255; k++)
             {
@@ -142,7 +175,7 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard); // this make so when this npc is close to Wizard
+            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard); // this make it so when this npc is close to Wizard
             if (wizardNPC >= 0 && Main.rand.Next(4) == 0) // has 1 in 3 chance to show this message
             {
                 if (Main.rand.Next(2) == 0)
@@ -155,8 +188,8 @@ namespace ChampionMod.NPCs.TownNPCs
                 }
             }
 
-            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); // this make so when this npc is close to the Guide
-            if (guideNPC >= 0 && Main.rand.Next(4) == 0) // has 1 in 3 chance to show this message
+            int guideNPC = NPC.FindFirstNPC(NPCID.Guide);
+            if (guideNPC >= 0 && Main.rand.Next(4) == 0)
             {
                 return "Sure, you can ask " + Main.npc[guideNPC].GivenName + " how to farm, but he 'aint gonna give you no advice.";
             }
@@ -222,9 +255,13 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
+            shop.item[nextSlot].SetDefaults(mod.ItemType("Pitchfork"));
+            nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("CornSeeds"));
             nextSlot++;
             shop.item[nextSlot].SetDefaults(mod.ItemType("TomatoSeeds"));
+            nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType("GrapeSeeds"));
             nextSlot++;
         }
 
@@ -234,38 +271,6 @@ namespace ChampionMod.NPCs.TownNPCs
             return true;
         }
 
-        // Make something happen when the npc teleports to a statue. Since this method only runs server side, any visual effects like dusts or gores have to be synced across all clients manually.
-        /*public override void OnGoToStatue(bool toKingStatue)
-        {
-            if (Main.netMode == NetmodeID.Server)
-            {
-                ModPacket packet = mod.GetPacket();
-                packet.Write((byte)npc.whoAmI);
-                packet.Send();
-            }
-            else
-            {
-                StatueTeleport();
-            }
-        }
-
-        // Create a square of pixels around the NPC on teleport.
-        public void StatueTeleport()
-        {
-            for (int i = 0; i < 30; i++)
-            {
-                Vector2 position = Main.rand.NextVector2Square(-20, 21);
-                if (Math.Abs(position.X) > Math.Abs(position.Y))
-                {
-                    position.X = Math.Sign(position.X) * 20;
-                }
-                else
-                {
-                    position.Y = Math.Sign(position.Y) * 20;
-                }
-            }
-        }*/
-
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
             damage = 20;
@@ -274,8 +279,8 @@ namespace ChampionMod.NPCs.TownNPCs
 
         public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
         {
-            cooldown = 40;
-            randExtraCooldown = 30;
+            cooldown = 5;
+            randExtraCooldown = 5;
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
