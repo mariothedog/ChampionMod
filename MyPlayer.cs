@@ -144,5 +144,24 @@ namespace ChampionMod
                 }
             }
         }
+
+        /*public override void PostSellItem(NPC vendor, Item[] shopInventory, Item item)
+        {
+            player.QuickSpawnItem(ItemID.CopperCoin, (int)(item.value * 1.15f));
+        }*/
+
+        /*public override bool CanSellItem(NPC vendor, Item[] shopInventory, Item item)
+        {
+            //item.shopCustomPrice
+            //item.value = (int)(item.value * 1.15f);
+            //item.shopCustomPrice = 100;
+            if (hasLuckyCat)
+            {
+                //Main.NewText("Value: " + item.value);
+                //Main.NewText("Thing: " + item.shopCustomPrice);
+                //Main.NewText("\n");
+            }
+            return true;
+        }*/
     }
 }

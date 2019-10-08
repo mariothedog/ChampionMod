@@ -8,7 +8,7 @@ using Terraria.ModLoader;
  
 namespace ChampionMod.Items.Weapons.Flamethrowers
 {
-    public class Ultrathrower : ModItem
+    public class MegaMelter : ModItem
     {
         int ammoTimer = 5;
 
@@ -19,7 +19,7 @@ namespace ChampionMod.Items.Weapons.Flamethrowers
 
         public override void SetDefaults()
         {
-            item.damage = 58;
+            item.damage = 74;
             item.crit = 4; // 8 crit total
             item.ranged = true;
             item.noMelee = true;
@@ -30,21 +30,19 @@ namespace ChampionMod.Items.Weapons.Flamethrowers
             item.useStyle = 5;
             item.knockBack = 0.3f;
             item.UseSound = SoundID.Item34;
-            item.value = 900000;
-            item.rare = 5;
+            item.value = 1500000;
+            item.rare = 8;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("UltrathrowerProjectile");
-            item.shootSpeed = 4.5f; // For flamethrower this decides how far the flames can go
+            item.shoot = mod.ProjectileType("MegaMelterProjectile");
+            item.shootSpeed = 5.7f; // For flamethrower this decides how far the flames can go
             item.useAmmo = AmmoID.Gel;
         }
 
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("IronBar", 20);
-            recipe.AddIngredient(mod.ItemType("Flamethrower"));
-            recipe.AddIngredient(mod.ItemType("Frosthrower"));
-            recipe.AddRecipeGroup("ChampionMod:EvilFlamethrowers");
+            recipe.AddIngredient(mod.ItemType("Ultrathrower"));
+            recipe.AddIngredient(ItemID.EldMelter);
             recipe.AddIngredient(ItemID.IllegalGunParts);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
@@ -69,7 +67,7 @@ namespace ChampionMod.Items.Weapons.Flamethrowers
 
         public override Vector2? HoldoutOffset()
 		{
-			return new Vector2(-12, -4);
+			return new Vector2(-10, 0);
 		}
     }
 }
