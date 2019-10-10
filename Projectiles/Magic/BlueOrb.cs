@@ -45,7 +45,7 @@ namespace ChampionMod.Projectiles.Magic
         {
             for (int i = 0; i < 10; i++)
             {
-                Dust.NewDust(projectile.position, 30, 30, 13, 0f, 0f, 0, new Color(0, 192, 255), 1.3f);
+                Dust.NewDust(projectile.position, 30, 30, 13, 0f, 0f, 0, new Color(0, 192, 255), 1.2f);
             }
         }
     }
