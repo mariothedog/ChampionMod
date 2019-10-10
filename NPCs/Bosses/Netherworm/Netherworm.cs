@@ -98,9 +98,9 @@ namespace ChampionMod.NPCs.Bosses.Netherworm
 		public override void Init() {
 			minLength = 8;
 			maxLength = 8;
-			tailType = mod.NPCType<NetherwormTail>();
-			bodyType = mod.NPCType<NetherwormBody>();
-			headType = mod.NPCType<NetherwormHead>();
+			tailType = ModContent.NPCType<NetherwormTail>();
+			bodyType = ModContent.NPCType<NetherwormBody>();
+			headType = ModContent.NPCType<NetherwormHead>();
 			speed = 5.5f;
 			turnSpeed = 0.045f;
 		}
