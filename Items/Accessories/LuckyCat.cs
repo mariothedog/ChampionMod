@@ -11,7 +11,7 @@ namespace ChampionMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Increases the sell price of your items.");
+            Tooltip.SetDefault("Increases the sell price of your items");
         }
 
         public override void SetDefaults()

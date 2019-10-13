@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -97,6 +95,15 @@ namespace ChampionMod.NPCs
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("Mushblade"));
                 }
+            }
+        }
+
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        {
+            if (type == NPCID.ArmsDealer && (Main.LocalPlayer.ZoneDesert || Main.LocalPlayer.ZoneUndergroundDesert) && NPC.downedBoss2)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("RiskRevolver"));
+                nextSlot++;
             }
         }
     }
