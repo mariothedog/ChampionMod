@@ -7,11 +7,13 @@ namespace ChampionMod.Projectiles.Melee
 {
 	public class FrostStar : ModProjectile
 	{
-		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("FrostStar");
+		public override void SetStaticDefaults()
+        {
+			DisplayName.SetDefault("Frost Star");
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults()
+        {
 			projectile.CloneDefaults(ProjectileID.FallingStar);
 			projectile.penetrate = 1; 
 		}
@@ -19,6 +21,18 @@ namespace ChampionMod.Projectiles.Melee
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Frostburn, 180);
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Player player = Main.player[projectile.owner];
+
+            for (int i = 0; i < 8; i++)
+            {
+                Dust.NewDust(projectile.position, 30, 30, 62, player.direction, 0f, 150, new Color(255, 251, 0), 1.5f);
+            }
+
+            return true; // Kill projectile
         }
     }
 }

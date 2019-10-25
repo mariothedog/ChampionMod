@@ -7,25 +7,27 @@ namespace ChampionMod.Items.Weapons.Swords
 {
 	public class OrionsSword : ModItem
 	{
-		public override void SetStaticDefaults() {
+		public override void SetStaticDefaults()
+        {
             DisplayName.SetDefault("Orion's Sword");
 		}
 
-		public override void SetDefaults() {
-			item.damage = 54;           
-			item.melee = true;          
-			item.width = 50;            
-			item.height = 50;           //Weapon's texture's height
-			item.useTime = 16;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-			item.useAnimation = 16;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			item.useStyle = 1;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
-			item.knockBack = 4;         //The force of knockback of the weapon. Maximum is 20
-			item.value = Item.buyPrice(gold: 4);           //The value of the weapon
-			item.rare = 5;              //The rarity of the weapon, from -1 to 13
-			item.UseSound = SoundID.Item1;      //The sound of the weapon on use
+		public override void SetDefaults()
+        {
+			item.damage = 54;
+			item.melee = true;
+			item.width = 50;
+			item.height = 50;
+			item.useTime = 16;
+			item.useAnimation = 16;
+			item.useStyle = 1;
+			item.knockBack = 4;
+			item.value = Item.buyPrice(gold: 4);
+			item.rare = 5;
+			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("FlameStar");
-            item.shootSpeed = 16f; 
+            item.shootSpeed = 16f;
 		}
 
 		public override void AddRecipes()

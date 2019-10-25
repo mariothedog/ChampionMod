@@ -8,7 +8,6 @@ namespace ChampionMod.NPCs.Enemies
     {
         public override void SetStaticDefaults()
         {
-            //Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
             Main.npcFrameCount[npc.type] = 4;
         }
 
@@ -23,12 +22,49 @@ namespace ChampionMod.NPCs.Enemies
             npc.DeathSound = SoundID.NPCDeath2;
             npc.value = 60f;
             npc.knockBackResist = 0.5f;
-            npc.aiStyle = NPCID.DemonEye;
+            //npc.aiStyle = NPCID.DemonEye;
             animationType = NPCID.DemonEye;
+        }
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            return SpawnCondition.OverworldNightMonster.Chance * 0.5f * NPC.downedBoss1.ToInt();
+        }
+
+        private const int AI_State_Slot = 0;
+        private const int AI_Timer_Slot = 1;
+
+        private const int State_Search = 0;
+        private const int State_Found = 1;
+        private const int State_Lock = 2;
+        private const int State_Dash = 3;
+
+        public float AI_State
+        {
+            get => npc.ai[AI_State_Slot];
+            set => npc.ai[AI_State_Slot] = value;
+        }
+
+        public float AI_Timer
+        {
+            get => npc.ai[AI_Timer_Slot];
+            set => npc.ai[AI_Timer_Slot] = value;
         }
 
         public override void AI()
         {
+            if (AI_State == State_Search)
+            {
+            }
+            else if (AI_State == State_Found)
+            {
+            }
+            else if (AI_State == State_Lock)
+            {
+            }
+            else if (AI_State == State_Dash)
+            {
+            }
         }
     }
 }

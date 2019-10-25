@@ -24,33 +24,49 @@ Farming expansion coming soon.
 [c/FF0040:Magicmason1000]
 
 [c/009933:-=-Changelog-=-]
-[c/996633:Beta 0.2:]
-New NPCs:
-- Farmer NPC
-
+[c/996633:Beta 0.21:]
 New Items:
-- Orion's Sword
-- Stone Staff
-- Royal Pick
-- Royal Gun
-- Pitchfork
-- Mushblade
-- Corn
-- Corn Seeds
-- Tomato
-- Tomato Seeds
-- Grape
-- Grape Seeds
+- Alchemer Gun Casing
+- Blazing Alchemer Gun
+- Corrosive Alchemer Gun
+- Acidic Alchemer Gun
+- Dreadful Alchemer Gun
+- Royal Arrow
+- Glacier Blade
+- Shooting Star Staff
+- Bonded Multisword
+- Alloyed Blade
+- Whimsical Shard
+- Frozen Mallet
+- Baron's Blade
+- Hyphen Statue
+- Mega Melter
+- Pink Drink
+- Verdant Blade
+- Verdant Bow
+- Nature's Bounty
+- Risk Revolver
+- Astral Rampage
 
 Changes:
-- Nature's Protection rarity changed from blue to white
-- Nature's Protection sprite changed
-- Acorn Staff sprite changed
-- Feather Duster sprite changed
-- Brumous Beater sprite changed
+- Dual Flareshot sprite changed
+- Memory Lens sprite changed
+- Frozen Chakram sprite changed
+- Memory Potion sprite changed
+- Corn drop sprite changed
+- Grape drop sprite changed
+- Ultrathrower sprite changed
+- Peashooter sprite changed
+- Pitchfork sprite changed
+- Orion's Sword sprite changed
+- Sagittarius sprite changed
+- Frosthrower sprite changed
+- Royal Bow sprite changed
+- Royal Sword sprite changed
+
+- Ultrathrower damage nerfed
 
 Bugs Fixed:
-- Snowball Rifle no longer does damage when an enemy touches the rifle itself
-- Peashooter is actually craftable now
+- Grapes now grow at an appropriate speed
 
 ===

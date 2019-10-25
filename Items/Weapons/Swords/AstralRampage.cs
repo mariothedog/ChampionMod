@@ -9,7 +9,7 @@ namespace ChampionMod.Items.Weapons.Swords
 	{
 		public override void SetDefaults()
         {
-			item.damage = 60;
+			item.damage = 56;
 			item.melee = true;
 			item.width = 50;
 			item.height = 50;
@@ -17,13 +17,12 @@ namespace ChampionMod.Items.Weapons.Swords
 			item.useAnimation = 18;
 			item.useStyle = 1;
 			item.knockBack = 6;
-			item.value = Item.buyPrice(gold: 4);
-			item.rare = 5;
+            item.value = 750000;
+			item.rare = 7;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("AstralRampageBeam");
             item.shootSpeed = 14f;
-            item.crit = 1; // 5 crit total
 		}
 
 		public override void AddRecipes()
@@ -65,15 +64,16 @@ namespace ChampionMod.Items.Weapons.Swords
 
                 if (i == 0)
                 {
-                    Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FrostStar"), damage * 2, knockBack, player.whoAmI, 0f, ceilingLimit);
+                    Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FrostStar"), damage / 2, knockBack, player.whoAmI, 0f, ceilingLimit);
                 }
                 else
                 {
-                    Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FlameStar"), damage * 2, knockBack, player.whoAmI, 0f, ceilingLimit);
+                    Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FlameStar"), damage / 2, knockBack, player.whoAmI, 0f, ceilingLimit);
                 }
                 
             }
 
+            damage /= 2;
             return true;
         }
     }

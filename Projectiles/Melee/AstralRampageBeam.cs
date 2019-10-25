@@ -15,7 +15,6 @@ namespace ChampionMod.Projectiles.Melee
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.EnchantedBeam);
-            projectile.scale = 0.8f;
         }
 
         public override void AI()
