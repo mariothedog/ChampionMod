@@ -19,9 +19,9 @@ Farming expansion coming soon.
 [c/0066FF:JoJo]
 [c/00FF00:Aurakhalis]
 [c/CC0000:Unpleasant]
-[c/FF0040:Steviegt6]
-[c/FF0040:Alpha Destroyer 32768]
-[c/FF0040:Magicmason1000]
+[c/FF532E:Steviegt6]
+[c/594E4C:Alpha Destroyer 32768]
+[c/9A6028:Magicmason1000]
 
 [c/009933:-=-Changelog-=-]
 [c/996633:Beta 0.21:]
