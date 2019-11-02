@@ -46,6 +46,15 @@ namespace ChampionMod.NPCs
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IchorBlaster"));
                 }
             }
+			
+			if (npc.type == NPCID.BoneSerpentHead)
+            {
+                if (Main.rand.Next(50) == 0) // 2% item rarity
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SerpentsSpine"));
+                }
+            }
+
 
             if (npc.type == NPCID.GoblinSummoner)
             {
