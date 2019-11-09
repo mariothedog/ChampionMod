@@ -36,6 +36,14 @@ namespace ChampionMod.NPCs
                     }
                 }
             }
+	    
+	    if (npc.type == NPCID.Harpy)
+            {
+                if (Main.rand.Next(50) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SkyBlue"));
+                }
+            }
 
             if (npc.type == NPCID.IchorSticker)
             {
