@@ -24,6 +24,13 @@ Farming expansion coming soon.
 [c/9A6028:Magicmason1000]
 
 [c/009933:-=-Changelog-=-]
+[c/996633:Beta 0.211:]
+New Items:
+- Stone Bullet
+
+Bugs Fixed:
+- Unfinished Obsidian Golems removed
+
 [c/996633:Beta 0.21:]
 New Items:
 - Alchemer Gun Casing

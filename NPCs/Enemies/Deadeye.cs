@@ -29,10 +29,10 @@ namespace ChampionMod.NPCs.Enemies
             animationType = NPCID.DemonEye;
         }
 
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        /*public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return SpawnCondition.OverworldNightMonster.Chance * 0.5f * NPC.downedBoss1.ToInt();
-        }
+        }*/
 
         private const int AI_State_Slot = 0;
         private const int AI_Lock_Timer_Slot = 1;
