@@ -22,16 +22,19 @@ namespace ChampionMod.Projectiles.Magic
             projectile.width = 14;
             projectile.height = 14;
             projectile.ignoreWater = true;
+            projectile.light = 0.7f;
         }
+
+        float rotationOffset = 0f;
 
         public override void AI()
         {
             // So the projectile faces the correct way
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 0.75f;
-            //projectile.rotation = 0.79f * projectile.direction;
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 0.75f + (rotationOffset * projectile.direction);
+            rotationOffset += 0.2f;
             
             // Projectile arcs slightly
-            projectile.velocity.Y += 0.01f;
+            projectile.velocity.Y += 0.03f;
 
             projectile.frameCounter++;
             if (projectile.frameCounter > 8)
@@ -43,9 +46,10 @@ namespace ChampionMod.Projectiles.Magic
 
         public override void Kill(int timeLeft)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Dust.NewDust(projectile.position, 30, 30, 13, 0f, 0f, 0, new Color(0, 192, 255), 1.2f);
+                Dust dust = Main.dust[Dust.NewDust(projectile.position, 30, 30, 13, 0f, 0f, 0, new Color(0, 192, 255), 1.2f)];
+                dust.noGravity = true;
             }
         }
     }

@@ -19,7 +19,7 @@ namespace ChampionMod.NPCs.Enemies
             npc.width = 36;
             npc.height = 22;
             npc.damage = 14;
-            npc.defense = 6;
+            npc.defense = 2;
             npc.lifeMax = 80;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath2;

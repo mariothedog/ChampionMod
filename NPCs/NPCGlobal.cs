@@ -117,10 +117,39 @@ namespace ChampionMod.NPCs
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
         {
+            // downedBoss1 - Eye of Cthulhu
+            // downedBoss2 - Eater of Worlds/Brain of Cthulhu
+            // downedBoss3 - Skeletron
+            // downedMechBoss1 - The Destroyer
+            // downedMechBoss2 - The Twins
+            // downedMechBoss3 - Skeletron Prime
+
             if (type == NPCID.ArmsDealer && (Main.LocalPlayer.ZoneDesert || Main.LocalPlayer.ZoneUndergroundDesert) && NPC.downedBoss2)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType("RiskRevolver"));
                 nextSlot++;
+            }
+
+            if (type == NPCID.WitchDoctor && NPC.downedBoss3)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("DevilsKnife"));
+                nextSlot++;
+            }
+        }
+
+        public override bool? CanBeHitByItem(NPC npc, Player player, Item item)
+        {
+            return item.type == mod.ItemType("DevilsKnife");
+        }
+
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+            if (npc.friendly && item.type == mod.ItemType("DevilsKnife"))
+            {
+                damage = npc.life; // Kills NPC
+                knockback = 0;
+                crit = true;
+                player.AddBuff(BuffID.Cursed, 300); // Cursed debuff for 5 seconds
             }
         }
     }
