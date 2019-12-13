@@ -139,7 +139,12 @@ namespace ChampionMod.NPCs
 
         public override bool? CanBeHitByItem(NPC npc, Player player, Item item)
         {
-            return item.type == mod.ItemType("DevilsKnife");
+            if (item.type == mod.ItemType("DevilsKnife"))
+            {
+                return true;
+            }
+
+            return base.CanBeHitByItem(npc, player, item);
         }
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
