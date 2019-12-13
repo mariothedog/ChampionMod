@@ -19,10 +19,18 @@ namespace ChampionMod.NPCs
         {
             if (npc.type == NPCID.KingSlime)
             {
-                if (!Main.expertMode) // If it is expert it will drop from the bag anyway
+                if (!Main.expertMode) // If it is expert it will drop from the bag anyway, see BossBags.cs
                 {
                     // Only if not expert (5-15 inclusive)
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
+                }
+            }
+
+            if (npc.type == NPCID.EyeofCthulhu && NPC.downedBoss2)
+            {
+                if (!Main.expertMode)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OpticalResidue"));
                 }
             }
 

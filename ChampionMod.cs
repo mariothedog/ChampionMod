@@ -103,6 +103,13 @@ namespace ChampionMod
                 ItemID.TissueSample
             });
             RecipeGroup.RegisterGroup("ChampionMod:ShadowScales", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Light's Bane", new int[]
+            {
+                ItemID.LightsBane,
+                ItemID.BloodButcherer
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:LightsBane", group);
         }
     }
 }

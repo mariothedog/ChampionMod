@@ -21,6 +21,8 @@ namespace ChampionMod
         public bool hasNaturesProtection = false;
         public bool NaturesProtectionBuff = false;
 
+        public int primalDefence = 0;
+
         public override void ResetEffects()
         {
             Bunny = false;
@@ -125,7 +127,7 @@ namespace ChampionMod
 
                         Dust dust;
                         // Top hole dust
-                        dust = Terraria.Dust.NewDustPerfect(loc, flareDustType, Vector2.Zero, 100);
+                        dust = Dust.NewDustPerfect(loc, flareDustType, Vector2.Zero, 100);
                         dust.noGravity = true;
                         dust.velocity.Y -= 4f * player.gravDir;
                     }
@@ -143,6 +145,27 @@ namespace ChampionMod
                     player.lifeRegenTime = 0;
                 }
             }
+        }
+
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            if (item.type == mod.ItemType("PrimalCleaver"))
+            {
+                if (primalDefence < 20)
+                {
+                    primalDefence += 1;
+                }
+            }
+        }
+
+        public override void OnHitByNPC(NPC npc, int damage, bool crit)
+        {
+            primalDefence = 0;
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            player.statDefense += primalDefence;
         }
 
         /*public override void PostSellItem(NPC vendor, Item[] shopInventory, Item item)

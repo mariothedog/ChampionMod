@@ -30,24 +30,18 @@ namespace ChampionMod.Items.Weapons.Swords
 			item.UseSound = SoundID.Item1;
 			item.useTurn = false;
             item.autoReuse = true;
-            //item.crit = -4; // Crit is handled in ModifyHitNPC
 		}
 
-		/*public override void AddRecipes()
+		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("KingsGel"), 5);
-            recipe.AddIngredient(ItemID.Gel, 100);
-            recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 12);
-			recipe.AddTile(TileID.Solidifier);
+            recipe.AddRecipeGroup("ChampionMod:LightsBane");
+            recipe.AddIngredient(ItemID.Muramasa);
+            recipe.AddIngredient(mod.ItemType("OpticalResidue"));
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}*/
-
-        /*public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            tooltips[2] = new TooltipLine(mod, "CritChance", string.Format("{0}% critical strike chance", 4 + tooltipAdditionalCrit));
-        }*/
+		}
 
         public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
         {

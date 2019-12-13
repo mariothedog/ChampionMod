@@ -19,6 +19,11 @@ namespace ExampleMod.Items
                 {
                     player.QuickSpawnItem(mod.ItemType("BaronsBlade"));
                 }
+
+                if (arg == ItemID.EyeOfCthulhuBossBag && NPC.downedBoss2)
+                {
+                    player.QuickSpawnItem(mod.ItemType("OpticalResidue"), 2);
+                }
 			}
 		}
 	}
