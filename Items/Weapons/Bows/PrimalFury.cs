@@ -42,18 +42,13 @@ namespace ChampionMod.Items.Weapons.Bows
             recipe.AddRecipe();
         }
 
-        /*public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (type == ProjectileID.WoodenArrowFriendly)
-			{
-				type = mod.ProjectileType("RoyalArrowProjectile");
-			}
+            Vector2 speed = new Vector2(speedX, speedY);
+            Vector2 offset = Vector2.Normalize(speed) * -30;
+            Vector2 ghostPosition = position + offset;
+            Projectile.NewProjectile(ghostPosition, speed, mod.ProjectileType("GhostlyArrowProjectile"), damage, knockBack, player.whoAmI);
 			return true;
-        }*/
-
-        /*public override Vector2? HoldoutOffset() // So player holds the handle
-        {
-            return new Vector2(3, 0);
-        }*/
+        }
     }
 }
