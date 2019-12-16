@@ -26,7 +26,7 @@ namespace ChampionMod.Projectiles.Arrows
             // Gold dust
             for (int i = 0; i < 15; i++)
             {
-                Terraria.Dust.NewDust(projectile.position, 30, 30, 10, 0f, 0f, 0, new Color(255,255,255));
+                Dust.NewDust(projectile.position, 30, 30, 10, 0f, 0f, 0, new Color(255,255,255));
             }
 
             // Hit Sound
