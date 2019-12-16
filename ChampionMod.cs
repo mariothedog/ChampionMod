@@ -110,6 +110,13 @@ namespace ChampionMod
                 ItemID.BloodButcherer
             });
             RecipeGroup.RegisterGroup("ChampionMod:LightsBane", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Demon Bow", new int[]
+            {
+                ItemID.DemonBow,
+                ItemID.TendonBow
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:DemonBow", group);
         }
     }
 }

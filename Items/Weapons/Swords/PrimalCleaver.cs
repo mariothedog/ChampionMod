@@ -8,8 +8,6 @@ namespace ChampionMod.Items.Weapons.Swords
 {
 	public class PrimalCleaver : ModItem
 	{
-        float tooltipAdditionalCrit = 0;
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Every swing increases defense by 1 until struck (Cap - 20)");
@@ -51,11 +49,6 @@ namespace ChampionMod.Items.Weapons.Swords
                 damage = 20 + Main.rand.Next(6);
                 crit = true;
             }
-        }
-
-        public override void GetWeaponCrit(Player player, ref int crit)
-        {
-            tooltipAdditionalCrit = crit;
         }
     }
 }
