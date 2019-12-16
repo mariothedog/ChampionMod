@@ -5,6 +5,8 @@ namespace ChampionMod.Projectiles.Arrows
 {
     public class GhostlyArrowProjectile : ModProjectile
     {
+        int originalDamage;
+
         public override void SetDefaults()
         {
             projectile.ranged = true;
@@ -20,9 +22,16 @@ namespace ChampionMod.Projectiles.Arrows
             if (projectile.ai[1] == 0f)
             {
                 projectile.Opacity = 0f;
+                originalDamage = projectile.damage;
+                projectile.damage = 0;
             }
 
             projectile.ai[1] = 1f;
+
+            if (projectile.Opacity >= 0.1f)
+            {
+                projectile.damage = originalDamage;
+            }
 
             if (projectile.Opacity < 0.5f)
             {

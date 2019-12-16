@@ -14,7 +14,7 @@ namespace ChampionMod.Items.Weapons.Bows
 
         public override void SetDefaults()
         {
-            item.damage = 32;
+            item.damage = 20;
             item.ranged = true;
             item.noMelee = true;
             item.width = 40;
