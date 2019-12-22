@@ -124,6 +124,13 @@ namespace ChampionMod
                 ItemID.CrimsonYoyo
             });
             RecipeGroup.RegisterGroup("ChampionMod:Malaise", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Vilethorn", new int[]
+            {
+                ItemID.Vilethorn,
+                ItemID.CrimsonRod
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:Vilethorn", group);
         }
     }
 }

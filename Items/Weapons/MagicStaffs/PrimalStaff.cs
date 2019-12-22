@@ -3,37 +3,45 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ChampionMod.Items.Weapons.Swords
+namespace ChampionMod.Items.Weapons.MagicStaffs
 {
-	public class AstralRampage : ModItem
+	public class PrimalStaff : ModItem
 	{
+		public override void SetStaticDefaults()
+        {
+            Tooltip.SetDefault("Fires ghostly orbs from the sky that pierce all blocks");
+            Item.staff[item.type] = true;
+		}
+
 		public override void SetDefaults()
         {
-			item.damage = 56;
-			item.melee = true;
-			item.width = 50;
-			item.height = 50;
-			item.useTime = 18;
-			item.useAnimation = 18;
-			item.useStyle = 1;
-			item.knockBack = 6;
-            item.value = 750000;
-			item.rare = 7;
-			item.UseSound = SoundID.Item1;
+			item.damage = 16;
+			item.magic = true;
+			item.mana = 10;
+			item.width = 48;
+			item.height = 58;
+			item.useTime = 16;
+		    item.useAnimation = 16;
+			item.useStyle = 5;
+			item.noMelee = true; 
+			item.knockBack = 5;
+			item.rare = 3;
+            item.value = 30000;
+			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
-            item.shoot = mod.ProjectileType("AstralRampageBeam");
-            item.shootSpeed = 14f;
-		}
+			item.shoot = mod.ProjectileType("GhostlyOrb");
+			item.shootSpeed = 13f;
+	    }
 
 		public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("OrionsSword"));
-            recipe.AddIngredient(ItemID.BrokenHeroSword);
-            recipe.AddIngredient(ItemID.Starfury);
-            recipe.AddTile(TileID.MythrilAnvil);
+			ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddRecipeGroup("ChampionMod:Vilethorn");
+            recipe.AddIngredient(ItemID.AquaScepter);
+            recipe.AddIngredient(mod.ItemType("OpticalResidue"));
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
-            recipe.AddRecipe();
+			recipe.AddRecipe();
 		}
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -44,7 +52,7 @@ namespace ChampionMod.Items.Weapons.Swords
             {
                 ceilingLimit = player.Center.Y - 200f;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Vector2 pos = player.Center + new Vector2((-(float)Main.rand.Next(0, 401) * player.direction), -600f);
                 pos.Y -= (100 * i);
@@ -62,18 +70,10 @@ namespace ChampionMod.Items.Weapons.Swords
                 float spdX = heading.X;
                 float spdY = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
 
-                if (i == 0)
-                {
-                    Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FrostStar"), damage / 2, knockBack, player.whoAmI, 0f, ceilingLimit);
-                }
-                else
-                {
-                    Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FlameStar"), damage / 2, knockBack, player.whoAmI, 0f, ceilingLimit);
-                }
+                Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, type, damage, knockBack, player.whoAmI, 0f, ceilingLimit);
             }
 
-            damage /= 2;
-            return true;
+            return false;
         }
     }
 }
