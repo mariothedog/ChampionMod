@@ -117,6 +117,13 @@ namespace ChampionMod
                 ItemID.TendonBow
             });
             RecipeGroup.RegisterGroup("ChampionMod:DemonBow", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Malaise", new int[]
+            {
+                ItemID.CorruptYoyo,
+                ItemID.CrimsonYoyo
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:Malaise", group);
         }
     }
 }
