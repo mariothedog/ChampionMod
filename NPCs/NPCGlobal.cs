@@ -34,6 +34,17 @@ namespace ChampionMod.NPCs
                 }
             }
 
+            if (npc.boss && (npc.type == 13 || npc.type == 14 || npc.type == 15))
+            {
+                if (!Main.expertMode)
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EatersMandible"));
+                    }
+                }
+            }
+
             if (npc.type == NPCID.BrainofCthulhu)
             {
                 if (!Main.expertMode)

@@ -14,7 +14,15 @@ namespace ExampleMod.Items
                 {
                     player.QuickSpawnItem(mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
                 }
-                
+
+                if (arg == ItemID.EaterOfWorldsBossBag)
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        player.QuickSpawnItem(mod.ItemType("EatersMandible"));
+                    }
+                }
+
                 if (arg == ItemID.BrainOfCthulhuBossBag)
                 {
                     player.QuickSpawnItem(mod.ItemType("BaronsBlade"));
