@@ -15,6 +15,10 @@ namespace ChampionMod.Projectiles.Yoyos
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 12f;
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 230f;
             ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 14f;
+
+            // Afterimage
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 4; // The length of old position to be recorded
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0; // The recording mode
         }
 
         public override void SetDefaults()
@@ -32,9 +36,17 @@ namespace ChampionMod.Projectiles.Yoyos
         }
 
         // Afterimage
-        public override void AI()
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("PrimalJusticeGhostlyProj"), 0, 0, projectile.owner);
+            //Redraw the projectile with the color not influenced by light
+            Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+            for (int k = 0; k < projectile.oldPos.Length; k++)
+            {
+                Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+            }
+            return true;
         }
     }
 }
