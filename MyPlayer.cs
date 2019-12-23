@@ -67,7 +67,7 @@ namespace ChampionMod
                 // Dust
                 if (Main.rand.NextFloat() < 0.5f)
                 {
-                    Dust.NewDust(new Vector2(player.position.X, player.position.Y + 10f), 40, 40, 27, 0f, 0f, 100, default(Color));
+                    Dust.NewDust(new Vector2(player.position.X, player.position.Y + 10f), 40, 40, 27, 0f, 0f, 100, default);
                 }
 
                 memoryTimer -= 1;
@@ -83,7 +83,7 @@ namespace ChampionMod
 
                 for (int i = 0; i < 70; i++) // Spawn lots of dust
                 {
-                    Dust.NewDust(new Vector2(player.position.X-40, player.position.Y), 110, 110, 27, 0f, 0f, 100, default(Color), 1.6f);
+                    Dust.NewDust(new Vector2(player.position.X-40, player.position.Y), 110, 110, 27, 0f, 0f, 100, default, 1.6f);
                 }
             }
 
@@ -117,13 +117,9 @@ namespace ChampionMod
 
                         if (player.direction == 1) // If facing right
                         {
-                            //loc.X -= 4; // So it looks like the dust is coming out of the gun
+                            // So it looks like the dust is coming out of the gun
                             loc.X += 41;
                         }
-                        /*else // If facing left
-                        {
-                            loc.X -= 2;
-                        }*/
 
                         Dust dust;
                         // Top hole dust
