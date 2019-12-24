@@ -70,7 +70,6 @@ namespace ChampionMod.Items.Weapons.Swords
                 {
                     Projectile.NewProjectile(pos.X, pos.Y, spdX, spdY, mod.ProjectileType("FlameStar"), damage / 2, knockBack, player.whoAmI, 0f, ceilingLimit);
                 }
-                
             }
 
             damage /= 2;

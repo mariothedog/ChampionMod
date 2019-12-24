@@ -103,6 +103,34 @@ namespace ChampionMod
                 ItemID.TissueSample
             });
             RecipeGroup.RegisterGroup("ChampionMod:ShadowScales", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Light's Bane", new int[]
+            {
+                ItemID.LightsBane,
+                ItemID.BloodButcherer
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:LightsBane", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Demon Bow", new int[]
+            {
+                ItemID.DemonBow,
+                ItemID.TendonBow
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:DemonBow", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Malaise", new int[]
+            {
+                ItemID.CorruptYoyo,
+                ItemID.CrimsonYoyo
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:Malaise", group);
+
+            group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Vilethorn", new int[]
+            {
+                ItemID.Vilethorn,
+                ItemID.CrimsonRod
+            });
+            RecipeGroup.RegisterGroup("ChampionMod:Vilethorn", group);
         }
     }
 }

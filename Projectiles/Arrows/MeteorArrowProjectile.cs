@@ -25,7 +25,7 @@ namespace ChampionMod.Projectiles.Arrows
         {
             // The projectile rotation (so it faces the correct way) is automatically done as the arrow ai is used
 
-            Terraria.Dust.NewDust(projectile.position, 30, 30, 55, 0f, 0f, 0, new Color(255,255,255), 1f);
+            Dust.NewDust(projectile.position, 30, 30, 55, 0f, 0f, 0, new Color(255,255,255), 1f);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

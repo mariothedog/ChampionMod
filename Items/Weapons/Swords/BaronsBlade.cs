@@ -32,8 +32,11 @@ namespace ChampionMod.Items.Weapons.Swords
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            player.HealEffect(damage/10);
-            player.statLife += damage/10;
+            if (target.type != NPCID.TargetDummy)
+            {
+                player.HealEffect(damage / 10);
+                player.statLife += damage / 10;
+            }
 
         }
 

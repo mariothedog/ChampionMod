@@ -8,7 +8,7 @@ namespace ChampionMod.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Bunny");
-            Description.SetDefault("The Bunny will fight for you");
+            Description.SetDefault("The bunny will fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
@@ -20,6 +20,7 @@ namespace ChampionMod.Buffs
             {
                 modPlayer.BunnyMinion = true;
             }
+
             if (!modPlayer.BunnyMinion)
             {
                 player.DelBuff(buffIndex);

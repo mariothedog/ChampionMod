@@ -9,6 +9,8 @@ namespace ChampionMod.Items.Weapons.Guns
 {
     public class RiskRevolver : ModItem
     {
+        float tooltipAdditionalCrit = 0;
+
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Critical hits cause bullets to explode");
@@ -38,16 +40,20 @@ namespace ChampionMod.Items.Weapons.Guns
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            tooltips[2] = new TooltipLine(mod, "CritChance", "30% critical strike chance");
+            tooltips[2] = new TooltipLine(mod, "CritChance", string.Format("{0}% critical strike chance", 30 + tooltipAdditionalCrit));
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (Main.rand.Next(100) < 30) // 30% crit chance
+            if (Main.rand.Next(100) < 30 + player.rangedCrit) // 30% crit chance (without any crit buffs)
             {
                 // Crit
                 // Damage is multiplied in the bullet's ModifyHitNPC
                 type = mod.ProjectileType("CritBulletProjectile");
+            }
+            else
+            {
+                type = mod.ProjectileType("NoCritBulletProjectile");
             }
 
             return true;
@@ -56,6 +62,11 @@ namespace ChampionMod.Items.Weapons.Guns
         public override Vector2? HoldoutOffset() // I still don't know why returning an empty Vector2 fixes it even though the default is a null vector2
         {
             return new Vector2(0, 0);
+        }
+
+        public override void GetWeaponCrit(Player player, ref int crit)
+        {
+            tooltipAdditionalCrit = crit;
         }
     }
 }

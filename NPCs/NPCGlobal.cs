@@ -19,10 +19,29 @@ namespace ChampionMod.NPCs
         {
             if (npc.type == NPCID.KingSlime)
             {
-                if (!Main.expertMode) // If it is expert it will drop from the bag anyway
+                if (!Main.expertMode) // If it is expert it will drop from the bag anyway, see BossBags.cs
                 {
                     // Only if not expert (5-15 inclusive)
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("KingsGel"), Main.rand.Next(5, 16));
+                }
+            }
+
+            if (npc.type == NPCID.EyeofCthulhu && NPC.downedBoss2)
+            {
+                if (!Main.expertMode)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OpticalResidue"));
+                }
+            }
+
+            if (npc.boss && (npc.type == 13 || npc.type == 14 || npc.type == 15))
+            {
+                if (!Main.expertMode)
+                {
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EatersMandible"));
+                    }
                 }
             }
 
@@ -37,9 +56,17 @@ namespace ChampionMod.NPCs
                 }
             }
 	    
-	    if (npc.type == NPCID.Harpy)
+	        if (npc.type == NPCID.Harpy)
             {
                 if (Main.rand.Next(50) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SkyBlue"));
+                }
+            }
+
+            if (npc.type == NPCID.WyvernHead)
+            {
+                if (Main.rand.Next(100) < 12)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SkyBlue"));
                 }
@@ -117,10 +144,44 @@ namespace ChampionMod.NPCs
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
         {
+            // downedBoss1 - Eye of Cthulhu
+            // downedBoss2 - Eater of Worlds/Brain of Cthulhu
+            // downedBoss3 - Skeletron
+            // downedMechBoss1 - The Destroyer
+            // downedMechBoss2 - The Twins
+            // downedMechBoss3 - Skeletron Prime
+
             if (type == NPCID.ArmsDealer && (Main.LocalPlayer.ZoneDesert || Main.LocalPlayer.ZoneUndergroundDesert) && NPC.downedBoss2)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType("RiskRevolver"));
                 nextSlot++;
+            }
+
+            if (type == NPCID.WitchDoctor && NPC.downedBoss3)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("DevilsKnife"));
+                nextSlot++;
+            }
+        }
+
+        public override bool? CanBeHitByItem(NPC npc, Player player, Item item)
+        {
+            if (item.type == mod.ItemType("DevilsKnife"))
+            {
+                return true;
+            }
+
+            return base.CanBeHitByItem(npc, player, item);
+        }
+
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+            if (npc.friendly && item.type == mod.ItemType("DevilsKnife"))
+            {
+                damage = npc.life; // Kills NPC
+                knockback = 0;
+                crit = true;
+                player.AddBuff(BuffID.Cursed, 300); // Cursed debuff for 5 seconds
             }
         }
     }

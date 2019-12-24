@@ -30,7 +30,7 @@ namespace ChampionMod.Items.Weapons.MagicStaffs
 			item.autoReuse = true;
 			item.shoot = 92;
 			item.shootSpeed = 10f;
-	    	}
+	    }
 
 		public override void AddRecipes()
         {
