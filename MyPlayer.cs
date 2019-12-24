@@ -23,10 +23,14 @@ namespace ChampionMod
 
         public int primalDefence = 0;
 
+        // Minions
+        //public bool PrimalClump = false;
+
         public override void ResetEffects()
         {
             Bunny = false;
             BunnyMinion = false;
+            //PrimalClump = false;
             hasNaturesProtection = false;
             NaturesProtectionBuff = false;
         }
