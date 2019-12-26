@@ -1,25 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.World.Generation;
 
-namespace ChampionMod.Tiles.Blocks
+namespace ChampionMod
 {
-    class PlateauBrickTile : ModTile
+    class ChampionWorld : ModWorld
     {
-        public override void SetDefaults()
+        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
-            Main.tileSolid[Type] = true;
-            Main.tileMergeDirt[Type] = true;
-            Main.tileBlockLight[Type] = true;
-            Main.tileLighted[Type] = true;
-            drop = mod.ItemType("PlateauBrick");
-            AddMapEntry(new Color(113, 150, 139)); // Color of the tile on the map
+            //int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int genIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Jungle Trees"));
+            tasks.Insert(genIndex + 1, new PassLegacy("ThunderRavagedPlateau", ThunderPlateau));
         }
 
-        public override void PlaceInWorld(int i, int j, Item item)
+        public void ThunderPlateau(GenerationProgress progress)
         {
-            int jungleCloseX = 0;
+            progress.Message = "Placing a plateau in the jungle";
+
+            /*int jungleCloseX = 0;
             int Y = Main.spawnTileY + 200; // + 200 (down 200) in case spawn is higher than the jungle
 
             // Find jungle position
@@ -57,12 +59,7 @@ namespace ChampionMod.Tiles.Blocks
             int length = 0;
             for (int y = Y; y > 0 && length < 100; y--)
             {
-                /*if (t == TileID.Grass || t == TileID.JungleGrass || t == TileID.JunglePlants || t == TileID.JunglePlants2 || t == TileID.JungleThorns || t == TileID.JungleVines || t == TileID.Trees)
-                {
-                    Main.NewText(t);
-                }*/
-                int type = Main.tile[jungleMiddleX, y].type;
-                if (!Main.tile[jungleMiddleX, y].active() || type == TileID.Trees || type == TileID.Grass || type == TileID.JungleGrass || type == TileID.JunglePlants || type == TileID.JunglePlants2 || type == TileID.JungleThorns || type == TileID.JungleVines)
+                if (!Main.tile[jungleMiddleX, y].active()) // If air
                 {
                     if (length == 0) // So it gets the bottom air tile of the "air chain"
                     {
@@ -83,24 +80,18 @@ namespace ChampionMod.Tiles.Blocks
             int baseHeight = 60;
             int baseEndY = jungleSurfaceY - baseHeight;
 
-            /*for (int x = baseStartX; x < baseEndX; x++)
-            {
-                for (int y = jungleSurfaceY; y > baseEndY; y--)
-                {
-                    //Main.tile[x, y].type = (ushort)mod.TileType("PlateauBrickTile");
-                    WorldGen.PlaceTile(x, y, mod.TileType("PlateauBrickTile"));
-                }
-            }*/
+            //for (int x = baseStartX; x < baseEndX; x++)
+            //{
+            //    for (int y = jungleSurfaceY; y > baseEndY; y--)
+            //    {
+            //        //Main.tile[x, y].type = (ushort)mod.TileType("PlateauBrickTile");
+            //        WorldGen.PlaceTile(x, y, mod.TileType("PlateauBrickTile"));
+            //    }
+            //}
             //Main.tile[jungleMiddleX, jungleSurfaceY].type = (ushort)mod.TileType("PlateauBrickTile");
-            //Main.NewText(mod.TileType("PlateauBrickTile"));
-            //Main.NewText((ushort)mod.TileType("PlateauBrickTile"));
-            //Main.NewText(" ");
-
-            /*for (int y = jungleSurfaceY; y > jungleSurfaceY - 100; y--)
+            for (int y = jungleSurfaceY; y > jungleSurfaceY - 100; y--)
             {
-                //Main.tile[jungleMiddleX, y].type = (ushort)mod.TileType("PlateauBrickTile");
-                Main.tile[jungleMiddleX, y].ResetToType((ushort)mod.TileType("PlateauBrickTile"));
-                //Main.NewText(Main.tile[jungleMiddleX, y].active());
+                Main.tile[jungleMiddleX, y].type = (ushort)mod.TileType("PlateauBrickTile");
                 //if (Main.tile[jungleMiddleX, y].type != (ushort)mod.TileType("PlateauBrickTile"))
                 //{
                 //    WorldGen.PlaceTile(jungleMiddleX, y, mod.TileType("PlateauBrickTile"));
@@ -109,25 +100,12 @@ namespace ChampionMod.Tiles.Blocks
 
             for (int x = baseStartX; x < baseEndX; x++)
             {
-                //Main.tile[x, jungleSurfaceY].type = (ushort)mod.TileType("PlateauBrickTile");
-                Main.tile[x, jungleSurfaceY].ResetToType((ushort)mod.TileType("PlateauBrickTile"));
-                //Main.NewText(Main.tile[x, jungleSurfaceY].active());
+                Main.tile[x, jungleSurfaceY].type = (ushort)mod.TileType("PlateauBrickTile");
                 //if (Main.tile[x, jungleSurfaceY].type != (ushort)mod.TileType("PlateauBrickTile"))
                 //{
                 //    WorldGen.PlaceTile(x, jungleSurfaceY, mod.TileType("PlateauBrickTile"));
                 //}
             }*/
-
-            for (int x = baseStartX; x < baseEndX; x++)
-            {
-                for (int y = jungleSurfaceY; y > baseEndY; y--)
-                {
-                    //Main.tile[x, y].type = (ushort)mod.TileType("PlateauBrickTile");
-                    //WorldGen.PlaceTile(x, y, mod.TileType("PlateauBrickTile"));
-
-                    //Main.tile[x, y].ResetToType((ushort)mod.TileType("PlateauBrickTile"));
-                }
-            }
         }
     }
 }

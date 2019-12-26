@@ -7,7 +7,7 @@ namespace ChampionMod.Items.Accessories
 {
     class LuckyCat : ModItem
     {
-        bool firstUpdate = true;
+        //bool firstUpdate = true;
 
         public override void SetStaticDefaults()
         {
