@@ -182,7 +182,7 @@ namespace ChampionMod.NPCs.Generic
 			vector18.Y = (float)((int)(vector18.Y / 16f) * 16);
 			num191 -= vector18.X;
 			num192 -= vector18.Y;
-			float num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
+			float num193 = (float)Math.Sqrt((double)(num191 * num191 + num192 * num192));
 			if (npc.ai[1] > 0f && npc.ai[1] < (float)Main.npc.Length)
 			{
 				try
@@ -194,8 +194,8 @@ namespace ChampionMod.NPCs.Generic
 				catch
 				{
 				}
-				npc.rotation = (float)System.Math.Atan2((double)num192, (double)num191) + 1.57f;
-				num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
+				npc.rotation = (float)Math.Atan2((double)num192, (double)num191) + 1.57f;
+				num193 = (float)Math.Sqrt((double)(num191 * num191 + num192 * num192));
 				int num194 = npc.width;
 				num193 = (num193 - (float)num194) / num193;
 				num191 *= num193;
@@ -225,7 +225,7 @@ namespace ChampionMod.NPCs.Generic
 					{
 						npc.velocity.Y = num188;
 					}
-					if ((double)(Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y)) < (double)num188 * 0.4)
+					if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num188 * 0.4)
 					{
 						if (npc.velocity.X < 0f)
 						{
@@ -320,10 +320,10 @@ namespace ChampionMod.NPCs.Generic
 					bool flag21 = false;
 					if (npc.type == 87)
 					{
-						if ((npc.velocity.X > 0f && num191 < 0f || npc.velocity.X < 0f && num191 > 0f || npc.velocity.Y > 0f && num192 < 0f || npc.velocity.Y < 0f && num192 > 0f) && System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) > num189 / 2f && num193 < 300f)
+						if ((npc.velocity.X > 0f && num191 < 0f || npc.velocity.X < 0f && num191 > 0f || npc.velocity.Y > 0f && num192 < 0f || npc.velocity.Y < 0f && num192 > 0f) && Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) > num189 / 2f && num193 < 300f)
 						{
 							flag21 = true;
-							if (System.Math.Abs(npc.velocity.X) + System.Math.Abs(npc.velocity.Y) < num188)
+							if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < num188)
 							{
 								npc.velocity *= 1.1f;
 							}
