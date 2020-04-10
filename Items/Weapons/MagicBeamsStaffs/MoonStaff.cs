@@ -40,7 +40,7 @@ namespace ChampionMod.Items.Weapons.MagicBeamsStaffs
 
         public override Vector2? HoldoutOrigin() // HoldoutOrigin works with staffs unlike HoldoutOffset
         {
-            return new Vector2(20, 20);
+            return new Vector2(18, 18);
         }
     }
 }
