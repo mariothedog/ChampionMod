@@ -23,56 +23,43 @@ Custom Potions, Tools, and Accessories to come.
 [c/9A6028:Magicmason1000]
 
 [c/009933:-=-Changelog-=-]
-[c/996633:Beta 0.211:]
+[c/996633:Beta 0.22:]
 New Items:
-- Stone Bullet
-
-Bugs Fixed:
-- Unfinished Obsidian Golems removed
-
-[c/996633:Beta 0.21:]
-New Items:
-- Alchemer Gun Casing
-- Blazing Alchemer Gun
-- Corrosive Alchemer Gun
-- Acidic Alchemer Gun
-- Dreadful Alchemer Gun
-- Royal Arrow
-- Glacier Blade
-- Shooting Star Staff
-- Bonded Multisword
-- Alloyed Blade
-- Whimsical Shard
-- Frozen Mallet
-- Baron's Blade
-- Hyphen Statue
-- Mega Melter
-- Pink Drink
-- Verdant Blade
-- Verdant Bow
-- Nature's Bounty
-- Risk Revolver
-- Astral Rampage
+- Immolator
+- Sky Blue
+- Devil's Knife
+- Optical Residue
+- Primal Cleaver
+- Primal Fury
+- Primal Justice
+- Primal Staff
+- Eater's Mandible
+- Bolide Bringer
 
 Changes:
-- Dual Flareshot sprite changed
-- Memory Lens sprite changed
-- Frozen Chakram sprite changed
-- Memory Potion sprite changed
-- Corn drop sprite changed
-- Grape drop sprite changed
-- Ultrathrower sprite changed
+- Nature's Bounty Particle Effects and Animation improved
+- Baron's Blade no longer heals the player when hitting target dummies
+- Risky Revolver's crit now stacks with crit buffs (E.g. Shroomite Armor)
+- Memory Fish sprite changed
+- Wyverns now have a 12% chance to drop the Sky Blue
+- Corrosive Alchemer Gun sprite changed
+- Acidic Alchemer Gun sprite changed
+- Dreadful Alchemer Gun sprite changed
 - Peashooter sprite changed
-- Pitchfork sprite changed
-- Orion's Sword sprite changed
-- Sagittarius sprite changed
-- Frosthrower sprite changed
-- Royal Bow sprite changed
-- Royal Sword sprite changed
-
-- Ultrathrower damage nerfed
-
-Bugs Fixed:
-- Grapes now grow at an appropriate speed
+- Stone Bullet item sprite changed
+- Snowball Rifle sprite changed
+- Acorn Staff sprite changed
+- Acorn Staff projectile (acorn) sprite changed
+- Nature's Protection item sprite changed
+- Bayonet item and projectile sprite changed
+- Enchanted Katana item sprite changed
+- Snowball sledgeshot item sprite changed
+- Bolide Bringer item sprite changed
+- Risk Revolver item sprite changed
+- Bonded Multisword item sprite changed
+- Sagittarius item sprite changed
+- Astral Rampage item sprite changed
+- Sun Staff item sprite changed
+- Moon Staff item sprite changed
 
 ===
