@@ -133,3 +133,9 @@ orleans.codegen.cs
 
 # Local History for Visual Studio
 .localhistory/
+*.cache
+*.cache
+*.ide-wal
+*.ide-shm
+*.ide
+.localhistory/
