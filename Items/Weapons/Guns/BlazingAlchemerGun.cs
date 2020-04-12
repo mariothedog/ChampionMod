@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,11 +8,6 @@ namespace ChampionMod.Items.Weapons.Guns
 {
     public class BlazingAlchemerGun : ModItem
     {
-        public string gun_type = "Blazing"; // Default
-        public Dictionary<int, int> items = new Dictionary<int, int>() { { ItemID.FlaskofFire, 10 }, { ItemID.Hellstone, 70 } };
-
-        public override string Texture { get { return $"ChampionMod/Items/Weapons/Guns/{gun_type}AlchemerGun"; } }
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Inflicts \"On Fire!\" to those hit by its bullets.");
@@ -43,15 +37,8 @@ namespace ChampionMod.Items.Weapons.Guns
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("AlchemerCasing"));
-
-            foreach(var item in items)
-            {
-                int id = item.Key;
-                int amount = item.Value;
-
-                recipe.AddIngredient(id, amount);
-            }
-
+            recipe.AddIngredient(ItemID.FlaskofFire, 10);
+            recipe.AddIngredient(ItemID.Hellstone, 70);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -59,7 +46,7 @@ namespace ChampionMod.Items.Weapons.Guns
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            type = mod.ProjectileType($"{gun_type}BulletProjectile");
+            type = mod.ProjectileType($"BlazingBulletProjectile");
 
             if (Math.Round(Main.rand.NextDouble(), 2) >= 0.8)
             {
@@ -75,48 +62,6 @@ namespace ChampionMod.Items.Weapons.Guns
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-4, 0);
-        }
-    }
-
-    public class CorrosiveAlchemerGun : BlazingAlchemerGun
-    {
-        public CorrosiveAlchemerGun()
-        {
-            gun_type = "Corrosive";
-            items = new Dictionary<int, int>() { { ItemID.FlaskofCursedFlames, 10 }, { ItemID.CursedFlame, 20 } };
-        }
-
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Inflicts \"Cursed Inferno\" to those hit by its bullets.");
-        }
-    }
-
-    public class AcidicAlchemerGun : BlazingAlchemerGun
-    {
-        public AcidicAlchemerGun()
-        {
-            gun_type = "Acidic";
-            items = new Dictionary<int, int>() { { ItemID.FlaskofIchor, 10 }, { ItemID.Ichor, 20 } };
-        }
-
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Inflicts \"Ichor\" to those hit by its bullets.");
-        }
-    }
-
-    public class DreadfulAlchemerGun : BlazingAlchemerGun
-    {
-        public DreadfulAlchemerGun()
-        {
-            gun_type = "Dreadful";
-            items = new Dictionary<int, int>() { { ItemID.FlaskofPoison, 10 }, { ItemID.JungleSpores, 20 } };
-        }
-
-        public override void SetStaticDefaults()
-        {
-            Tooltip.SetDefault("Inflicts \"Poison\" to those hit by its bullets.");
         }
     }
 }
