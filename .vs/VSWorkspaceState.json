@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Items",
+    "\\Items\\Weapons",
+    "\\Items\\Weapons\\Guns",
     "\\NPCs",
     "\\NPCs\\TownNPCs"
   ],
-  "SelectedNode": "\\NPCs\\TownNPCs\\Farmer.cs",
+  "SelectedNode": "\\Items\\Weapons\\Guns\\RoyalGun.cs",
   "PreviewInSolutionExplorer": false
 }
