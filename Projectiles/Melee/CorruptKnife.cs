@@ -196,7 +196,7 @@ namespace ChampionMod.Projectiles.Melee
             if (IsStickingToTarget) StickyAI();
             else NormalAI();
 
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
+            //projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
 
             if (projectile.spriteDirection == 1) // facing right
             {
@@ -246,7 +246,7 @@ namespace ChampionMod.Projectiles.Melee
             // Please notice the MathHelper usage, offset the rotation by 90 degrees (to radians because rotation uses radians) because the sprite's rotation is not aligned!
             projectile.rotation =
                 projectile.velocity.ToRotation() +
-                MathHelper.ToRadians(90f);
+                MathHelper.ToRadians(45f);
 
             // Spawn some random dusts as the javelin travels
             if (Main.rand.NextBool(3))
