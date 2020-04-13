@@ -1,5 +1,4 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -10,7 +9,8 @@ namespace ChampionMod.Items.Armor
     {
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.WoodHelmet);
+            item.width = 18;
+            item.height = 18;
             item.defense = 2;
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -22,7 +22,7 @@ namespace ChampionMod.Items.Armor
             player.setBonus = "+1 defense" +
                 "\nIncreases armor penetration by 5";
             player.armorPenetration += 5;
-            //player.statDefense += 1; //Not sure why but it automatically increases defense by 1 without this for me. If it doesn't for you, add this back in, might just be a small issue on my side.
+            player.statDefense += 1; //Not sure why but it automatically increases defense by 1 without this for me. If it doesn't for you, add this back in, might just be a small issue on my side.
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
+﻿using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Armor
 {
@@ -10,7 +7,8 @@ namespace ChampionMod.Items.Armor
     {
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.WoodGreaves);
+            item.width = 18;
+            item.height = 18;
             item.defense = 1;
         }
     }
