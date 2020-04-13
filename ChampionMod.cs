@@ -135,7 +135,6 @@ namespace ChampionMod
         public override void AddRecipes()
         {
             base.AddRecipes();
-
             ModRecipe recipe = new ModRecipe(this);
             recipe.AddRecipeGroup("Wood", 10);
             recipe.AddIngredient(ItemID.Acorn, 1);
@@ -143,6 +142,13 @@ namespace ChampionMod
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.WandofSparking, 1);
             recipe.AddRecipe();
+            ModRecipe recipe2 = new ModRecipe(this);
+            recipe2.AddIngredient(ItemType("PrimalCleaver"), 1);
+            recipe2.AddIngredient(ItemID.BladeofGrass, 1);
+            recipe2.AddIngredient(ItemID.FieryGreatsword, 1);
+            recipe2.AddTile(TileID.DemonAltar);
+            recipe2.SetResult(ItemID.NightsEdge, 1);
+            recipe2.AddRecipe();
         }
     }
 }
