@@ -7,6 +7,11 @@ namespace ChampionMod.Items.Ammo.Arrows
 {
     public class RoyalArrow : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+            DisplayName.SetDefault("Slime Arrow");
+        }
         public override void SetDefaults()
         {
             item.damage = 13;
@@ -28,10 +33,9 @@ namespace ChampionMod.Items.Ammo.Arrows
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("KingsGel"), 1);
             recipe.AddRecipeGroup("ChampionMod:Tier4Bars", 1);
-            recipe.AddIngredient(ItemID.Gel, 10);
-            recipe.AddIngredient(ItemID.WoodenArrow, 100);
+            recipe.AddIngredient(ItemID.WoodenArrow, 200);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 100);
+            recipe.SetResult(this, 200);
             recipe.AddRecipe();
         }
     }
