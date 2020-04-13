@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -23,16 +19,15 @@ namespace ChampionMod
 
         public int primalDefence = 0;
 
-        // Minions
-        //public bool PrimalClump = false;
+        public bool hasLuckyCat = false;
 
         public override void ResetEffects()
         {
             Bunny = false;
             BunnyMinion = false;
-            //PrimalClump = false;
             hasNaturesProtection = false;
             NaturesProtectionBuff = false;
+            hasLuckyCat = false;
         }
 
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
@@ -186,5 +181,30 @@ namespace ChampionMod
             }
             return true;
         }*/
+
+        public override void PostSellItem(NPC vendor, Item[] shopInventory, Item item)
+        {
+            // Lucky cat effect.
+            if (hasLuckyCat)
+            {
+                int total_copper_coins = (int)(item.GetStoreValue() * 0.15);
+                Main.NewText("Store Value: " + item.GetStoreValue());
+                Main.NewText("Total Copper Coins: " + total_copper_coins);
+                int copper_coins = total_copper_coins % 100;
+                int silver_coins = total_copper_coins / 100 % 100;
+                int gold_coins = total_copper_coins / 10000 % 100;
+                int platinum_coins = total_copper_coins / 1000000 % 100;
+                Main.NewText("Copper Coins: " + copper_coins);
+                Main.NewText("Silver Coins: " + silver_coins);
+                Main.NewText("Gold Coins: " + gold_coins);
+                Main.NewText("Platinum Coins: " + platinum_coins);
+                Main.NewText(" ");
+
+                player.QuickSpawnItem(ItemID.CopperCoin, copper_coins);
+                player.QuickSpawnItem(ItemID.SilverCoin, silver_coins);
+                player.QuickSpawnItem(ItemID.GoldCoin, gold_coins);
+                player.QuickSpawnItem(ItemID.PlatinumCoin, platinum_coins);
+            }
+        }
     }
 }
