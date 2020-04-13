@@ -9,7 +9,7 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Not to be confused with a certain plant");
+            //Tooltip.SetDefault("Not to be confused with a certain plant");
         }
 
         public override void SetDefaults() {
