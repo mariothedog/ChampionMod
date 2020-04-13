@@ -1,6 +1,8 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Microsoft.Xna.Framework;
+using System;
 
 namespace ChampionMod.Utils
 {
@@ -12,6 +14,7 @@ namespace ChampionMod.Utils
             Lava,
             Honey
         }
+
         internal static bool PlaceLiquids(Player player, int x, int y, Liquids liquid)
         {
             if (Main.netMode != NetmodeID.Server)
@@ -38,13 +41,29 @@ namespace ChampionMod.Utils
             }
             return false;
         }
-        internal static bool ActuallyFreakingPlaceTheLiquidOMFG(Player player, Liquids liquid)
+
+        internal static bool ActuallyFreakingPlaceTheLiquidOMFG(Player player, Liquids liquid, int range)
         {
-            if (player.whoAmI == Main.myPlayer && !player.noBuilding && PlaceLiquids(player, Player.tileTargetX, Player.tileTargetY, liquid))
+            if (player.whoAmI == Main.myPlayer && !player.noBuilding)
             {
-                Main.PlaySound(19, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
+                Vector2 adjustedPos = player.position / 16;
+                float xDist = Math.Abs(Player.tileTargetX - adjustedPos.X);
+                float yDist = Math.Abs(Player.tileTargetY - adjustedPos.Y);
+
+                if (xDist > Player.tileRangeX + range || yDist > Player.tileRangeY + range)
+                {
+                    return false;
+                }
+
+                if (PlaceLiquids(player, Player.tileTargetX, Player.tileTargetY, liquid))
+                {
+                    Main.PlaySound(19, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
+
+                    return true;
+                }
             }
-            return true;
+
+            return false;
         }
     }
 }

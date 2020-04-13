@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using static Terraria.ModLoader.ModContent;
 using ChampionMod.Utils;
 
 namespace ChampionMod.Items.Placeable
@@ -21,11 +20,17 @@ namespace ChampionMod.Items.Placeable
         }
         public override bool UseItem(Player player)
         {
-            return LiquidHelper.ActuallyFreakingPlaceTheLiquidOMFG(player, LiquidHelper.Liquids.Honey);
+            return LiquidHelper.ActuallyFreakingPlaceTheLiquidOMFG(player, LiquidHelper.Liquids.Honey, 2);
         }
 
         public override void AddRecipes()
         {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.BottomlessBucket);
+            recipe.AddIngredient(ItemID.HoneyBucket, 99);
+            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
