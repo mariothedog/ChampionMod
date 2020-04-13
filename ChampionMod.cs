@@ -132,5 +132,17 @@ namespace ChampionMod
             });
             RecipeGroup.RegisterGroup("ChampionMod:Vilethorn", group);
         }
+        public override void AddRecipes()
+        {
+            base.AddRecipes();
+
+            ModRecipe recipe = new ModRecipe(this);
+            recipe.AddRecipeGroup("Wood", 10);
+            recipe.AddIngredient(ItemID.Acorn, 1);
+            recipe.AddIngredient(ItemID.Torch, 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(ItemID.WandofSparking, 1);
+            recipe.AddRecipe();
+        }
     }
 }
