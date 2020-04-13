@@ -22,7 +22,7 @@ namespace ChampionMod.Items.Armor
             player.setBonus = "+1 defense" +
                 "\nIncreases armor penetration by 5";
             player.armorPenetration += 5;
-            player.statDefense += 1; //Not sure why but it automatically increases defense by 1 without this for me. If it doesn't for you, add this back in, might just be a small issue on my side.
+            player.statDefense += 1;
         }
     }
 }
