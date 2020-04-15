@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,8 +7,6 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
 {
     public class Bayonet : ModItem
     {
-        int timer = 1;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bayonet");
@@ -71,7 +68,7 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
                 item.shoot = ProjectileID.Bullet;
                 item.useAmmo = AmmoID.Bullet;
             }
-            else // On right click
+            else if (player.altFunctionUse == 2) // On right click
             {
                 item.melee = true;
                 item.ranged = false;
@@ -83,26 +80,12 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
                 item.UseSound = SoundID.Item1;
                 item.useTime = 28;
                 item.useAnimation = 28;
-                item.shoot = 0; // So it doesn't shoot anything
+                item.shoot = mod.ProjectileType("BayonetProjectile");
+                item.useAmmo = 0;
 
-                if (Main.mouseRightRelease) // Player lets go off mouse right click
-                {
-                    timer = 0; // So spear can be hit again
-                }
-
-                if (timer == 0)
-                {
-                    item.shoot = mod.ProjectileType("BayonetProjectile");
-                    item.useAmmo = 0; // doesn't use any ammo
-                    timer = 1; // Puts spear back on cooldown
-                }
-                else
-                {
-                    item.UseSound = null; // so there is no sound
-                    item.useAnimation = 0; // So it no longer shows the spear
-                }
                 return player.ownedProjectileCounts[item.shoot] < 1;
             }
+
             return base.CanUseItem(player);
         }
     }
