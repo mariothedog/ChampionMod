@@ -23,7 +23,6 @@ namespace ChampionMod.Items.Consumables
             item.useTime = 17;
             item.useAnimation = 17;
             item.useStyle = 2;
-            item.UseSound = SoundID.Item6;
             item.consumable = true;
             item.value = 100 * 5;
         }
