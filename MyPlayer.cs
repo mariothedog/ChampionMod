@@ -1,3 +1,4 @@
+using ChampionMod.Utils;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -11,14 +12,20 @@ namespace ChampionMod
         public bool Bunny = false;
         public static bool hasProjectile;
         public bool BunnyMinion;
+
+        // Memory potion/lens
         public float LastDeathX;
         public float LastDeathY;
         public int memoryTimer = -1;
+
+        // Nature's protection
         public bool hasNaturesProtection = false;
         public bool NaturesProtectionBuff = false;
 
+        // Primal weapons
         public int primalDefence = 0;
 
+        // Lucky cat
         public bool hasLuckyCat = false;
 
         public override void ResetEffects()
@@ -128,6 +135,9 @@ namespace ChampionMod
                     }
                 }
             }
+
+            // For the lucky cat
+            
         }
 
         public override void UpdateLifeRegen()
@@ -161,50 +171,6 @@ namespace ChampionMod
         public override void PostUpdateBuffs()
         {
             player.statDefense += primalDefence;
-        }
-
-        /*public override void PostSellItem(NPC vendor, Item[] shopInventory, Item item)
-        {
-            player.QuickSpawnItem(ItemID.CopperCoin, (int)(item.value * 1.15f));
-        }*/
-
-        /*public override bool CanSellItem(NPC vendor, Item[] shopInventory, Item item)
-        {
-            //item.shopCustomPrice
-            //item.value = (int)(item.value * 1.15f);
-            //item.shopCustomPrice = 100;
-            if (hasLuckyCat)
-            {
-                //Main.NewText("Value: " + item.value);
-                //Main.NewText("Thing: " + item.shopCustomPrice);
-                //Main.NewText("\n");
-            }
-            return true;
-        }*/
-
-        public override void PostSellItem(NPC vendor, Item[] shopInventory, Item item)
-        {
-            // Lucky cat effect.
-            if (hasLuckyCat)
-            {
-                int total_copper_coins = (int)(item.GetStoreValue() * 0.15);
-                Main.NewText("Store Value: " + item.GetStoreValue());
-                Main.NewText("Total Copper Coins: " + total_copper_coins);
-                int copper_coins = total_copper_coins % 100;
-                int silver_coins = total_copper_coins / 100 % 100;
-                int gold_coins = total_copper_coins / 10000 % 100;
-                int platinum_coins = total_copper_coins / 1000000 % 100;
-                Main.NewText("Copper Coins: " + copper_coins);
-                Main.NewText("Silver Coins: " + silver_coins);
-                Main.NewText("Gold Coins: " + gold_coins);
-                Main.NewText("Platinum Coins: " + platinum_coins);
-                Main.NewText(" ");
-
-                player.QuickSpawnItem(ItemID.CopperCoin, copper_coins);
-                player.QuickSpawnItem(ItemID.SilverCoin, silver_coins);
-                player.QuickSpawnItem(ItemID.GoldCoin, gold_coins);
-                player.QuickSpawnItem(ItemID.PlatinumCoin, platinum_coins);
-            }
         }
     }
 }

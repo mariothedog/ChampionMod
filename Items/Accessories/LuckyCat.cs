@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ChampionMod.Items.Accessories
 {
+    [AutoloadEquip(EquipType.Balloon)]
     class LuckyCat : ModItem
     {
         public override void SetStaticDefaults()
@@ -17,7 +19,7 @@ namespace ChampionMod.Items.Accessories
             item.accessory = true;
             item.width = 40;
             item.height = 40;
-            item.value = 750000;
+            item.value = 150000;
             item.rare = 2;
         }
 

@@ -162,6 +162,12 @@ namespace ChampionMod.NPCs
                 shop.item[nextSlot].SetDefaults(mod.ItemType("DevilsKnife"));
                 nextSlot++;
             }
+
+            if (type == NPCID.Merchant && Main.hardMode)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("LuckyCat"));
+                nextSlot++;
+            }
         }
 
         public override bool? CanBeHitByItem(NPC npc, Player player, Item item)
