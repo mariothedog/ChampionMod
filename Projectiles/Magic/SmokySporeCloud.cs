@@ -57,7 +57,7 @@ namespace ChampionMod.Projectiles.Magic
                     float shootToY = npc.position.Y - projectile.Center.Y;
                     float distance = (float)Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
 
-                    if (distance < 150f && !npc.friendly && npc.active) //the 50f is the number of pixels, change it to change the radius
+                    if (distance < 150f && !npc.friendly && npc.active)
                     {
                         distance = 3f / distance;
 
