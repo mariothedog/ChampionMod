@@ -11,7 +11,7 @@ namespace ChampionMod.Items.Consumables
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slime Forecast");
-            Tooltip.SetDefault("Summons a Slime Rain");
+            Tooltip.SetDefault("Summons a Slime Rain\nOnly usable in normal mode if the player has at least 140 health and 8 defense");
         }
 
         public override void SetDefaults()
@@ -43,7 +43,7 @@ namespace ChampionMod.Items.Consumables
 
         public override bool CanUseItem(Player player)
         {
-            if(!Main.slimeRain && player.statLifeMax >= 140 && player.statDefense >= 8)
+            if(!Main.slimeRain && (Main.expertMode ? true : player.statLifeMax >= 140 && player.statDefense >= 8))
                 return true;
             else
                 return false;
