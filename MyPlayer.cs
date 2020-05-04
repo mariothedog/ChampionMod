@@ -135,9 +135,6 @@ namespace ChampionMod
                     }
                 }
             }
-
-            // For the lucky cat
-            
         }
 
         public override void UpdateLifeRegen()

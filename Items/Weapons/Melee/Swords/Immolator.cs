@@ -6,30 +6,30 @@ using Terraria.ModLoader;
 namespace ChampionMod.Items.Weapons.Melee.Swords
 {
     public class Immolator : ModItem
-	{
-		public override void SetDefaults()
+    {
+        public override void SetDefaults()
         {
-			item.damage = 60;
-			item.melee = true;
-			item.width = 44;
-			item.height = 44;
-			item.useTime = 38;
-			item.useAnimation = 38;
-			item.useStyle = 1;
-			item.knockBack = 8;
-			item.value = Item.buyPrice(gold: 1);
-			item.rare = 3;
-			item.UseSound = SoundID.Item1;
-		}
+            item.damage = 60;
+            item.melee = true;
+            item.width = 44;
+            item.height = 44;
+            item.useTime = 38;
+            item.useAnimation = 38;
+            item.useStyle = 1;
+            item.knockBack = 8;
+            item.value = Item.buyPrice(gold: 1);
+            item.rare = 3;
+            item.UseSound = SoundID.Item1;
+        }
 
-		public override void MeleeEffects(Player player, Rectangle hitbox)
+        public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-			if (Main.rand.NextBool(3))
+            if (Main.rand.NextBool(3))
             {
-				// Emit dust when swinging the sword
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 127, 0f, 0f, 255, default);
-			}
-		}
+                // Emit dust when swinging the sword
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 127, 0f, 0f, 255, default);
+            }
+        }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
