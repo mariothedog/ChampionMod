@@ -140,6 +140,17 @@ namespace ChampionMod.NPCs
                     Item.NewItem(npc.getRect(), mod.ItemType("Mushblade"));
                 }
             }
+
+            if (npc.type == NPCID.Demon || npc.type == NPCID.FireImp)
+            {
+                if (NPC.downedBoss3)
+                {
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        Item.NewItem(npc.getRect(), mod.ItemType("Immolator"));
+                    }
+                }
+            }
         }
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)
