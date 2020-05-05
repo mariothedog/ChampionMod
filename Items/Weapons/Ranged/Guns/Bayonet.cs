@@ -10,7 +10,7 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bayonet");
-            Tooltip.SetDefault("Left click to shoot a bullet. Right click to hit with spear");
+            Tooltip.SetDefault("Left click to shoot a bullet.\nRight click to hit with the spear");
         }
         public override void SetDefaults()
         {
@@ -53,7 +53,7 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 0) // On left Click
+            if (player.altFunctionUse == 0) // On left click
             {
                 item.melee = false;
                 item.ranged = true;
