@@ -37,20 +37,22 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
 			recipe.AddRecipe();
 		}
 
-    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 shots
+			int numberProjectiles = 4 + Main.rand.Next(2);
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25)); // 25 degree spread.
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25));
+				Vector2 dir = Vector2.Normalize(new Vector2(speedX, speedY));
+				Vector2 offset = dir * 40; // So the bullets come out of the muzzle.
+				Projectile.NewProjectile(position.X + offset.X, position.Y + offset.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
 
-		public override Vector2? HoldoutOffset() // So player holds the handle
-    {
-      return new Vector2(-8, 0);
-    }
+		public override Vector2? HoldoutOffset()
+		{
+		  return new Vector2(-2, -8);
+		}
 	}
 }
