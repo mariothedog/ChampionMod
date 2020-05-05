@@ -13,7 +13,8 @@ namespace ChampionMod
     {
         //private GameTime _lastUpdateUIGameTime;
 
-        public static ModHotKey VanitySwitchHotKey;
+        public static ModHotKey ArmorVanitySwitchHotKey;
+        public static ModHotKey AccVanitySwitchHotKey;
 
         //internal UserInterface MyUserInterface;
         //internal VanitySwitch MyVanitySwitch;
@@ -23,7 +24,8 @@ namespace ChampionMod
 
         public override void Load()
         {
-            VanitySwitchHotKey = RegisterHotKey("Vanity Switch", "V");
+            ArmorVanitySwitchHotKey = RegisterHotKey("Armor Vanity Switch", "V");
+            AccVanitySwitchHotKey = RegisterHotKey("Accessory Vanity Switch", "G");
 
             /*if (!Main.dedServ)
             {
@@ -41,7 +43,8 @@ namespace ChampionMod
             //MyVanitySwitch?.Unload();
             //MyVanitySwitch = null;
 
-            VanitySwitchHotKey = null;
+            ArmorVanitySwitchHotKey = null;
+            AccVanitySwitchHotKey = null;
         }
 
         /*public override void UpdateUI(GameTime gameTime)

@@ -172,9 +172,23 @@ namespace ChampionMod
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (ChampionMod.VanitySwitchHotKey.JustPressed)
+            if (ChampionMod.ArmorVanitySwitchHotKey.JustPressed)
             {
-                for (int i = 0; i < 8 + player.extraAccessorySlots; i++)
+                for (int i = 0; i < 3; i++)
+                {
+                    Item main = player.armor[i];
+                    Item vanity = player.armor[i + 10];
+                    if (main.type > 0 && vanity.type > 0 && !vanity.vanity)
+                    {
+                        player.armor[i] = vanity;
+                        player.armor[i + 10] = main;
+                    }
+                }
+            }
+
+            if (ChampionMod.AccVanitySwitchHotKey.JustPressed)
+            {
+                for (int i = 3; i < 8 + player.extraAccessorySlots; i++)
                 {
                     Item main = player.armor[i];
                     Item vanity = player.armor[i + 10];
