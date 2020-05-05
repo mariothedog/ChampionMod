@@ -43,9 +43,15 @@ namespace ChampionMod.Items.Weapons.Ranged.Guns
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25));
+
 				Vector2 dir = Vector2.Normalize(new Vector2(speedX, speedY));
-				Vector2 offset = dir * 40; // So the bullets come out of the muzzle.
-				Projectile.NewProjectile(position.X + offset.X, position.Y + offset.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 offset = dir * 40;
+				if (Collision.CanHit(position, 0, 0, position + offset, 0, 0))
+				{
+					position += offset;
+				}
+				
+				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
