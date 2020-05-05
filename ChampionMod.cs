@@ -203,6 +203,7 @@ namespace ChampionMod
             });
             RecipeGroup.RegisterGroup("ChampionMod:Vilethorn", group);
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(this);
