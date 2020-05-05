@@ -1,7 +1,7 @@
-using ChampionMod.Utils;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -168,6 +168,23 @@ namespace ChampionMod
         public override void PostUpdateBuffs()
         {
             player.statDefense += primalDefence;
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (ChampionMod.VanitySwitchHotKey.JustPressed)
+            {
+                for (int i = 0; i < 8 + player.extraAccessorySlots; i++)
+                {
+                    Item main = player.armor[i];
+                    Item vanity = player.armor[i + 10];
+                    if (main.type > 0 && vanity.type > 0)
+                    {
+                        player.armor[i] = vanity;
+                        player.armor[i + 10] = main;
+                    }
+                }
+            }
         }
     }
 }

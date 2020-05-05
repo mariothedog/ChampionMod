@@ -2,14 +2,85 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using System.IO;
+using Terraria.UI;
+using ChampionMod.UI;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace ChampionMod
 {
     class ChampionMod : Mod
     {
+        //private GameTime _lastUpdateUIGameTime;
+
+        public static ModHotKey VanitySwitchHotKey;
+
+        //internal UserInterface MyUserInterface;
+        //internal VanitySwitch MyVanitySwitch;
+
         public static int farmer;
         public static float farmerProjectileRotation;
+
+        public override void Load()
+        {
+            VanitySwitchHotKey = RegisterHotKey("Vanity Switch", "V");
+
+            /*if (!Main.dedServ)
+            {
+                MyUserInterface = new UserInterface();
+
+                MyVanitySwitch = new VanitySwitch();
+                MyVanitySwitch.Activate();
+            }*/
+
+            //ShowVanitySwitch();
+        }
+
+        public override void Unload()
+        {
+            //MyVanitySwitch?.Unload();
+            //MyVanitySwitch = null;
+
+            VanitySwitchHotKey = null;
+        }
+
+        /*public override void UpdateUI(GameTime gameTime)
+        {
+            _lastUpdateUIGameTime = gameTime;
+            if (MyUserInterface?.CurrentState != null)
+            {
+                MyUserInterface.Update(gameTime);
+            }
+        }
+
+        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+        {
+            int index = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
+            if (index != -1)
+            {
+                layers.Insert(index, new LegacyGameInterfaceLayer("ChampionMod: VanitySwitch",
+                    delegate
+                    {
+                        if (_lastUpdateUIGameTime != null && MyUserInterface?.CurrentState != null)
+                        {
+                            MyUserInterface.Draw(Main.spriteBatch, _lastUpdateUIGameTime);
+                        }
+
+                        return true;
+                    },
+                    InterfaceScaleType.UI));
+            }
+        }
+
+        internal void ShowVanitySwitch()
+        {
+            MyUserInterface?.SetState(MyVanitySwitch);
+        }
+
+        internal void HideVanitySwitch()
+        {
+            MyUserInterface?.SetState(null);
+        }*/
 
         public override void AddRecipeGroups()
         {
@@ -134,7 +205,6 @@ namespace ChampionMod
         }
         public override void AddRecipes()
         {
-            base.AddRecipes();
             ModRecipe recipe = new ModRecipe(this);
             recipe.AddRecipeGroup("Wood", 10);
             recipe.AddIngredient(ItemID.Acorn, 1);
@@ -142,6 +212,7 @@ namespace ChampionMod
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(ItemID.WandofSparking, 1);
             recipe.AddRecipe();
+
             ModRecipe recipe2 = new ModRecipe(this);
             recipe2.AddIngredient(ItemType("PrimalCleaver"), 1);
             recipe2.AddIngredient(ItemID.BladeofGrass, 1);
