@@ -178,7 +178,7 @@ namespace ChampionMod
                 {
                     Item main = player.armor[i];
                     Item vanity = player.armor[i + 10];
-                    if (main.type > 0 && vanity.type > 0)
+                    if (main.type > 0 && vanity.type > 0 && !vanity.vanity)
                     {
                         player.armor[i] = vanity;
                         player.armor[i + 10] = main;
