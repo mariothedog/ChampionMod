@@ -58,12 +58,12 @@ namespace ChampionMod.Items.Weapons.Melee.Swords
         {
             damagePlayer = false;
 
-            if ((Main.time - lastTimeShot) < 60)
+            if ((Main.GameUpdateCount - lastTimeShot) < 60)
             {
                 return;
             }
 
-            lastTimeShot = Main.time;
+            lastTimeShot = Main.GameUpdateCount;
 
             for (int i = 0; i < 2; i++)
             {
