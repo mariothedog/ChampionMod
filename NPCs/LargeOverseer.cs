@@ -11,6 +11,7 @@ namespace ChampionMod.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Overseer");
+			Main.npcFrameCount[npc.type] = 5;
 		}
 
 		public override void SetDefaults()
@@ -24,6 +25,7 @@ namespace ChampionMod.NPCs
 			npc.value = Item.buyPrice(0, 0, 6, 0);
 			npc.knockBackResist = Main.expertMode ? 0.38f : 0.4f;
 			npc.aiStyle = -1;
+			animationType = NPCID.Drippler;
 			banner = mod.NPCType("LargeOverseer");
 			bannerItem = mod.ItemType("OverseerBanner");
 		}
@@ -321,6 +323,17 @@ namespace ChampionMod.NPCs
 			}
 			npc.TargetClosest(true);
 			goto IL_eb0b;
+		}
+
+		public override void FindFrame(int frameHeight)
+		{
+			npc.frameCounter++;
+			if (npc.frameCounter > 8)
+			{
+				npc.frameCounter = 0;
+				Main.NewText(frameHeight);
+				npc.frame.Y = (npc.frame.Y + frameHeight) % (5 * frameHeight);
+			}
 		}
 	}
 }
